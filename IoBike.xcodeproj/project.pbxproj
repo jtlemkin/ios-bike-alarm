@@ -42,7 +42,6 @@
 		527952B02416D3ED00A82F63 = {
 			isa = PBXGroup;
 			children = (
-				527952D02416DEBB00A82F63 /* BluetoothController.swift */,
 				527952BB2416D3ED00A82F63 /* IoBike */,
 				527952BA2416D3ED00A82F63 /* Products */,
 			);
@@ -62,6 +61,7 @@
 				527952BC2416D3ED00A82F63 /* AppDelegate.swift */,
 				527952BE2416D3ED00A82F63 /* SceneDelegate.swift */,
 				527952C02416D3ED00A82F63 /* ContentView.swift */,
+				527952D02416DEBB00A82F63 /* BluetoothController.swift */,
 				527952C22416D3F700A82F63 /* Assets.xcassets */,
 				527952C72416D3F700A82F63 /* LaunchScreen.storyboard */,
 				527952CA2416D3F700A82F63 /* Info.plist */,
