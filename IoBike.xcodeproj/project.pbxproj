@@ -13,6 +13,7 @@
 		527952C32416D3F700A82F63 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 527952C22416D3F700A82F63 /* Assets.xcassets */; };
 		527952C62416D3F700A82F63 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 527952C52416D3F700A82F63 /* Preview Assets.xcassets */; };
 		527952C92416D3F700A82F63 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 527952C72416D3F700A82F63 /* LaunchScreen.storyboard */; };
+		527952D12416DEBB00A82F63 /* BluetoothController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527952D02416DEBB00A82F63 /* BluetoothController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		527952C52416D3F700A82F63 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		527952C82416D3F700A82F63 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		527952CA2416D3F700A82F63 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		527952D02416DEBB00A82F63 /* BluetoothController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +42,7 @@
 		527952B02416D3ED00A82F63 = {
 			isa = PBXGroup;
 			children = (
+				527952D02416DEBB00A82F63 /* BluetoothController.swift */,
 				527952BB2416D3ED00A82F63 /* IoBike */,
 				527952BA2416D3ED00A82F63 /* Products */,
 			);
@@ -148,6 +151,7 @@
 			files = (
 				527952BD2416D3ED00A82F63 /* AppDelegate.swift in Sources */,
 				527952BF2416D3ED00A82F63 /* SceneDelegate.swift in Sources */,
+				527952D12416DEBB00A82F63 /* BluetoothController.swift in Sources */,
 				527952C12416D3ED00A82F63 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
