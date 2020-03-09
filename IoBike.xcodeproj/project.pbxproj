@@ -14,6 +14,7 @@
 		527952C62416D3F700A82F63 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 527952C52416D3F700A82F63 /* Preview Assets.xcassets */; };
 		527952C92416D3F700A82F63 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 527952C72416D3F700A82F63 /* LaunchScreen.storyboard */; };
 		527952D32416FE2D00A82F63 /* BluetoothController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527952D22416FE2D00A82F63 /* BluetoothController.swift */; };
+		527952D92417060900A82F63 /* AlarmToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527952D82417060900A82F63 /* AlarmToggle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		527952C82416D3F700A82F63 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		527952CA2416D3F700A82F63 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		527952D22416FE2D00A82F63 /* BluetoothController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothController.swift; sourceTree = "<group>"; };
+		527952D82417060900A82F63 /* AlarmToggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmToggle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,14 +60,15 @@
 		527952BB2416D3ED00A82F63 /* IoBike */ = {
 			isa = PBXGroup;
 			children = (
+				527952CA2416D3F700A82F63 /* Info.plist */,
 				527952BC2416D3ED00A82F63 /* AppDelegate.swift */,
-				527952BE2416D3ED00A82F63 /* SceneDelegate.swift */,
-				527952C02416D3ED00A82F63 /* ContentView.swift */,
 				527952D22416FE2D00A82F63 /* BluetoothController.swift */,
+				527952C02416D3ED00A82F63 /* ContentView.swift */,
+				527952BE2416D3ED00A82F63 /* SceneDelegate.swift */,
 				527952C22416D3F700A82F63 /* Assets.xcassets */,
 				527952C72416D3F700A82F63 /* LaunchScreen.storyboard */,
-				527952CA2416D3F700A82F63 /* Info.plist */,
 				527952C42416D3F700A82F63 /* Preview Content */,
+				527952D7241705E700A82F63 /* Supporting Views */,
 			);
 			path = IoBike;
 			sourceTree = "<group>";
@@ -76,6 +79,14 @@
 				527952C52416D3F700A82F63 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		527952D7241705E700A82F63 /* Supporting Views */ = {
+			isa = PBXGroup;
+			children = (
+				527952D82417060900A82F63 /* AlarmToggle.swift */,
+			);
+			path = "Supporting Views";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -151,6 +162,7 @@
 			files = (
 				527952BD2416D3ED00A82F63 /* AppDelegate.swift in Sources */,
 				527952BF2416D3ED00A82F63 /* SceneDelegate.swift in Sources */,
+				527952D92417060900A82F63 /* AlarmToggle.swift in Sources */,
 				527952D32416FE2D00A82F63 /* BluetoothController.swift in Sources */,
 				527952C12416D3ED00A82F63 /* ContentView.swift in Sources */,
 			);

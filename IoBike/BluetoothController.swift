@@ -11,7 +11,12 @@ import CoreBluetooth
 
 class BluetoothController: NSObject, ObservableObject {
     @Published var isConnected = false
-    @Published var isArmed = false
+    
+    @Published var isArmed = false {
+        didSet {
+            updateAlarmPeripheral()
+        }
+    }
     
     var centralManager : CBCentralManager!
     var alarmPeripheral : CBPeripheral!
@@ -24,11 +29,9 @@ class BluetoothController: NSObject, ObservableObject {
         centralManager = CBCentralManager(delegate: self, queue: nil)
     }
     
-    func toggleAlarm() {
+    func updateAlarmPeripheral() {
         if let characteristic = isArmedCharacteristic {
             if characteristic.properties.contains(.write) && alarmPeripheral != nil {
-                isArmed = !isArmed
-                
                 let data = Data([UInt8(isArmed ? 1 : 0)])
                 alarmPeripheral.writeValue(data, for: characteristic, type: .withResponse)
             }

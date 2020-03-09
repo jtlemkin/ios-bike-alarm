@@ -16,9 +16,11 @@ struct ContentView: View {
             Text(bluetoothController.isConnected ? "Connected to Bike" : "Disconnected from Bike")
                 .font(.title)
                 .fontWeight(.heavy)
-            Text(bluetoothController.isArmed ? "Alarm is active" : "Alarm is inactive")
-                .font(.body)
-                
+                .padding()
+            Text(bluetoothController.isArmed ? "Alarm Active" : "Alarm Inactive")
+                .font(.title)
+                .padding()
+            AlarmToggle(bluetoothController: bluetoothController)
         }
             
     }
