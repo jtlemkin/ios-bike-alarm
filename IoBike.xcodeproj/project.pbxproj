@@ -15,6 +15,7 @@
 		527952C92416D3F700A82F63 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 527952C72416D3F700A82F63 /* LaunchScreen.storyboard */; };
 		527952D32416FE2D00A82F63 /* BluetoothController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527952D22416FE2D00A82F63 /* BluetoothController.swift */; };
 		527952D92417060900A82F63 /* AlarmToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527952D82417060900A82F63 /* AlarmToggle.swift */; };
+		527952DB24170D5800A82F63 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527952DA24170D5800A82F63 /* MapView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		527952CA2416D3F700A82F63 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		527952D22416FE2D00A82F63 /* BluetoothController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothController.swift; sourceTree = "<group>"; };
 		527952D82417060900A82F63 /* AlarmToggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmToggle.swift; sourceTree = "<group>"; };
+		527952DA24170D5800A82F63 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				527952D82417060900A82F63 /* AlarmToggle.swift */,
+				527952DA24170D5800A82F63 /* MapView.swift */,
 			);
 			path = "Supporting Views";
 			sourceTree = "<group>";
@@ -161,6 +164,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				527952BD2416D3ED00A82F63 /* AppDelegate.swift in Sources */,
+				527952DB24170D5800A82F63 /* MapView.swift in Sources */,
 				527952BF2416D3ED00A82F63 /* SceneDelegate.swift in Sources */,
 				527952D92417060900A82F63 /* AlarmToggle.swift in Sources */,
 				527952D32416FE2D00A82F63 /* BluetoothController.swift in Sources */,
