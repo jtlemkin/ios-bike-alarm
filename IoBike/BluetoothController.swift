@@ -28,6 +28,8 @@ class BluetoothController: NSObject, ObservableObject {
 extension BluetoothController: CBCentralManagerDelegate {
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
         if central.state == .poweredOn {
+            print("Scanning for bluetooth devices")
+            
             centralManager.scanForPeripherals(withServices: [alarmCBUUID])
         }
     }
