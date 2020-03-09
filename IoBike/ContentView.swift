@@ -12,7 +12,15 @@ struct ContentView: View {
     @ObservedObject var bluetoothController: BluetoothController
     
     var body: some View {
-        Text(bluetoothController.isConnected ? "Connected" : "Disconnected")
+        VStack {
+            Text(bluetoothController.isConnected ? "Connected to Bike" : "Disconnected from Bike")
+                .font(.title)
+                .fontWeight(.heavy)
+            Text(bluetoothController.isArmed ? "Alarm is active" : "Alarm is inactive")
+                .font(.body)
+                
+        }
+            
     }
 }
 

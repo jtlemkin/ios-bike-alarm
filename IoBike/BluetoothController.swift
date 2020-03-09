@@ -23,6 +23,17 @@ class BluetoothController: NSObject, ObservableObject {
         super.init()
         centralManager = CBCentralManager(delegate: self, queue: nil)
     }
+    
+    func toggleAlarm() {
+        if let characteristic = isArmedCharacteristic {
+            if characteristic.properties.contains(.write) && alarmPeripheral != nil {
+                isArmed = !isArmed
+                
+                let data = Data([UInt8(isArmed ? 1 : 0)])
+                alarmPeripheral.writeValue(data, for: characteristic, type: .withResponse)
+            }
+        }
+    }
 }
 
 extension BluetoothController: CBCentralManagerDelegate {
