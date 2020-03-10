@@ -18,16 +18,15 @@ struct ContentView: View {
                 .frame(height: 300)
                 .edgesIgnoringSafeArea(.top)
             
-            Text(bluetoothController.isConnected ? "Connected to Bike" : "Disconnected from Bike")
-                .font(.title)
+            Text(bluetoothController.isConnected ? "Bike Connected" : "Bike Disconnected")
+                .font(.largeTitle)
                 .fontWeight(.heavy)
                 .padding()
             
-            Spacer()
-            
             Text(bluetoothController.isArmed ? "Alarm Active" : "Alarm Inactive")
                 .font(.title)
-                .padding()
+            
+            Spacer()
             
             AlarmToggle(bluetoothController: bluetoothController)
             
