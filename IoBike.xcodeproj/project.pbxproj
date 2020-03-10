@@ -66,7 +66,7 @@
 			children = (
 				527952CA2416D3F700A82F63 /* Info.plist */,
 				527952BC2416D3ED00A82F63 /* AppDelegate.swift */,
-				527952D22416FE2D00A82F63 /* BluetoothController.swift */,
+				527952E0241738E600A82F63 /* Model */,
 				527952C02416D3ED00A82F63 /* ContentView.swift */,
 				527952BE2416D3ED00A82F63 /* SceneDelegate.swift */,
 				527952C22416D3F700A82F63 /* Assets.xcassets */,
@@ -93,6 +93,14 @@
 				527952DE2417316200A82F63 /* DisarmButton.swift */,
 			);
 			path = "Supporting Views";
+			sourceTree = "<group>";
+		};
+		527952E0241738E600A82F63 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				527952D22416FE2D00A82F63 /* BluetoothController.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -11,15 +11,26 @@ import MapKit
 
 struct MapView: UIViewRepresentable {
     var coordinate: CLLocationCoordinate2D
+    let locationManager = CLLocationManager()
     
     func makeUIView(context: Context) -> MKMapView {
         return MKMapView(frame: .zero)
     }
     
     func updateUIView(_ view: MKMapView, context: Context) {
-        let span = MKCoordinateSpan(latitudeDelta: 2.0, longitudeDelta: 2.0)
-        let region = MKCoordinateRegion(center: coordinate, span: span)
-        view.setRegion(region, animated: true)
+        view.showsUserLocation = true
+        let status = CLLocationManager.authorizationStatus()
+        locationManager.requestAlwaysAuthorization()
+        locationManager.requestWhenInUseAuthorization()
+        
+        if status == .authorizedAlways || status == .authorizedWhenInUse {
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.startUpdatingLocation()
+            let location = locationManager.location!.coordinate
+            let span = MKCoordinateSpan(latitudeDelta: 0.009, longitudeDelta: 0.009)
+            let region = MKCoordinateRegion(center: location, span: span)
+            view.setRegion(region, animated: true)
+        }
     }
 }
 

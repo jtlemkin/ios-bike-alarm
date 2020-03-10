@@ -2,8 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>BikeBuddy would like to use this device&apos;s location services to show you your coordinates relative to your bike.</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>BikeBuddy would like to use this device&apos;s location services to keep track of your bike&apos;s location.</string>
 	<key>NSBluetoothAlwaysUsageDescription</key>
-	<string>ioBike would like to use this device&apos;s bluetooth capabilities to sync with your bike alarm.</string>
+	<string>BikeBuddy would like to use this device&apos;s bluetooth capabilities to sync with your bike alarm.</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
