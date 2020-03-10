@@ -74,7 +74,7 @@ extension BluetoothController: CBCentralManagerDelegate {
         self.isConnected = false
         self.alarmPeripheral = nil
         
-        //self.lastSeenBikeLocation = 
+        self.lastSeenBikeLocation = locationManager.location!.coordinate
     }
 }
 

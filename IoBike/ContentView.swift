@@ -14,7 +14,7 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            MapView(coordinate: CLLocationCoordinate2D(latitude: 0, longitude: 0))
+            MapView(bluetoothController: bluetoothController)
                 .frame(height: 300.0)
                 .edgesIgnoringSafeArea(.top)
             
