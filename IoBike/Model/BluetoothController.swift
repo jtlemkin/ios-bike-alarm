@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreBluetooth
+import CoreLocation
 
 class BluetoothController: NSObject, ObservableObject {
     @Published var isConnected = true
@@ -21,6 +22,9 @@ class BluetoothController: NSObject, ObservableObject {
     var centralManager : CBCentralManager!
     var alarmPeripheral : CBPeripheral!
     var isArmedCharacteristic : CBCharacteristic?
+    
+    let locationManager = CLLocationManager()
+    var lastSeenBikeLocation : CLLocationCoordinate2D?
     
     let alarmCBUUID = CBUUID(string: "19b10000-e8f2-537e-4f6c-d104768a1214")
     
@@ -69,6 +73,8 @@ extension BluetoothController: CBCentralManagerDelegate {
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
         self.isConnected = false
         self.alarmPeripheral = nil
+        
+        //self.lastSeenBikeLocation = 
     }
 }
 

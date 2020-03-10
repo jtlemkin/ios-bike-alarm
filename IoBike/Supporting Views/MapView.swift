@@ -12,24 +12,47 @@ import MapKit
 struct MapView: UIViewRepresentable {
     var coordinate: CLLocationCoordinate2D
     let locationManager = CLLocationManager()
+    let view = MKMapView(frame: .zero)
     
     func makeUIView(context: Context) -> MKMapView {
-        return MKMapView(frame: .zero)
+        view.delegate = context.coordinator
+        return view
     }
     
     func updateUIView(_ view: MKMapView, context: Context) {
-        view.showsUserLocation = true
-        let status = CLLocationManager.authorizationStatus()
-        locationManager.requestAlwaysAuthorization()
-        locationManager.requestWhenInUseAuthorization()
+    }
+    
+    func makeCoordinator() -> MapView.Coordinator {
+        Coordinator(self)
+    }
+    
+    class Coordinator: NSObject, MKMapViewDelegate, CLLocationManagerDelegate {
+        var parent: MapView
+        let locationManager = CLLocationManager()
         
-        if status == .authorizedAlways || status == .authorizedWhenInUse {
-            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-            locationManager.startUpdatingLocation()
-            let location = locationManager.location!.coordinate
-            let span = MKCoordinateSpan(latitudeDelta: 0.009, longitudeDelta: 0.009)
-            let region = MKCoordinateRegion(center: location, span: span)
-            view.setRegion(region, animated: true)
+        init(_ parent: MapView) {
+            self.parent = parent
+            super.init()
+            
+            parent.view.showsUserLocation = true
+            
+            locationManager.requestAlwaysAuthorization()
+            locationManager.requestWhenInUseAuthorization()
+            
+            self.showUserLocation()
+        }
+        
+        func showUserLocation() {
+            let status = CLLocationManager.authorizationStatus()
+            
+            if status == .authorizedAlways || status == .authorizedWhenInUse {
+                locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+                locationManager.startUpdatingLocation()
+                let location = locationManager.location!.coordinate
+                let span = MKCoordinateSpan(latitudeDelta: 0.009, longitudeDelta: 0.009)
+                let region = MKCoordinateRegion(center: location, span: span)
+                parent.view.setRegion(region, animated: true)
+            }
         }
     }
 }
