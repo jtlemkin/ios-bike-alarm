@@ -15,7 +15,7 @@ struct ContentView: View {
     var body: some View {
         VStack {
             MapView(coordinate: CLLocationCoordinate2D(latitude: 0, longitude: 0))
-                .frame(height: 300)
+                .frame(height: 300.0)
                 .edgesIgnoringSafeArea(.top)
             
             Text(bluetoothController.isConnected ? "Bike Connected" : "Bike Disconnected")
@@ -28,7 +28,13 @@ struct ContentView: View {
             
             Spacer()
             
-            AlarmToggle(bluetoothController: bluetoothController)
+            if bluetoothController.isConnected {
+                if bluetoothController.isArmed {
+                    DisarmButton(bluetoothController: bluetoothController)
+                } else {
+                    ArmButton(bluetoothController: bluetoothController)
+                }
+            }
             
             Spacer()
         }

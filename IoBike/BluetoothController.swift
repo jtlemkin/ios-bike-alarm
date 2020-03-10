@@ -10,7 +10,7 @@ import Foundation
 import CoreBluetooth
 
 class BluetoothController: NSObject, ObservableObject {
-    @Published var isConnected = false
+    @Published var isConnected = true
     
     @Published var isArmed = false {
         didSet {
@@ -36,6 +36,10 @@ class BluetoothController: NSObject, ObservableObject {
                 alarmPeripheral.writeValue(data, for: characteristic, type: .withResponse)
             }
         }
+    }
+    
+    func toggleAlarm() {
+        isArmed = !isArmed
     }
 }
 
