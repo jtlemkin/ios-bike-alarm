@@ -40,53 +40,16 @@ struct MapView: UIViewRepresentable {
             locationManager.requestAlwaysAuthorization()
             locationManager.requestWhenInUseAuthorization()
             
+            let bikeLocation = parent.bluetoothController.lastSeenBikeLocation ?? CLLocationCoordinate2D(latitude: 21.283921, longitude: -157.831661)
+            let bike = Bike(bikeLocation)
+            parent.view.addAnnotation(bike)
+            
             self.parent.view.register(BikeMarkerView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
             
-            self.showUserLocation()
-            self.showBikeLocation()
-        }
-        
-        /*func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-            guard let annotation = annotation as? Bike else { return nil }
+            let span = MKCoordinateSpan(latitudeDelta: 0.009, longitudeDelta: 0.009)
+            let region = MKCoordinateRegion(center: bikeLocation, span: span)
             
-            let identifier = "marker"
-            var view: MKMarkerAnnotationView
-            
-            if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKMarkerAnnotationView {
-                dequeuedView.annotation = annotation
-                view = dequeuedView
-            } else {
-                view = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-                view.canShowCallout = true
-                view.calloutOffset = CGPoint(x: -5, y: 5)
-            }
-            
-            return view
-        }*/
-        
-        func showUserLocation() {
-            let status = CLLocationManager.authorizationStatus()
-            
-            if status == .authorizedAlways || status == .authorizedWhenInUse {
-                locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-                locationManager.startUpdatingLocation()
-                let location = locationManager.location!.coordinate
-                let span = MKCoordinateSpan(latitudeDelta: 0.009, longitudeDelta: 0.009)
-                let region = MKCoordinateRegion(center: location, span: span)
-                parent.view.setRegion(region, animated: true)
-            }
-        }
-        
-        func showBikeLocation() {
-            if let bikeLocation = parent.bluetoothController.lastSeenBikeLocation {
-                let bike = Bike(bikeLocation)
-                
-                parent.view.addAnnotation(bike)
-            } else {
-                let bike = Bike(CLLocationCoordinate2D(latitude: 21.283921, longitude: -157.831661))
-                
-                parent.view.addAnnotation(bike)
-            }
+            parent.view.setRegion(region, animated: true)
         }
     }
     
