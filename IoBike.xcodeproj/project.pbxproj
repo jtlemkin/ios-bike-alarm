@@ -15,8 +15,7 @@
 		527952C92416D3F700A82F63 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 527952C72416D3F700A82F63 /* LaunchScreen.storyboard */; };
 		527952D32416FE2D00A82F63 /* BluetoothController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527952D22416FE2D00A82F63 /* BluetoothController.swift */; };
 		527952DB24170D5800A82F63 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527952DA24170D5800A82F63 /* MapView.swift */; };
-		527952DD241712F100A82F63 /* ArmButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527952DC241712F100A82F63 /* ArmButton.swift */; };
-		527952DF2417316200A82F63 /* DisarmButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527952DE2417316200A82F63 /* DisarmButton.swift */; };
+		527952DD241712F100A82F63 /* ToggleAlarmButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527952DC241712F100A82F63 /* ToggleAlarmButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,8 +29,7 @@
 		527952CA2416D3F700A82F63 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		527952D22416FE2D00A82F63 /* BluetoothController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothController.swift; sourceTree = "<group>"; };
 		527952DA24170D5800A82F63 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
-		527952DC241712F100A82F63 /* ArmButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArmButton.swift; sourceTree = "<group>"; };
-		527952DE2417316200A82F63 /* DisarmButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisarmButton.swift; sourceTree = "<group>"; };
+		527952DC241712F100A82F63 /* ToggleAlarmButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleAlarmButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,8 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				527952DA24170D5800A82F63 /* MapView.swift */,
-				527952DC241712F100A82F63 /* ArmButton.swift */,
-				527952DE2417316200A82F63 /* DisarmButton.swift */,
+				527952DC241712F100A82F63 /* ToggleAlarmButton.swift */,
 			);
 			path = "Supporting Views";
 			sourceTree = "<group>";
@@ -178,8 +175,7 @@
 				527952DB24170D5800A82F63 /* MapView.swift in Sources */,
 				527952BF2416D3ED00A82F63 /* SceneDelegate.swift in Sources */,
 				527952D32416FE2D00A82F63 /* BluetoothController.swift in Sources */,
-				527952DD241712F100A82F63 /* ArmButton.swift in Sources */,
-				527952DF2417316200A82F63 /* DisarmButton.swift in Sources */,
+				527952DD241712F100A82F63 /* ToggleAlarmButton.swift in Sources */,
 				527952C12416D3ED00A82F63 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

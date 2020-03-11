@@ -28,13 +28,7 @@ struct ContentView: View {
             
             Spacer()
             
-            if bluetoothController.isConnected {
-                if bluetoothController.isArmed {
-                    DisarmButton(bluetoothController: bluetoothController)
-                } else {
-                    ArmButton(bluetoothController: bluetoothController)
-                }
-            }
+            ToggleAlarmButton(bluetoothController: bluetoothController)
             
             Spacer()
         }

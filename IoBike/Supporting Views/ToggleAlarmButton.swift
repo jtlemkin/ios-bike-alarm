@@ -8,28 +8,28 @@
 
 import SwiftUI
 
-struct ArmButton: View {
+struct ToggleAlarmButton: View {
     @ObservedObject var bluetoothController: BluetoothController
     
     var body: some View {
         Button(action: {
             self.bluetoothController.toggleAlarm()
         }) {
-            Image(systemName: "lock.fill")
+            Image(systemName: bluetoothController.isArmed ? "lock.fill" : "lock.open.fill")
                 .font(.title)
-            Text("Activate Alarm")
+            Text(bluetoothController.isArmed ? "Activate Alarm" : "Deactivate Alarm")
                 .fontWeight(.semibold)
                 .font(.title)
         }
         .padding()
         .foregroundColor(.white)
-        .background(Color.red)
+        .background(bluetoothController.isArmed ? Color.red : Color.gray)
         .cornerRadius(40)
     }
 }
 
 struct AlarmLockButton_Previews: PreviewProvider {
     static var previews: some View {
-        ArmButton(bluetoothController: BluetoothController())
+        ToggleAlarmButton(bluetoothController: BluetoothController())
     }
 }
