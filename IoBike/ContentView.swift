@@ -23,12 +23,14 @@ struct ContentView: View {
                 .fontWeight(.heavy)
                 .padding()
             
-            Text(bluetoothController.isArmed ? "Alarm Active" : "Alarm Inactive")
-                .font(.title)
-            
             Spacer()
             
-            ToggleAlarmButton(bluetoothController: bluetoothController)
+            if bluetoothController.isConnected {
+                ToggleAlarmButton(bluetoothController: bluetoothController)
+            } else {
+                Text(bluetoothController.isArmed ? "Alarm Active" : "Alarm Inactive")
+                    .font(.title)
+            }
             
             Spacer()
         }
