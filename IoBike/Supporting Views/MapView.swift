@@ -40,7 +40,7 @@ struct MapView: UIViewRepresentable {
             locationManager.requestAlwaysAuthorization()
             locationManager.requestWhenInUseAuthorization()
             
-            let bikeLocation = parent.bluetoothController.lastSeenBikeLocation ?? CLLocationCoordinate2D(latitude: 21.283921, longitude: -157.831661)
+            let bikeLocation = parent.bluetoothController.lastSeenBikeLocation
             let bike = Bike(bikeLocation)
             parent.view.addAnnotation(bike)
             

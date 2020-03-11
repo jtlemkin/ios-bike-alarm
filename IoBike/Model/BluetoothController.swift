@@ -24,7 +24,15 @@ class BluetoothController: NSObject, ObservableObject {
     var isArmedCharacteristic : CBCharacteristic?
     
     let locationManager = CLLocationManager()
-    var lastSeenBikeLocation : CLLocationCoordinate2D?
+    
+    var lastSeenBikeLocation : CLLocationCoordinate2D {
+        let latitude = defaults.double(forKey: "latitude")
+        let longitude = defaults.double(forKey: "longitude")
+        
+        return CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+    }
+    
+    let defaults = UserDefaults.standard
     
     let alarmCBUUID = CBUUID(string: "19b10000-e8f2-537e-4f6c-d104768a1214")
     
@@ -44,6 +52,11 @@ class BluetoothController: NSObject, ObservableObject {
     
     func toggleAlarm() {
         isArmed = !isArmed
+    }
+    
+    func save(coordinate: CLLocationCoordinate2D) {
+        defaults.set(coordinate.latitude, forKey: "latitude")
+        defaults.set(coordinate.longitude, forKey: "longitude")
     }
 }
 
@@ -74,7 +87,7 @@ extension BluetoothController: CBCentralManagerDelegate {
         self.isConnected = false
         self.alarmPeripheral = nil
         
-        self.lastSeenBikeLocation = locationManager.location!.coordinate
+        self.save(coordinate: locationManager.location!.coordinate)
     }
 }
 
