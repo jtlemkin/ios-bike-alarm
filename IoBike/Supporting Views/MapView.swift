@@ -27,7 +27,7 @@ struct MapView: UIViewRepresentable {
         Coordinator(self)
     }
     
-    class Coordinator: NSObject, MKMapViewDelegate, CLLocationManagerDelegate {
+    class Coordinator: NSObject, MKMapViewDelegate {
         var parent: MapView
         let locationManager = CLLocationManager()
         
@@ -40,9 +40,29 @@ struct MapView: UIViewRepresentable {
             locationManager.requestAlwaysAuthorization()
             locationManager.requestWhenInUseAuthorization()
             
+            self.parent.view.register(BikeMarkerView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
+            
             self.showUserLocation()
             self.showBikeLocation()
         }
+        
+        /*func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+            guard let annotation = annotation as? Bike else { return nil }
+            
+            let identifier = "marker"
+            var view: MKMarkerAnnotationView
+            
+            if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKMarkerAnnotationView {
+                dequeuedView.annotation = annotation
+                view = dequeuedView
+            } else {
+                view = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+                view.canShowCallout = true
+                view.calloutOffset = CGPoint(x: -5, y: 5)
+            }
+            
+            return view
+        }*/
         
         func showUserLocation() {
             let status = CLLocationManager.authorizationStatus()
@@ -77,6 +97,17 @@ struct MapView: UIViewRepresentable {
             self.coordinate = coordinate
             
             super.init()
+        }
+    }
+    
+    class BikeMarkerView: MKMarkerAnnotationView {
+        override var annotation: MKAnnotation?  {
+            willSet {
+                guard let _ = newValue as? Bike else { return }
+                
+                markerTintColor = .white
+                glyphText = String("🚲")
+            }
         }
     }
 }
