@@ -15,15 +15,15 @@ struct ToggleAlarmButton: View {
         Button(action: {
             self.bluetoothController.toggleAlarm()
         }) {
-            Image(systemName: bluetoothController.isArmed ? "lock.fill" : "lock.open.fill")
+            Image(systemName: !bluetoothController.isArmed ? "lock.fill" : "lock.open.fill")
                 .font(.title)
-            Text(bluetoothController.isArmed ? "Activate Alarm" : "Deactivate Alarm")
+            Text(!bluetoothController.isArmed ? "Activate Alarm" : "Deactivate Alarm")
                 .fontWeight(.semibold)
                 .font(.title)
         }
         .padding()
         .foregroundColor(.white)
-        .background(bluetoothController.isArmed ? Color.red : Color.gray)
+        .background(!bluetoothController.isArmed ? Color.red : Color.gray)
         .cornerRadius(40)
     }
 }

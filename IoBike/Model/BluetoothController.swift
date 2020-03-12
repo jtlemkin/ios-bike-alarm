@@ -13,11 +13,7 @@ import CoreLocation
 class BluetoothController: NSObject, ObservableObject {
     @Published var isConnected = false
     
-    @Published var isArmed = false {
-        didSet {
-            updateAlarmPeripheral()
-        }
-    }
+    @Published var isArmed = false
     
     var centralManager : CBCentralManager!
     var alarmPeripheral : CBPeripheral!
@@ -50,13 +46,16 @@ class BluetoothController: NSObject, ObservableObject {
         }
     }
     
-    func toggleAlarm() {
-        isArmed = !isArmed
-    }
-    
     func save(coordinate: CLLocationCoordinate2D) {
         defaults.set(coordinate.latitude, forKey: "latitude")
         defaults.set(coordinate.longitude, forKey: "longitude")
+    }
+    
+    func toggleAlarm() {
+        defaults.set(!isArmed, forKey: "isArmed")
+        isArmed = defaults.bool(forKey: "isArmed")
+        
+        updateAlarmPeripheral()
     }
 }
 
@@ -88,6 +87,8 @@ extension BluetoothController: CBCentralManagerDelegate {
         self.alarmPeripheral = nil
         
         self.save(coordinate: locationManager.location!.coordinate)
+        
+        centralManager.scanForPeripherals(withServices: [alarmCBUUID])
     }
 }
 
