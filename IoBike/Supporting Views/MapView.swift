@@ -21,6 +21,17 @@ struct MapView: UIViewRepresentable {
     }
     
     func updateUIView(_ view: MKMapView, context: Context) {
+        let bikeLocation = bluetoothController.lastSeenBikeLocation
+        
+        let span = MKCoordinateSpan(latitudeDelta: 0.009, longitudeDelta: 0.009)
+        let region = MKCoordinateRegion(center: bikeLocation, span: span)
+        
+        view.setRegion(region, animated: true)
+        
+        let bike = BikeAnnotation(coordinate: bikeLocation)
+        view.addAnnotation(bike)
+        
+        view.register(BikeMarkerView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
     }
     
     func makeCoordinator() -> MapView.Coordinator {
@@ -39,24 +50,13 @@ struct MapView: UIViewRepresentable {
             
             locationManager.requestAlwaysAuthorization()
             locationManager.requestWhenInUseAuthorization()
-            
-            let bikeLocation = parent.bluetoothController.lastSeenBikeLocation
-            let bike = Bike(bikeLocation)
-            parent.view.addAnnotation(bike)
-            
-            self.parent.view.register(BikeMarkerView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
-            
-            let span = MKCoordinateSpan(latitudeDelta: 0.009, longitudeDelta: 0.009)
-            let region = MKCoordinateRegion(center: bikeLocation, span: span)
-            
-            parent.view.setRegion(region, animated: true)
         }
     }
     
-    class Bike: NSObject, MKAnnotation {
+    class BikeAnnotation: NSObject, MKAnnotation {
         var coordinate: CLLocationCoordinate2D
         
-        init(_ coordinate: CLLocationCoordinate2D) {
+        init(coordinate: CLLocationCoordinate2D) {
             self.coordinate = coordinate
             
             super.init()
@@ -66,7 +66,7 @@ struct MapView: UIViewRepresentable {
     class BikeMarkerView: MKMarkerAnnotationView {
         override var annotation: MKAnnotation?  {
             willSet {
-                guard let _ = newValue as? Bike else { return }
+                guard let _ = newValue as? BikeAnnotation else { return }
                 
                 markerTintColor = .white
                 glyphText = String("🚲")

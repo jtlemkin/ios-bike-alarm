@@ -22,8 +22,14 @@ class BluetoothController: NSObject, ObservableObject {
     let locationManager = CLLocationManager()
     
     var lastSeenBikeLocation : CLLocationCoordinate2D {
-        let latitude = defaults.double(forKey: "latitude")
-        let longitude = defaults.double(forKey: "longitude")
+        var latitude = defaults.double(forKey: "latitude")
+        var longitude = defaults.double(forKey: "longitude")
+        
+        //DEBUG
+        if latitude == 0.0 && longitude == 0.0 {
+            latitude = 38.5401844
+            longitude = -121.7491281
+        }
         
         return CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
     }
