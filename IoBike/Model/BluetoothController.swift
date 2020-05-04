@@ -12,12 +12,18 @@ import CoreLocation
 
 class BluetoothController: NSObject, ObservableObject {
     @Published var isConnected = false
-    
     @Published var isArmed = false
+    
+    let defaults = UserDefaults.standard
+    
+    let serviceCBUUID = CBUUID(string: "19b10000-e8f2-537e-4f6c-d104768a1214")
+    let armCharCBUUID = CBUUID(string: "19b10000-e8f2-537e-4f6c-d104768a1214")
+    let batteryLifeCharCBUUID = CBUUID(string: "19b10002-e8f2-537e-4f6c-d104768a1214")
     
     var centralManager : CBCentralManager!
     var alarmPeripheral : CBPeripheral!
     var isArmedCharacteristic : CBCharacteristic?
+    var batteryLifeCharacteristic : CBCharacteristic?
     
     let locationManager = CLLocationManager()
     
@@ -25,7 +31,7 @@ class BluetoothController: NSObject, ObservableObject {
         var latitude = defaults.double(forKey: "latitude")
         var longitude = defaults.double(forKey: "longitude")
         
-        //DEBUG
+        //For testing purposes
         if latitude == 0.0 && longitude == 0.0 {
             latitude = 38.5401844
             longitude = -121.7491281
@@ -33,10 +39,6 @@ class BluetoothController: NSObject, ObservableObject {
         
         return CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
     }
-    
-    let defaults = UserDefaults.standard
-    
-    let alarmCBUUID = CBUUID(string: "19b10000-e8f2-537e-4f6c-d104768a1214")
     
     override init() {
         super.init()
@@ -70,7 +72,7 @@ extension BluetoothController: CBCentralManagerDelegate {
         if central.state == .poweredOn {
             print("Scanning for bluetooth devices")
             
-            centralManager.scanForPeripherals(withServices: [alarmCBUUID])
+            centralManager.scanForPeripherals(withServices: [serviceCBUUID])
         }
     }
     
@@ -85,7 +87,7 @@ extension BluetoothController: CBCentralManagerDelegate {
         print("Connected with alarm")
         
         self.isConnected = true
-        alarmPeripheral.discoverServices([alarmCBUUID])
+        alarmPeripheral.discoverServices([serviceCBUUID])
     }
     
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
@@ -94,7 +96,7 @@ extension BluetoothController: CBCentralManagerDelegate {
         
         self.save(coordinate: locationManager.location!.coordinate)
         
-        centralManager.scanForPeripherals(withServices: [alarmCBUUID])
+        centralManager.scanForPeripherals(withServices: [serviceCBUUID])
     }
 }
 
@@ -102,7 +104,7 @@ extension BluetoothController: CBPeripheralDelegate {
     func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
         if let services = peripheral.services {
             for service in services {
-                if service.uuid == alarmCBUUID {
+                if service.uuid == serviceCBUUID {
                     peripheral.discoverCharacteristics(nil, for: service)
                 }
             }
@@ -112,7 +114,11 @@ extension BluetoothController: CBPeripheralDelegate {
     func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
         if let characteristics = service.characteristics {
             for characteristic in characteristics {
-                isArmedCharacteristic = characteristic
+                if characteristic.uuid == armCharCBUUID {
+                    isArmedCharacteristic = characteristic
+                } else if characteristic.uuid == batteryLifeCharCBUUID {
+                    batteryLifeCharacteristic = characteristic
+                }
             }
         }
     }
