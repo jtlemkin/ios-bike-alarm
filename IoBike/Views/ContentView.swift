@@ -14,47 +14,47 @@ struct ContentView: View {
     let defaults = UserDefaults.standard
     
     var body: some View {
-        VStack {
+        NavigationView {
             VStack {
-                MapView(bluetoothController: bluetoothController)
-                    .frame(height: CGFloat(300.0))
-                
-                HStack {
-                    Text("Device life: \(Int(defaults.double(forKey: "batteryLife")))%")
+                    VStack {
+                        MapView(bluetoothController: bluetoothController)
+                            .frame(height: CGFloat(300.0))
+                        
+                        HStack {
+                            Text("Device life: \(Int(defaults.double(forKey: "batteryLife")))%")
+                            
+                            Spacer()
+                            
+                            NavigationLink(destination: SettingsView()) {
+                                Image(systemName: "gear")
+                                    .foregroundColor(.black)
+                            }
+                        }
+                        .padding(.horizontal)
+                    }
                     
                     Spacer()
                     
-                    Button(action: {
-                        print("Pressed")
-                    }) {
-                        Image(systemName: "gear")
-                            .foregroundColor(.black)
+                    Text(bluetoothController.isConnected ? "Bike Connected" : "Bike Disconnected")
+                        .font(.largeTitle)
+                        .fontWeight(.heavy)
+                        .padding()
+                    
+                    Spacer()
+                    
+                    if bluetoothController.isConnected {
+                        ToggleAlarmButton(bluetoothController: bluetoothController)
+                    } else {
+                        Text(bluetoothController.isArmed ? "Alarm Active" : "Alarm Inactive")
+                            .font(.title)
                     }
+                    
+                    Spacer()
                 }
-                .padding(.horizontal)
+                .edgesIgnoringSafeArea(.top)
+                    
             }
-            
-            Spacer()
-            
-            Text(bluetoothController.isConnected ? "Bike Connected" : "Bike Disconnected")
-                .font(.largeTitle)
-                .fontWeight(.heavy)
-                .padding()
-            
-            Spacer()
-            
-            if bluetoothController.isConnected {
-                ToggleAlarmButton(bluetoothController: bluetoothController)
-            } else {
-                Text(bluetoothController.isArmed ? "Alarm Active" : "Alarm Inactive")
-                    .font(.title)
-            }
-            
-            Spacer()
         }
-        .edgesIgnoringSafeArea(.top)
-            
-    }
 }
 
 struct ContentView_Previews: PreviewProvider {
