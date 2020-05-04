@@ -11,6 +11,7 @@ import MapKit
 
 struct ContentView: View {
     @ObservedObject var bluetoothController = BluetoothController()
+    let defaults = UserDefaults.standard
     
     var body: some View {
         VStack {
@@ -19,11 +20,11 @@ struct ContentView: View {
                     .frame(height: CGFloat(300.0))
                 
                 HStack {
-                    Text("Device life: \(bluetoothController.batteryLife == nil ? "undefined" : String(bluetoothController.batteryLife!) + "%")")
+                    Text("Device life: \(Int(defaults.double(forKey: "batteryLife")))%")
                     
                     Spacer()
                 }
-                .padding(.horizontal)
+                .padding(.leading)
             }.edgesIgnoringSafeArea(.top)
             
             
