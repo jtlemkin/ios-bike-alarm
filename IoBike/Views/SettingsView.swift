@@ -17,6 +17,10 @@ struct SettingsView: View {
                 .padding(.horizontal)
                 .frame(minWidth: 0, maxWidth: .infinity, alignment: .topLeading)
             
+            List {
+                SettingsRow(imageName: "arrow.up.arrow.down.circle.fill", text: "Set password")
+            }
+            
             Spacer()
         }
     }
