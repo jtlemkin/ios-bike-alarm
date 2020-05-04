@@ -23,10 +23,18 @@ struct ContentView: View {
                     Text("Device life: \(Int(defaults.double(forKey: "batteryLife")))%")
                     
                     Spacer()
+                    
+                    Button(action: {
+                        print("Pressed")
+                    }) {
+                        Image(systemName: "gear")
+                            .foregroundColor(.black)
+                    }
                 }
-                .padding(.leading)
-            }.edgesIgnoringSafeArea(.top)
+                .padding(.horizontal)
+            }
             
+            Spacer()
             
             Text(bluetoothController.isConnected ? "Bike Connected" : "Bike Disconnected")
                 .font(.largeTitle)
@@ -44,6 +52,7 @@ struct ContentView: View {
             
             Spacer()
         }
+        .edgesIgnoringSafeArea(.top)
             
     }
 }
