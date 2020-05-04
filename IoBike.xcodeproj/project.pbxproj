@@ -16,6 +16,7 @@
 		527952D32416FE2D00A82F63 /* BluetoothController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527952D22416FE2D00A82F63 /* BluetoothController.swift */; };
 		527952DB24170D5800A82F63 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527952DA24170D5800A82F63 /* MapView.swift */; };
 		527952DD241712F100A82F63 /* ToggleAlarmButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527952DC241712F100A82F63 /* ToggleAlarmButton.swift */; };
+		52D1D762245FB4B1003E2E00 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D1D761245FB4B1003E2E00 /* Utils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		527952D22416FE2D00A82F63 /* BluetoothController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothController.swift; sourceTree = "<group>"; };
 		527952DA24170D5800A82F63 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		527952DC241712F100A82F63 /* ToggleAlarmButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleAlarmButton.swift; sourceTree = "<group>"; };
+		52D1D761245FB4B1003E2E00 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 		527952BB2416D3ED00A82F63 /* IoBike */ = {
 			isa = PBXGroup;
 			children = (
+				52D1D761245FB4B1003E2E00 /* Utils.swift */,
 				527952CA2416D3F700A82F63 /* Info.plist */,
 				527952BC2416D3ED00A82F63 /* AppDelegate.swift */,
 				527952E0241738E600A82F63 /* Model */,
@@ -174,6 +177,7 @@
 				527952BD2416D3ED00A82F63 /* AppDelegate.swift in Sources */,
 				527952DB24170D5800A82F63 /* MapView.swift in Sources */,
 				527952BF2416D3ED00A82F63 /* SceneDelegate.swift in Sources */,
+				52D1D762245FB4B1003E2E00 /* Utils.swift in Sources */,
 				527952D32416FE2D00A82F63 /* BluetoothController.swift in Sources */,
 				527952DD241712F100A82F63 /* ToggleAlarmButton.swift in Sources */,
 				527952C12416D3ED00A82F63 /* ContentView.swift in Sources */,

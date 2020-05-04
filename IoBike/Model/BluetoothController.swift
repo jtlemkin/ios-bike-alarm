@@ -25,9 +25,8 @@ class BluetoothController: NSObject, ObservableObject {
     var isArmedCharacteristic : CBCharacteristic?
     var batteryLifeCharacteristic : CBCharacteristic? {
         didSet {
-            if batteryLifeCharacteristic != nil {
-                let batteryLife = batteryLifeCharacteristic!.value?.withUnsafeBytes { $0.load(as: UInt8.self) }
-                defaults.set(Int(batteryLife!), forKey: "batteryLife")
+            if let batteryLifeData = batteryLifeCharacteristic?.value {
+                defaults.set(Int.from(data: batteryLifeData), forKey: "batteryLife")
             }
         }
     }
