@@ -13,7 +13,6 @@ import CoreLocation
 class BluetoothController: NSObject, ObservableObject {
     @Published var isConnected = false
     @Published var isArmed = false
-    @Published var batteryLife: Int?
     
     let defaults = UserDefaults.standard
     
@@ -24,7 +23,14 @@ class BluetoothController: NSObject, ObservableObject {
     var centralManager : CBCentralManager!
     var alarmPeripheral : CBPeripheral!
     var isArmedCharacteristic : CBCharacteristic?
-    var batteryLifeCharacteristic : CBCharacteristic?
+    var batteryLifeCharacteristic : CBCharacteristic? {
+        didSet {
+            if batteryLifeCharacteristic != nil {
+                let batteryLife = batteryLifeCharacteristic!.value?.withUnsafeBytes { $0.load(as: UInt8.self) }
+                defaults.set(Int(batteryLife!), forKey: "batteryLife")
+            }
+        }
+    }
     
     let locationManager = CLLocationManager()
     
