@@ -17,6 +17,7 @@
 		527952DB24170D5800A82F63 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527952DA24170D5800A82F63 /* MapView.swift */; };
 		527952DD241712F100A82F63 /* ToggleAlarmButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527952DC241712F100A82F63 /* ToggleAlarmButton.swift */; };
 		52D1D762245FB4B1003E2E00 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D1D761245FB4B1003E2E00 /* Utils.swift */; };
+		52D1D764245FB994003E2E00 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D1D763245FB994003E2E00 /* SettingsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		527952DA24170D5800A82F63 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		527952DC241712F100A82F63 /* ToggleAlarmButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleAlarmButton.swift; sourceTree = "<group>"; };
 		52D1D761245FB4B1003E2E00 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		52D1D763245FB994003E2E00 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				527952C02416D3ED00A82F63 /* ContentView.swift */,
+				52D1D763245FB994003E2E00 /* SettingsView.swift */,
 				527952DA24170D5800A82F63 /* MapView.swift */,
 				527952DC241712F100A82F63 /* ToggleAlarmButton.swift */,
 			);
@@ -175,6 +178,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				527952BD2416D3ED00A82F63 /* AppDelegate.swift in Sources */,
+				52D1D764245FB994003E2E00 /* SettingsView.swift in Sources */,
 				527952DB24170D5800A82F63 /* MapView.swift in Sources */,
 				527952BF2416D3ED00A82F63 /* SceneDelegate.swift in Sources */,
 				52D1D762245FB4B1003E2E00 /* Utils.swift in Sources */,
