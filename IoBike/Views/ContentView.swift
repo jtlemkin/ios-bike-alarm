@@ -11,49 +11,17 @@ import MapKit
 
 struct ContentView: View {
     @ObservedObject var bluetoothController = BluetoothController()
-    let defaults = UserDefaults.standard
     
     var body: some View {
-        NavigationView {
-            VStack {
-                    VStack {
-                        MapView(bluetoothController: bluetoothController)
-                            .frame(height: CGFloat(300.0))
-                        
-                        HStack {
-                            Text("Device life: \(Int(defaults.double(forKey: "batteryLife")))%")
-                            
-                            Spacer()
-                            
-                            NavigationLink(destination: SettingsView()) {
-                                Image(systemName: "gear")
-                            }
-                        }
-                        .padding(.horizontal)
-                    }
-                    
-                    Spacer()
-                    
-                    Text(bluetoothController.isConnected ? "Bike Connected" : "Bike Disconnected")
-                        .font(.largeTitle)
-                        .fontWeight(.heavy)
-                        .padding()
-                    
-                    Spacer()
-                    
-                    if bluetoothController.isConnected {
-                        ToggleAlarmButton(bluetoothController: bluetoothController)
-                    } else {
-                        Text(bluetoothController.isArmed ? "Alarm Active" : "Alarm Inactive")
-                            .font(.title)
-                    }
-                    
-                    Spacer()
-                }
-                .edgesIgnoringSafeArea(.top)
-                    
-            }
-        }
+        ZStack {
+            MapView(bluetoothController: bluetoothController)
+                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+
+                
+            StateView(bluetoothController: bluetoothController)
+                .offset(y: 150)
+        }.edgesIgnoringSafeArea(.all)
+    }
 }
 
 struct ContentView_Previews: PreviewProvider {
