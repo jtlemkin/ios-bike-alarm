@@ -13,6 +13,7 @@ import CoreLocation
 class BluetoothController: NSObject, ObservableObject {
     @Published var isConnected = false
     @Published var isArmed = false
+    @Published var batteryLife: Int?
     
     let defaults = UserDefaults.standard
     

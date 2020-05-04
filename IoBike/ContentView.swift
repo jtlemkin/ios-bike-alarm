@@ -10,13 +10,22 @@ import SwiftUI
 import MapKit
 
 struct ContentView: View {
-    @ObservedObject var bluetoothController: BluetoothController
+    @ObservedObject var bluetoothController = BluetoothController()
     
     var body: some View {
         VStack {
-            MapView(bluetoothController: bluetoothController)
-                .frame(height: 300.0)
-                .edgesIgnoringSafeArea(.top)
+            VStack {
+                MapView(bluetoothController: bluetoothController)
+                    .frame(height: CGFloat(300.0))
+                
+                HStack {
+                    Text("Device life: \(bluetoothController.batteryLife == nil ? "undefined" : String(bluetoothController.batteryLife!) + "%")")
+                    
+                    Spacer()
+                }
+                .padding(.horizontal)
+            }.edgesIgnoringSafeArea(.top)
+            
             
             Text(bluetoothController.isConnected ? "Bike Connected" : "Bike Disconnected")
                 .font(.largeTitle)
