@@ -22,9 +22,12 @@ struct MapView: UIViewRepresentable {
     
     func updateUIView(_ view: MKMapView, context: Context) {
         let bikeLocation = bluetoothController.lastSeenBikeLocation
+        let lat = bikeLocation.latitude
+        let long = bikeLocation.longitude
+        let shiftedBikeLocation = CLLocationCoordinate2D(latitude: lat - 0.009 / 4, longitude: long)
         
         let span = MKCoordinateSpan(latitudeDelta: 0.009, longitudeDelta: 0.009)
-        let region = MKCoordinateRegion(center: bikeLocation, span: span)
+        let region = MKCoordinateRegion(center: shiftedBikeLocation, span: span)
         
         view.setRegion(region, animated: true)
         
