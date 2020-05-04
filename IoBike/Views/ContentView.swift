@@ -27,7 +27,6 @@ struct ContentView: View {
                             
                             NavigationLink(destination: SettingsView()) {
                                 Image(systemName: "gear")
-                                    .foregroundColor(.black)
                             }
                         }
                         .padding(.horizontal)
