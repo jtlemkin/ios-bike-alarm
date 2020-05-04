@@ -20,7 +20,6 @@ struct SettingsRow: View {
             Text(text)
             Spacer()
         }
-        .padding(.horizontal)
     }
 }
 
