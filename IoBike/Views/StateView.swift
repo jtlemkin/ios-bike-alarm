@@ -13,19 +13,30 @@ struct StateView: View {
     let defaults = UserDefaults.standard
     
     var body: some View {
-        VStack {
-            HStack {
-                Text("Device life: \(Int(defaults.double(forKey: "batteryLife")))%")
+        ZStack {
+            VStack {
+                HStack {
+                    Text("Device life: \(Int(defaults.double(forKey: "batteryLife")))%")
+                    
+                    Spacer()
+                    
+                    NavigationLink(destination: SettingsView()) {
+                        Image(systemName: "gear")
+                    }
+                }
+                .padding(.all)
                 
                 Spacer()
-                
-                NavigationLink(destination: SettingsView()) {
-                    Image(systemName: "gear")
-                }
             }
-            .padding(.all)
-            
-            Spacer()
+            .frame(width: 325.0, height: 275.0)
+            .overlay(
+                RoundedRectangle(cornerRadius: 30)
+                    .stroke(bluetoothController.isConnected ? Color.blue : Color.black, lineWidth: 3)
+            )
+            .background(
+                RoundedRectangle(cornerRadius: 30).fill(Color.white)
+                    .shadow(color: bluetoothController.isConnected ? Color.blue : Color.black, radius: 5)
+            )
             
             if bluetoothController.isConnected {
                 ToggleAlarmButton(bluetoothController: bluetoothController)
@@ -35,16 +46,7 @@ struct StateView: View {
                     .fontWeight(.heavy)
                     .padding()
             }
-            
-            Spacer()
         }
-        .frame(width: 300.0, height: 250.0)
-        .overlay(
-            RoundedRectangle(cornerRadius: 40)
-                .stroke(Color.black, lineWidth: 3)
-        )
-        .background(RoundedRectangle(cornerRadius: 40).fill(Color.white))
-        .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
     }
 }
 
