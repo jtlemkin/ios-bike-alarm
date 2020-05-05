@@ -31,7 +31,7 @@ struct StateView: View {
             .frame(width: 325.0, height: 275.0)
             .overlay(
                 RoundedRectangle(cornerRadius: 30)
-                    .stroke(bluetoothController.isConnected ? Color.blue : Color.black, lineWidth: 3)
+                    .stroke(bluetoothController.isConnected ? Color.blue : Color.black, lineWidth: 2)
             )
             .background(
                 RoundedRectangle(cornerRadius: 30).fill(Color.white)
