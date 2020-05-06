@@ -21,7 +21,7 @@ struct StateView: View {
                     Spacer()
                     
                     NavigationLink(destination: SettingsView()) {
-                        Image(systemName: "gear")
+                        Image(systemName: "gear").foregroundColor(Color(UIColor.label))
                     }
                 }
                 .padding(.all)
@@ -34,7 +34,7 @@ struct StateView: View {
                     .stroke(bluetoothController.isConnected ? Color.blue : Color.black, lineWidth: 2)
             )
             .background(
-                RoundedRectangle(cornerRadius: 30).fill(Color.white)
+                RoundedRectangle(cornerRadius: 30).fill(Color(UIColor.systemBackground))
                     .shadow(color: bluetoothController.isConnected ? Color.blue : Color.black, radius: 5)
             )
             
