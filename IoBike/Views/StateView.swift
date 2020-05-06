@@ -2,7 +2,7 @@
 //  StateView.swift
 //  IoBike
 //
-//  Created by James Lemkin on 5/4/20.
+//  Created by James Lemkin on 5/6/20.
 //  Copyright © 2020 James Lemkin. All rights reserved.
 //
 
@@ -10,6 +10,7 @@ import SwiftUI
 
 struct StateView: View {
     @ObservedObject var bluetoothController: BluetoothController
+    var changeView : () -> Void
     let defaults = UserDefaults.standard
     
     var body: some View {
@@ -20,7 +21,7 @@ struct StateView: View {
                     
                     Spacer()
                     
-                    NavigationLink(destination: SettingsView()) {
+                    Button(action: changeView) {
                         Image(systemName: "gear").foregroundColor(Color(UIColor.label))
                     }
                 }
@@ -28,15 +29,6 @@ struct StateView: View {
                 
                 Spacer()
             }
-            .frame(width: 325.0, height: 275.0)
-            .overlay(
-                RoundedRectangle(cornerRadius: 30)
-                    .stroke(bluetoothController.isConnected ? Color.blue : Color.black, lineWidth: 2)
-            )
-            .background(
-                RoundedRectangle(cornerRadius: 30).fill(Color(UIColor.systemBackground))
-                    .shadow(color: bluetoothController.isConnected ? Color.blue : Color.black, radius: 5)
-            )
             
             if bluetoothController.isConnected {
                 ToggleAlarmButton(bluetoothController: bluetoothController)
@@ -52,6 +44,6 @@ struct StateView: View {
 
 struct StateView_Previews: PreviewProvider {
     static var previews: some View {
-        StateView(bluetoothController: BluetoothController())
+        StateView(bluetoothController: BluetoothController(), changeView: {})
     }
 }

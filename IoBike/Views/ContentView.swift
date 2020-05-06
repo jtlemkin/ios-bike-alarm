@@ -18,7 +18,7 @@ struct ContentView: View {
                 .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
 
                 
-            StateView(bluetoothController: bluetoothController)
+            ModalView(bluetoothController: bluetoothController)
                 .offset(y: 150)
         }.edgesIgnoringSafeArea(.all)
     }

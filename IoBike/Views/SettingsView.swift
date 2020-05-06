@@ -9,16 +9,29 @@
 import SwiftUI
 
 struct SettingsView: View {
+    var changeView : () -> Void
+    
     var body: some View {
-        List {
-            SettingsRow(imageName: "arrow.up.arrow.down.circle.fill", text: "Set password")
+        VStack(alignment: .leading) {
+            Button(action: changeView) {
+                Image(systemName: "chevron.left").foregroundColor(Color(UIColor.label)).padding([.leading, .top])
+            }
+            
+            Text("Settings")
+                .font(.title)
+                .fontWeight(.bold)
+                .multilineTextAlignment(.leading)
+                .padding(.horizontal)
+            
+            List {
+                SettingsRow(imageName: "arrow.up.arrow.down.circle.fill", text: "Set password")
+            }
         }
-        .navigationBarTitle(Text("Settings"))
     }
 }
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsView()
+        SettingsView(changeView: {})
     }
 }
