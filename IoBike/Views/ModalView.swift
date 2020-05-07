@@ -12,6 +12,7 @@ struct ModalView: View {
     @ObservedObject var bluetoothController: BluetoothController
     @State var isViewingState = true
     var shape = RoundedRectangle(cornerRadius: 30)
+    let bluetoothBlue = Color(red: 0.157, green: 0.478, blue: 0.662)
     
     func changeView() {
         isViewingState.toggle()
@@ -26,14 +27,14 @@ struct ModalView: View {
             }
         }
         .frame(width: 325.0, height: 275.0)
+        .clipShape(shape)
         .overlay(
-            shape.stroke(bluetoothController.isConnected ? Color.blue : Color.black, lineWidth: 2)
+            shape.stroke(bluetoothController.isConnected ? bluetoothBlue : Color.black, lineWidth: 2)
         )
         .background(
             shape.fill(Color(UIColor.systemBackground))
-                .shadow(color: bluetoothController.isConnected ? Color.blue : Color.black, radius: 5)
+                .shadow(color: bluetoothController.isConnected ? bluetoothBlue : Color.black, radius: 5)
         )
-        .clipShape(shape)
     }
 }
 
