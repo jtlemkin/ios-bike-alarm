@@ -49,6 +49,7 @@ class BluetoothController: NSObject, ObservableObject {
     override init() {
         super.init()
         centralManager = CBCentralManager(delegate: self, queue: nil)
+        isArmed = defaults.bool(forKey: "isArmed")
     }
     
     func updateAlarmPeripheral() {
