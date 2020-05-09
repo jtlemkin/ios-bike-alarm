@@ -26,6 +26,8 @@ struct SettingsView: View {
             
             List {
                 SettingsRow(imageName: "arrow.up.arrow.down.circle.fill", text: "Set password", action: device.updatePassword)
+                SettingsRow(imageName: "plus.circle.fill", text: "Register New Device", action: {})
+                SettingsRow(imageName: "exclamationmark.octagon.fill", text: "Report Stolen Bike", action: {})
             }
         }
     }

@@ -20,6 +20,7 @@ class Device: ObservableObject {
     let armCharCBUUID = CBUUID(string: "19b10000-e8f2-537e-4f6c-d104768a1214")
     let batteryLifeCharCBUUID = CBUUID(string: "19b10002-e8f2-537e-4f6c-d104768a1214")
     
+    //The BLE Connection Manager is responsible for setting the peripheral variable of the device
     private lazy var bleConnectionManger = BLEConnectionManager(device: self)
     
     var peripheral : CBPeripheral? {
@@ -67,7 +68,6 @@ class Device: ObservableObject {
     }
     
     func updatePassword() {
-        print("Hello!")
         if isArmedCharacteristic != nil {
             write(2, toCharacteristic: isArmedCharacteristic!)
         } else {
