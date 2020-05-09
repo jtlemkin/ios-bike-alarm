@@ -9,27 +9,27 @@
 import SwiftUI
 
 struct ToggleAlarmButton: View {
-    @ObservedObject var bluetoothController: BluetoothController
+    var device: Device
     
     var body: some View {
         Button(action: {
-            self.bluetoothController.toggleAlarm()
+            self.device.toggleAlarm()
         }) {
-            Image(systemName: !bluetoothController.isArmed ? "lock.fill" : "lock.open.fill")
+            Image(systemName: !device.isArmed ? "lock.fill" : "lock.open.fill")
                 .font(.title)
-            Text(!bluetoothController.isArmed ? "Activate Alarm" : "Deactivate Alarm")
+            Text(!device.isArmed ? "Activate Alarm" : "Deactivate Alarm")
                 .fontWeight(.semibold)
                 .font(.title)
         }
         .padding()
         .foregroundColor(.white)
-        .background(!bluetoothController.isArmed ? Color.red : Color.gray)
+        .background(!device.isArmed ? Color.red : Color.gray)
         .cornerRadius(40)
     }
 }
 
 struct AlarmLockButton_Previews: PreviewProvider {
     static var previews: some View {
-        ToggleAlarmButton(bluetoothController: BluetoothController())
+        ToggleAlarmButton(device: Device())
     }
 }

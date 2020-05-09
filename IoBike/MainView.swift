@@ -9,23 +9,23 @@
 import SwiftUI
 import MapKit
 
-struct ContentView: View {
-    @ObservedObject var bluetoothController = BluetoothController()
+struct MainView: View {
+    @ObservedObject var device = Device()
     
     var body: some View {
         ZStack {
-            MapView(bluetoothController: bluetoothController)
+            MapView(targetLocation: device.lastKnownLocation)
                 .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
 
                 
-            ModalView(bluetoothController: bluetoothController)
+            ModalView(device: device)
                 .offset(y: 150)
         }.edgesIgnoringSafeArea(.all)
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct MainView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        MainView()
     }
 }

@@ -9,15 +9,14 @@
 import SwiftUI
 
 struct StateView: View {
-    @ObservedObject var bluetoothController: BluetoothController
+    var device : Device
     var changeView : () -> Void
-    let defaults = UserDefaults.standard
     
     var body: some View {
         ZStack {
             VStack {
                 HStack {
-                    Text("Device life: \(Int(defaults.double(forKey: "batteryLife")))%")
+                    Text("Device life: \(Int(UserDefaults.standard.double(forKey: "batteryLife")))%")
                     
                     Spacer()
                     
@@ -30,10 +29,10 @@ struct StateView: View {
                 Spacer()
             }
             
-            if bluetoothController.isConnected {
-                ToggleAlarmButton(bluetoothController: bluetoothController)
+            if device.isConnected {
+                ToggleAlarmButton(device: device)
             } else {
-                Text(bluetoothController.isArmed ? "Alarm Active" : "Alarm Inactive")
+                Text(device.isArmed ? "Alarm Active" : "Alarm Inactive")
                     .font(.largeTitle)
                     .fontWeight(.heavy)
                     .padding()
@@ -44,6 +43,6 @@ struct StateView: View {
 
 struct StateView_Previews: PreviewProvider {
     static var previews: some View {
-        StateView(bluetoothController: BluetoothController(), changeView: {})
+        StateView(device: Device(), changeView: {})
     }
 }

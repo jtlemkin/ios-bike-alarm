@@ -8,13 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		520484A024635DB700E2E35F /* StateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5204849F24635DB700E2E35F /* StateView.swift */; };
+		520484A42463836000E2E35F /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520484A32463836000E2E35F /* Device.swift */; };
 		527952BD2416D3ED00A82F63 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527952BC2416D3ED00A82F63 /* AppDelegate.swift */; };
 		527952BF2416D3ED00A82F63 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527952BE2416D3ED00A82F63 /* SceneDelegate.swift */; };
-		527952C12416D3ED00A82F63 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527952C02416D3ED00A82F63 /* ContentView.swift */; };
+		527952C12416D3ED00A82F63 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527952C02416D3ED00A82F63 /* MainView.swift */; };
 		527952C32416D3F700A82F63 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 527952C22416D3F700A82F63 /* Assets.xcassets */; };
 		527952C62416D3F700A82F63 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 527952C52416D3F700A82F63 /* Preview Assets.xcassets */; };
 		527952C92416D3F700A82F63 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 527952C72416D3F700A82F63 /* LaunchScreen.storyboard */; };
-		527952D32416FE2D00A82F63 /* BluetoothController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527952D22416FE2D00A82F63 /* BluetoothController.swift */; };
+		527952D32416FE2D00A82F63 /* BLEConnectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527952D22416FE2D00A82F63 /* BLEConnectionManager.swift */; };
 		527952DB24170D5800A82F63 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527952DA24170D5800A82F63 /* MapView.swift */; };
 		527952DD241712F100A82F63 /* ToggleAlarmButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527952DC241712F100A82F63 /* ToggleAlarmButton.swift */; };
 		52AE73D52460C563005DE8AD /* ModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AE73D42460C563005DE8AD /* ModalView.swift */; };
@@ -25,15 +26,16 @@
 
 /* Begin PBXFileReference section */
 		5204849F24635DB700E2E35F /* StateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateView.swift; sourceTree = "<group>"; };
+		520484A32463836000E2E35F /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		527952B92416D3ED00A82F63 /* IoBike.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IoBike.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		527952BC2416D3ED00A82F63 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		527952BE2416D3ED00A82F63 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		527952C02416D3ED00A82F63 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		527952C02416D3ED00A82F63 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		527952C22416D3F700A82F63 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		527952C52416D3F700A82F63 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		527952C82416D3F700A82F63 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		527952CA2416D3F700A82F63 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		527952D22416FE2D00A82F63 /* BluetoothController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothController.swift; sourceTree = "<group>"; };
+		527952D22416FE2D00A82F63 /* BLEConnectionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLEConnectionManager.swift; sourceTree = "<group>"; };
 		527952DA24170D5800A82F63 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		527952DC241712F100A82F63 /* ToggleAlarmButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleAlarmButton.swift; sourceTree = "<group>"; };
 		52AE73D42460C563005DE8AD /* ModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalView.swift; sourceTree = "<group>"; };
@@ -72,6 +74,7 @@
 		527952BB2416D3ED00A82F63 /* IoBike */ = {
 			isa = PBXGroup;
 			children = (
+				527952C02416D3ED00A82F63 /* MainView.swift */,
 				52D1D761245FB4B1003E2E00 /* Utils.swift */,
 				527952CA2416D3F700A82F63 /* Info.plist */,
 				527952BC2416D3ED00A82F63 /* AppDelegate.swift */,
@@ -80,7 +83,7 @@
 				527952C22416D3F700A82F63 /* Assets.xcassets */,
 				527952C72416D3F700A82F63 /* LaunchScreen.storyboard */,
 				527952C42416D3F700A82F63 /* Preview Content */,
-				527952D7241705E700A82F63 /* Views */,
+				527952D7241705E700A82F63 /* SupportingViews */,
 			);
 			path = IoBike;
 			sourceTree = "<group>";
@@ -93,24 +96,24 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		527952D7241705E700A82F63 /* Views */ = {
+		527952D7241705E700A82F63 /* SupportingViews */ = {
 			isa = PBXGroup;
 			children = (
 				52AE73D42460C563005DE8AD /* ModalView.swift */,
 				5204849F24635DB700E2E35F /* StateView.swift */,
-				527952C02416D3ED00A82F63 /* ContentView.swift */,
 				52D1D763245FB994003E2E00 /* SettingsView.swift */,
 				527952DA24170D5800A82F63 /* MapView.swift */,
 				527952DC241712F100A82F63 /* ToggleAlarmButton.swift */,
 				52D1D765245FC31E003E2E00 /* SettingsRow.swift */,
 			);
-			path = Views;
+			path = SupportingViews;
 			sourceTree = "<group>";
 		};
 		527952E0241738E600A82F63 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				527952D22416FE2D00A82F63 /* BluetoothController.swift */,
+				527952D22416FE2D00A82F63 /* BLEConnectionManager.swift */,
+				520484A32463836000E2E35F /* Device.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -189,13 +192,14 @@
 				527952BD2416D3ED00A82F63 /* AppDelegate.swift in Sources */,
 				52D1D764245FB994003E2E00 /* SettingsView.swift in Sources */,
 				52AE73D52460C563005DE8AD /* ModalView.swift in Sources */,
+				520484A42463836000E2E35F /* Device.swift in Sources */,
 				527952DB24170D5800A82F63 /* MapView.swift in Sources */,
 				527952BF2416D3ED00A82F63 /* SceneDelegate.swift in Sources */,
 				520484A024635DB700E2E35F /* StateView.swift in Sources */,
 				52D1D762245FB4B1003E2E00 /* Utils.swift in Sources */,
-				527952D32416FE2D00A82F63 /* BluetoothController.swift in Sources */,
+				527952D32416FE2D00A82F63 /* BLEConnectionManager.swift in Sources */,
 				527952DD241712F100A82F63 /* ToggleAlarmButton.swift in Sources */,
-				527952C12416D3ED00A82F63 /* ContentView.swift in Sources */,
+				527952C12416D3ED00A82F63 /* MainView.swift in Sources */,
 				52D1D766245FC31E003E2E00 /* SettingsRow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

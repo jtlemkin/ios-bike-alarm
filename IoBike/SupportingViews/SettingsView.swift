@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct SettingsView: View {
+    unowned var device : Device
     var changeView : () -> Void
     
     var body: some View {
@@ -24,7 +25,7 @@ struct SettingsView: View {
                 .padding(.horizontal)
             
             List {
-                SettingsRow(imageName: "arrow.up.arrow.down.circle.fill", text: "Set password")
+                SettingsRow(imageName: "arrow.up.arrow.down.circle.fill", text: "Set password", action: device.updatePassword)
             }
         }
     }
@@ -32,6 +33,6 @@ struct SettingsView: View {
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsView(changeView: {})
+        SettingsView(device: Device(), changeView: {})
     }
 }

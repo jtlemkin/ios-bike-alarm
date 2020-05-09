@@ -10,7 +10,7 @@ import SwiftUI
 import MapKit
 
 struct MapView: UIViewRepresentable {
-    @ObservedObject var bluetoothController: BluetoothController
+    let targetLocation : CLLocationCoordinate2D
     
     let locationManager = CLLocationManager()
     let view = MKMapView(frame: .zero)
@@ -21,9 +21,8 @@ struct MapView: UIViewRepresentable {
     }
     
     func updateUIView(_ view: MKMapView, context: Context) {
-        let bikeLocation = bluetoothController.lastSeenBikeLocation
-        let lat = bikeLocation.latitude
-        let long = bikeLocation.longitude
+        let lat = targetLocation.latitude
+        let long = targetLocation.longitude
         let shiftedBikeLocation = CLLocationCoordinate2D(latitude: lat - 0.009 / 4, longitude: long)
         
         let span = MKCoordinateSpan(latitudeDelta: 0.009, longitudeDelta: 0.009)
@@ -31,7 +30,7 @@ struct MapView: UIViewRepresentable {
         
         view.setRegion(region, animated: true)
         
-        let bike = BikeAnnotation(coordinate: bikeLocation)
+        let bike = BikeAnnotation(coordinate: targetLocation)
         view.addAnnotation(bike)
         
         view.register(BikeMarkerView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
@@ -80,6 +79,6 @@ struct MapView: UIViewRepresentable {
 
 struct MapView_Previews: PreviewProvider {
     static var previews: some View {
-        MapView(bluetoothController: BluetoothController())
+        MapView(targetLocation: CLLocationCoordinate2D())
     }
 }
