@@ -2,8 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSCameraUsageDescription</key>
-	<string>BikeBuddy would like to use your camera in order to scan QR codes.</string>
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>BikeBuddy would like to use this device&apos;s bluetooth capabilities to sync with your bike alarm.</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
@@ -17,13 +17,15 @@
 	<key>CFBundlePackageType</key>
 	<string>$(PRODUCT_BUNDLE_PACKAGE_TYPE)</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSBluetoothAlwaysUsageDescription</key>
-	<string>BikeBuddy would like to use this device&apos;s bluetooth capabilities to sync with your bike alarm.</string>
+	<string>BikeBuddy would like to use this device&apos;s bluetooth capabilities in the background so that your app can arm and disarm the app even when it is not displayed on the screen.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>BikeBuddy would like to use your camera in order to scan QR codes.</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>BikeBuddy would like to use this device&apos;s location services to keep track of your bike&apos;s location.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
