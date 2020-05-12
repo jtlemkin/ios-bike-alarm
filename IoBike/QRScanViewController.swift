@@ -20,7 +20,7 @@ struct QRScanner: UIViewControllerRepresentable {
     }
     
     func updateUIViewController(_ uiViewController: QRScanViewController, context: Context) {
-        <#code#>
+        print("Placeholder")
     }
 }
 
