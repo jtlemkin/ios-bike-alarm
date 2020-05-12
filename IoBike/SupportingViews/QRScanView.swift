@@ -2,7 +2,7 @@
 //  QRScanView.swift
 //  IoBike
 //
-//  Created by James Lemkin on 5/11/20.
+//  Created by James Lemkin on 5/12/20.
 //  Copyright © 2020 James Lemkin. All rights reserved.
 //
 
@@ -11,10 +11,10 @@ import SwiftUI
 struct QRScanView: View {
     var body: some View {
         ZStack {
-            QRScanner()
+            QRCaptureView()
             
             VStack {
-                Text("Scan")
+                Text("Scan Bike Code")
                     .font(.title)
                     .foregroundColor(Color.white)
                     .padding(.vertical)
@@ -22,10 +22,7 @@ struct QRScanView: View {
                     .background(/*@START_MENU_TOKEN@*/Color.blue/*@END_MENU_TOKEN@*/)
                 
                 Spacer()
-                
-                Text("No QR code is detected")
             }
-            .frame(minWidth: 0, maxWidth: .infinity)
         }
     }
 }

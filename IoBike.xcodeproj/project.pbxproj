@@ -18,12 +18,12 @@
 		527952D32416FE2D00A82F63 /* BLEConnectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527952D22416FE2D00A82F63 /* BLEConnectionManager.swift */; };
 		527952DB24170D5800A82F63 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527952DA24170D5800A82F63 /* MapView.swift */; };
 		527952DD241712F100A82F63 /* ToggleAlarmButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527952DC241712F100A82F63 /* ToggleAlarmButton.swift */; };
-		529E45EE2466563B00430C08 /* QRScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529E45ED2466563B00430C08 /* QRScanViewController.swift */; };
+		529E45EE2466563B00430C08 /* QRCaptureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529E45ED2466563B00430C08 /* QRCaptureView.swift */; };
 		52AE73D52460C563005DE8AD /* ModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AE73D42460C563005DE8AD /* ModalView.swift */; };
 		52D1D762245FB4B1003E2E00 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D1D761245FB4B1003E2E00 /* Utils.swift */; };
 		52D1D764245FB994003E2E00 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D1D763245FB994003E2E00 /* SettingsView.swift */; };
 		52D1D766245FC31E003E2E00 /* SettingsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D1D765245FC31E003E2E00 /* SettingsRow.swift */; };
-		52E2E951246A5D94003D6CA7 /* QRScanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E2E950246A5D94003D6CA7 /* QRScanView.swift */; };
+		52E2E953246B1E72003D6CA7 /* QRScanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E2E952246B1E72003D6CA7 /* QRScanView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,12 +40,12 @@
 		527952D22416FE2D00A82F63 /* BLEConnectionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLEConnectionManager.swift; sourceTree = "<group>"; };
 		527952DA24170D5800A82F63 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		527952DC241712F100A82F63 /* ToggleAlarmButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleAlarmButton.swift; sourceTree = "<group>"; };
-		529E45ED2466563B00430C08 /* QRScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScanViewController.swift; sourceTree = "<group>"; };
+		529E45ED2466563B00430C08 /* QRCaptureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCaptureView.swift; sourceTree = "<group>"; };
 		52AE73D42460C563005DE8AD /* ModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalView.swift; sourceTree = "<group>"; };
 		52D1D761245FB4B1003E2E00 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		52D1D763245FB994003E2E00 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		52D1D765245FC31E003E2E00 /* SettingsRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRow.swift; sourceTree = "<group>"; };
-		52E2E950246A5D94003D6CA7 /* QRScanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScanView.swift; sourceTree = "<group>"; };
+		52E2E952246B1E72003D6CA7 /* QRScanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScanView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,8 +78,6 @@
 		527952BB2416D3ED00A82F63 /* IoBike */ = {
 			isa = PBXGroup;
 			children = (
-				529E45ED2466563B00430C08 /* QRScanViewController.swift */,
-				52E2E950246A5D94003D6CA7 /* QRScanView.swift */,
 				527952C02416D3ED00A82F63 /* MainView.swift */,
 				52D1D761245FB4B1003E2E00 /* Utils.swift */,
 				527952CA2416D3F700A82F63 /* Info.plist */,
@@ -105,6 +103,8 @@
 		527952D7241705E700A82F63 /* SupportingViews */ = {
 			isa = PBXGroup;
 			children = (
+				529E45ED2466563B00430C08 /* QRCaptureView.swift */,
+				52E2E952246B1E72003D6CA7 /* QRScanView.swift */,
 				52AE73D42460C563005DE8AD /* ModalView.swift */,
 				5204849F24635DB700E2E35F /* StateView.swift */,
 				52D1D763245FB994003E2E00 /* SettingsView.swift */,
@@ -201,9 +201,9 @@
 				520484A42463836000E2E35F /* Device.swift in Sources */,
 				527952DB24170D5800A82F63 /* MapView.swift in Sources */,
 				527952BF2416D3ED00A82F63 /* SceneDelegate.swift in Sources */,
-				529E45EE2466563B00430C08 /* QRScanViewController.swift in Sources */,
+				529E45EE2466563B00430C08 /* QRCaptureView.swift in Sources */,
 				520484A024635DB700E2E35F /* StateView.swift in Sources */,
-				52E2E951246A5D94003D6CA7 /* QRScanView.swift in Sources */,
+				52E2E953246B1E72003D6CA7 /* QRScanView.swift in Sources */,
 				52D1D762245FB4B1003E2E00 /* Utils.swift in Sources */,
 				527952D32416FE2D00A82F63 /* BLEConnectionManager.swift in Sources */,
 				527952DD241712F100A82F63 /* ToggleAlarmButton.swift in Sources */,
