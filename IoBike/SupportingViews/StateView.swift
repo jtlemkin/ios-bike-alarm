@@ -29,13 +29,18 @@ struct StateView: View {
                 Spacer()
             }
             
-            if device.isConnected {
-                ToggleAlarmButton(device: device)
-            } else {
-                Text(device.isArmed ? "Alarm Active" : "Alarm Inactive")
-                    .font(.largeTitle)
-                    .fontWeight(.heavy)
-                    .padding()
+            VStack {
+                Text("Porquet's favorite bike")
+                    .font(.headline)
+                
+                if device.isConnected {
+                    ToggleAlarmButton(device: device)
+                } else {
+                    Text(device.isArmed ? "Alarm Active" : "Alarm Inactive")
+                        .font(.largeTitle)
+                        .fontWeight(.heavy)
+                        .padding()
+                }
             }
         }
     }
