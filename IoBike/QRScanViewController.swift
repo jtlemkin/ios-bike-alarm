@@ -20,7 +20,7 @@ struct QRScanner: UIViewControllerRepresentable {
     }
     
     func updateUIViewController(_ uiViewController: QRScanViewController, context: Context) {
-        print("Placeholder")
+        print("updatingQRScanner")
     }
 }
 
@@ -30,9 +30,12 @@ class QRScanViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
     var qrCodeFrameView: UIView?
     
     override func viewDidLoad() {
-        let deviceDiscoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInDualCamera],
-                                                                      mediaType: AVMediaType.video,
-                                                                      position: .back)
+        captureSession = AVCaptureSession()
+        
+        let deviceDiscoverySession =
+            AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInDualCamera],
+                                             mediaType: AVMediaType.video,
+                                             position: .back)
         
         guard let captureDevice = deviceDiscoverySession.devices.first else {
             print("Failed to get the camera device")
@@ -62,12 +65,31 @@ class QRScanViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
                 
                 // Start video capture.
                 session.startRunning()
+                
+                // Initialize QR Code Frame to highlight the QR code
+                qrCodeFrameView = UIView()
+                
+                if let qrCodeFrameView = qrCodeFrameView {
+                    qrCodeFrameView.layer.borderColor = UIColor.green.cgColor
+                    qrCodeFrameView.layer.borderWidth = 2
+                    view.addSubview(qrCodeFrameView)
+                    view.bringSubviewToFront(qrCodeFrameView)
+                }
             }
         } catch {
             print(error)
             return
         }
     }
+    
+    /*func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
+        // Check if the metadataObject array is not nil and it contains at least one object.
+        if metadataObjects.count == 0 {
+            qrCodeFrameView?.frame = CGRect.zero
+            //messageLabel.text = "No QR code is detected"
+            return
+        }
+    }*/
 }
 
 struct QRScanViewController_Previews: PreviewProvider {

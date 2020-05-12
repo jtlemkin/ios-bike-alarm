@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct SettingsView: View {
+    @State private var isScanningQR = false
     unowned var device : Device
     var changeView : () -> Void
     
@@ -26,9 +27,11 @@ struct SettingsView: View {
             
             List {
                 SettingsRow(imageName: "arrow.up.arrow.down.circle.fill", text: "Set password", action: device.updatePassword)
-                SettingsRow(imageName: "plus.circle.fill", text: "Register New Device", action: {})
+                SettingsRow(imageName: "plus.circle.fill", text: "Register New Device", action: { self.isScanningQR.toggle() })
                 SettingsRow(imageName: "exclamationmark.octagon.fill", text: "Report Stolen Bike", action: {})
             }
+        }.sheet(isPresented: $isScanningQR) {
+            QRScanView()
         }
     }
 }
