@@ -9,9 +9,11 @@
 import SwiftUI
 
 struct QRScanView: View {
+    var onScan : (String) -> Void
+    
     var body: some View {
         ZStack {
-            QRCaptureView()
+            QRCaptureView(onScan: onScan)
             
             VStack {
                 Text("Scan Bike Code")
@@ -29,6 +31,6 @@ struct QRScanView: View {
 
 struct QRScanView_Previews: PreviewProvider {
     static var previews: some View {
-        QRScanView()
+        QRScanView(onScan: {_ in })
     }
 }

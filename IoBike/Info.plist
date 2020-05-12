@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSBluetoothPeripheralUsageDescription</key>
-	<string>BikeBuddy would like to use this device&apos;s bluetooth capabilities to sync with your bike alarm.</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
@@ -23,13 +21,15 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSBluetoothAlwaysUsageDescription</key>
-	<string>BikeBuddy would like to use this device&apos;s bluetooth capabilities in the background so that your app can arm and disarm the app even when it is not displayed on the screen.</string>
+	<string>BikeBuddy would like to use this device's bluetooth capabilities in the background so that your app can arm and disarm the app even when it is not displayed on the screen.</string>
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>BikeBuddy would like to use this device's bluetooth capabilities to sync with your bike alarm.</string>
 	<key>NSCameraUsageDescription</key>
 	<string>BikeBuddy would like to use your camera in order to scan QR codes.</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>BikeBuddy would like to use this device&apos;s location services to keep track of your bike&apos;s location.</string>
+	<string>BikeBuddy would like to use this device's location services to keep track of your bike's location.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>BikeBuddy would like to use this device&apos;s location services to show you your coordinates relative to your bike.</string>
+	<string>BikeBuddy would like to use this device's location services to show you your coordinates relative to your bike.</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

@@ -31,7 +31,7 @@ struct SettingsView: View {
                 SettingsRow(imageName: "exclamationmark.octagon.fill", text: "Report Stolen Bike", action: {})
             }
         }.sheet(isPresented: $isScanningQR) {
-            QRScanView()
+            BikeRegistrationView()
         }
     }
 }

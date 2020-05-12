@@ -14,11 +14,6 @@ import SwiftUI
 struct QRCaptureView: UIViewControllerRepresentable {
     typealias UIViewControllerType = QRScanViewController
     let qrScanner = QRScanViewController()
-    let onScan: (String) -> Void
-    
-    public init(onScan: @escaping (String) -> Void) {
-        self.onScan = onScan
-    }
     
     public func makeCoordinator() -> QRScannerCoordinator {
         return QRScannerCoordinator(parent: self)
@@ -56,10 +51,6 @@ struct QRCaptureView: UIViewControllerRepresentable {
                 // If the found metadata is equal to the QR code metadata then update the status label's text and set the bounds
                 let qrCodeObject = parent.qrScanner.videoPreviewLayer?.transformedMetadataObject(for: metadataObj)
                 parent.qrScanner.qrCodeFrameView?.frame = qrCodeObject!.bounds
-                
-                if let deviceID = metadataObj.stringValue {
-                    parent.onScan(deviceID)
-                }
             }
         }
     }
@@ -136,6 +127,6 @@ struct QRCaptureView: UIViewControllerRepresentable {
 
 struct QRScannerView_Previews: PreviewProvider {
     static var previews: some View {
-        QRCaptureView(onScan: { _ in })
+        QRCaptureView()
     }
 }
