@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		33052C573F8893EA5ECDEAE9 /* Pods_IoBike.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C32BC118BBC7A30D08AEC2B2 /* Pods_IoBike.framework */; };
 		41F621BA246BAB6000C7AF58 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 41F621B9246BAB6000C7AF58 /* GoogleService-Info.plist */; };
 		520484A024635DB700E2E35F /* StateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5204849F24635DB700E2E35F /* StateView.swift */; };
 		520484A42463836000E2E35F /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520484A32463836000E2E35F /* Device.swift */; };
@@ -29,11 +28,13 @@
 		52E2E955246B6442003D6CA7 /* BikeRegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E2E954246B6442003D6CA7 /* BikeRegistrationView.swift */; };
 		52E2E959246B6A59003D6CA7 /* QRScanSuccessfulView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E2E958246B6A59003D6CA7 /* QRScanSuccessfulView.swift */; };
 		52E2E95E246B989B003D6CA7 /* UserPreferencesBackedDeviceStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E2E95D246B989B003D6CA7 /* UserPreferencesBackedDeviceStorage.swift */; };
+		BB13E47BF659D8AB35664C6D /* Pods_IoBike.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51882929A058DD6B71FDE2CF /* Pods_IoBike.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0BF2F9D16771B6DABDCBB4E3 /* Pods-IoBike.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IoBike.debug.xcconfig"; path = "Target Support Files/Pods-IoBike/Pods-IoBike.debug.xcconfig"; sourceTree = "<group>"; };
+		26DBF79D36EAE0F40A542E36 /* Pods-IoBike.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IoBike.debug.xcconfig"; path = "Target Support Files/Pods-IoBike/Pods-IoBike.debug.xcconfig"; sourceTree = "<group>"; };
 		41F621B9246BAB6000C7AF58 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		51882929A058DD6B71FDE2CF /* Pods_IoBike.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IoBike.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5204849F24635DB700E2E35F /* StateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateView.swift; sourceTree = "<group>"; };
 		520484A32463836000E2E35F /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		527952B92416D3ED00A82F63 /* IoBike.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IoBike.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -56,8 +57,7 @@
 		52E2E954246B6442003D6CA7 /* BikeRegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeRegistrationView.swift; sourceTree = "<group>"; };
 		52E2E958246B6A59003D6CA7 /* QRScanSuccessfulView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScanSuccessfulView.swift; sourceTree = "<group>"; };
 		52E2E95D246B989B003D6CA7 /* UserPreferencesBackedDeviceStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferencesBackedDeviceStorage.swift; sourceTree = "<group>"; };
-		8CB8148D7B41B726D6ABD0BF /* Pods-IoBike.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IoBike.release.xcconfig"; path = "Target Support Files/Pods-IoBike/Pods-IoBike.release.xcconfig"; sourceTree = "<group>"; };
-		C32BC118BBC7A30D08AEC2B2 /* Pods_IoBike.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IoBike.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		74C6A4127147C282A8FA5763 /* Pods-IoBike.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IoBike.release.xcconfig"; path = "Target Support Files/Pods-IoBike/Pods-IoBike.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,7 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				33052C573F8893EA5ECDEAE9 /* Pods_IoBike.framework in Frameworks */,
+				BB13E47BF659D8AB35664C6D /* Pods_IoBike.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,7 +78,7 @@
 				527952BB2416D3ED00A82F63 /* IoBike */,
 				527952BA2416D3ED00A82F63 /* Products */,
 				E32D66496AB987278EB61EA7 /* Pods */,
-				E1233BA82F9DFE10588BC0B9 /* Frameworks */,
+				CF0195F27AA7CD0973D5F8EB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -167,10 +167,10 @@
 			path = StateViews;
 			sourceTree = "<group>";
 		};
-		E1233BA82F9DFE10588BC0B9 /* Frameworks */ = {
+		CF0195F27AA7CD0973D5F8EB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C32BC118BBC7A30D08AEC2B2 /* Pods_IoBike.framework */,
+				51882929A058DD6B71FDE2CF /* Pods_IoBike.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -178,8 +178,8 @@
 		E32D66496AB987278EB61EA7 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				0BF2F9D16771B6DABDCBB4E3 /* Pods-IoBike.debug.xcconfig */,
-				8CB8148D7B41B726D6ABD0BF /* Pods-IoBike.release.xcconfig */,
+				26DBF79D36EAE0F40A542E36 /* Pods-IoBike.debug.xcconfig */,
+				74C6A4127147C282A8FA5763 /* Pods-IoBike.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -191,11 +191,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 527952CD2416D3F700A82F63 /* Build configuration list for PBXNativeTarget "IoBike" */;
 			buildPhases = (
-				D6236C1EF6135687D6980C87 /* [CP] Check Pods Manifest.lock */,
+				7DA755D93A57938ECC5D7FCB /* [CP] Check Pods Manifest.lock */,
 				527952B52416D3ED00A82F63 /* Sources */,
 				527952B62416D3ED00A82F63 /* Frameworks */,
 				527952B72416D3ED00A82F63 /* Resources */,
-				994DD4E9FFA361F70E0607E4 /* [CP] Embed Pods Frameworks */,
+				ADA5820ED1147CC342F7C393 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -254,24 +254,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		994DD4E9FFA361F70E0607E4 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-IoBike/Pods-IoBike-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-IoBike/Pods-IoBike-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-IoBike/Pods-IoBike-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D6236C1EF6135687D6980C87 /* [CP] Check Pods Manifest.lock */ = {
+		7DA755D93A57938ECC5D7FCB /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -291,6 +274,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ADA5820ED1147CC342F7C393 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-IoBike/Pods-IoBike-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-IoBike/Pods-IoBike-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-IoBike/Pods-IoBike-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -450,7 +450,7 @@
 		};
 		527952CE2416D3F700A82F63 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0BF2F9D16771B6DABDCBB4E3 /* Pods-IoBike.debug.xcconfig */;
+			baseConfigurationReference = 26DBF79D36EAE0F40A542E36 /* Pods-IoBike.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -472,7 +472,7 @@
 		};
 		527952CF2416D3F700A82F63 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8CB8148D7B41B726D6ABD0BF /* Pods-IoBike.release.xcconfig */;
+			baseConfigurationReference = 74C6A4127147C282A8FA5763 /* Pods-IoBike.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
