@@ -10,6 +10,10 @@ import Foundation
 import CoreBluetooth
 import CoreLocation
 
+/*
+ This class is responsible for establishing the device's connection with our
+ peripheral. This class does not manage state.
+ */
 class BLEConnectionManager: NSObject, ObservableObject {
     private lazy var centralManager = CBCentralManager(delegate: self, queue: nil)
     private unowned let targetDevice: Device

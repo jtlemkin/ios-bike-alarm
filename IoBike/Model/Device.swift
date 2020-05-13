@@ -10,6 +10,10 @@ import Foundation
 import CoreBluetooth
 import CoreLocation
 
+/*
+ This class reads and writes from the device. It is also responsible for saving
+ the device state in user preferences.
+ */
 class Device: ObservableObject {
     @Published var isConnected = false
     @Published var isArmed = UserDefaults.standard.bool(forKey: "isArmed")
@@ -33,12 +37,14 @@ class Device: ObservableObject {
         }
     }
     
+    // Contains state of whether device is armed or not
+    // In addition writing a 2 to this characteristic causes the device to
+    // accept a new password
     private var isArmedCharacteristic : CBCharacteristic?
+    
     private var batteryLifeCharacteristic : CBCharacteristic? {
         didSet {
-            if let batteryLifeData = batteryLifeCharacteristic?.value {
-                UserDefaults.standard.set(Int.from(data: batteryLifeData), forKey: "batteryLife")
-            }
+            saveBatteryLife()
         }
     }
     
@@ -46,6 +52,7 @@ class Device: ObservableObject {
         bleConnectionManger.checkConnection()
     }
     
+    // Sets the values of our characteristics from a list of services
     func configureCharacteristics(forService service: CBService) {
         for characteristic in service.characteristics! {
             if characteristic.uuid == armCharCBUUID {
@@ -56,6 +63,7 @@ class Device: ObservableObject {
         }
     }
     
+    // Toggles isArmed in user preferences, the app's state, as well as the device
     func toggleAlarm() {
         UserDefaults.standard.set(!isArmed, forKey: "isArmed")
         isArmed = !isArmed
@@ -82,11 +90,20 @@ class Device: ObservableObject {
         }
     }
     
+    // Saves coordinate in user preferences and updates the device state to
+    // show most recent location
     private func save(coordinate: CLLocationCoordinate2D) {
         UserDefaults.standard.set(coordinate.latitude, forKey: "latitude")
         UserDefaults.standard.set(coordinate.longitude, forKey: "longitude")
         
         lastKnownLocation = CLLocationCoordinate2D(latitude: UserDefaults.standard.double(forKey: "latitude"),
                                                    longitude: UserDefaults.standard.double(forKey: "longitude"))
+    }
+    
+    // Records current battery life in user preferences
+    private func saveBatteryLife() {
+        if let batteryLifeData = batteryLifeCharacteristic?.value {
+            UserDefaults.standard.set(Int.from(data: batteryLifeData), forKey: "batteryLife")
+        }
     }
 }
