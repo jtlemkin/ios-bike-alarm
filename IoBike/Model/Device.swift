@@ -53,7 +53,7 @@ class Device: ObservableObject {
         bleConnectionManger.checkConnection()
         isArmed = storage.isArmed
         lastKnownLocation = storage.lastKnownLocation
-        name = storage.name
+        name = storage.name ?? "bike0"
     }
     
     // Sets the values of our characteristics from a list of services

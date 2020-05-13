@@ -28,8 +28,8 @@ struct UserPreferencesBackedDeviceStorage {
         return CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
     }
     
-    var name: String {
-        return UserDefaults.standard.string(forKey: "name\(index)") ?? "Bike\(index)"
+    var name: String? {
+        return UserDefaults.standard.string(forKey: "name\(index)")
     }
     
     func update(isArmed: Bool) {
