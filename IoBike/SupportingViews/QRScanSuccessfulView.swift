@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct QRScanSuccessfulView: View {
+    @State var bikeName: String = "New Bike"
     var newBikeID : String
     
     var body: some View {
@@ -16,8 +17,7 @@ struct QRScanSuccessfulView: View {
             Color.green
             
             VStack {
-                
-                Spacer()
+                Spacer(minLength: 50)
                 
                 VStack {
                     Image(systemName: "checkmark.circle")
@@ -27,14 +27,32 @@ struct QRScanSuccessfulView: View {
                     
                     Text("Success!")
                         .font(.title)
-                        .foregroundColor(Color.white)
+                        .foregroundColor(.white)
                 }
-
-                Spacer()
-                
-                Text(newBikeID)
+                .padding(.top, 32.0)
+                .padding(.bottom)
                 
                 Spacer()
+                
+                VStack(alignment: .leading) {
+                    Text("Enter a name for your newly registered bike")
+                        .foregroundColor(.white)
+                    TextField("", text: $bikeName)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                }
+                .padding(.all)
+                
+                Spacer(minLength: 100)
+                
+                Text("Swipe down to return to main page")
+                    .foregroundColor(.white)
+                
+                Image(systemName: "arrow.down")
+                    .resizable()
+                    .frame(width: 25, height: 45)
+                    .foregroundColor(.white)
+                
+                Spacer(minLength: 200)
             }
         }.edgesIgnoringSafeArea([.top, .bottom])
     }
