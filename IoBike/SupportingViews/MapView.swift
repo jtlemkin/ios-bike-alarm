@@ -10,7 +10,7 @@ import SwiftUI
 import MapKit
 
 struct MapView: UIViewRepresentable {
-    let targetLocation : CLLocationCoordinate2D
+    @EnvironmentObject var device: Device
     
     let locationManager = CLLocationManager()
     let view = MKMapView(frame: .zero)
@@ -21,6 +21,7 @@ struct MapView: UIViewRepresentable {
     }
     
     func updateUIView(_ view: MKMapView, context: Context) {
+        let targetLocation = device.lastKnownLocation
         let lat = targetLocation.latitude
         let long = targetLocation.longitude
         let shiftedBikeLocation = CLLocationCoordinate2D(latitude: lat - 0.009 / 4, longitude: long)
@@ -79,6 +80,6 @@ struct MapView: UIViewRepresentable {
 
 struct MapView_Previews: PreviewProvider {
     static var previews: some View {
-        MapView(targetLocation: CLLocationCoordinate2D())
+        MapView()
     }
 }

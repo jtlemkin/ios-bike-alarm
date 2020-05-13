@@ -9,11 +9,11 @@
 import SwiftUI
 
 struct ModalView: View {
+    @EnvironmentObject var device : Device
     @State var isViewingState = true
+    
     var shape = RoundedRectangle(cornerRadius: 30)
     let bluetoothBlue = Color(red: 0.157, green: 0.478, blue: 0.662)
-    
-    var device : Device
     
     func changeView() {
         isViewingState.toggle()
@@ -22,9 +22,9 @@ struct ModalView: View {
     var body: some View {
         VStack {
             if isViewingState {
-                StateView(device: device, changeView: changeView)
+                StateView(changeView: changeView)
             } else {
-                SettingsView(device: device, changeView: changeView)
+                SettingsView(changeView: changeView)
             }
         }
         .frame(width: 325.0, height: 275.0)
@@ -41,6 +41,6 @@ struct ModalView: View {
 
 struct ModalView_Previews: PreviewProvider {
     static var previews: some View {
-        ModalView(device: Device())
+        ModalView()
     }
 }

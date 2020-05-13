@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct ToggleAlarmButton: View {
-    var device: Device
+    @EnvironmentObject var device: Device
     
     var body: some View {
         Button(action: {
@@ -30,6 +30,6 @@ struct ToggleAlarmButton: View {
 
 struct AlarmLockButton_Previews: PreviewProvider {
     static var previews: some View {
-        ToggleAlarmButton(device: Device())
+        ToggleAlarmButton()
     }
 }

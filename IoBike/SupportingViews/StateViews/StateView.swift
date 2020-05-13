@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct StateView: View {
-    var device : Device
+    @EnvironmentObject var device : Device
     var changeView : () -> Void
     
     var body: some View {
@@ -34,7 +34,7 @@ struct StateView: View {
                     .font(.headline)
                 
                 if device.isConnected {
-                    ToggleAlarmButton(device: device)
+                    ToggleAlarmButton()
                 } else {
                     Text(device.isArmed ? "Alarm Active" : "Alarm Inactive")
                         .font(.largeTitle)
@@ -48,6 +48,6 @@ struct StateView: View {
 
 struct StateView_Previews: PreviewProvider {
     static var previews: some View {
-        StateView(device: Device(), changeView: {})
+        StateView(changeView: {})
     }
 }

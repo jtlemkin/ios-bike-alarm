@@ -10,7 +10,7 @@ import SwiftUI
 
 struct SettingsView: View {
     @State private var isScanningQR = false
-    unowned var device : Device
+    @EnvironmentObject var device : Device
     var changeView : () -> Void
     
     var body: some View {
@@ -38,6 +38,6 @@ struct SettingsView: View {
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsView(device: Device(), changeView: {})
+        SettingsView(changeView: {})
     }
 }

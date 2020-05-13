@@ -9,16 +9,16 @@
 import SwiftUI
 import MapKit
 
-struct MainView: View {
-    @ObservedObject var device = Device()
+struct ContentView: View {
+    @EnvironmentObject var device : Device
     
     var body: some View {
         ZStack {
-            MapView(targetLocation: device.lastKnownLocation)
+            MapView()
                 .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
 
                 
-            ModalView(device: device)
+            ModalView()
                 .offset(y: 150)
         }.edgesIgnoringSafeArea(.all)
     }
@@ -26,6 +26,6 @@ struct MainView: View {
 
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
-        MainView()
+        ContentView()
     }
 }
