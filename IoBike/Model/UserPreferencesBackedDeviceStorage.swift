@@ -37,6 +37,18 @@ struct UserPreferencesBackedDeviceStorage {
         return UserDefaults.standard.string(forKey: "name\(index)")
     }
     
+    mutating func register(withName name: String) {
+        guard index < 3 else { return }
+        
+        if self.name == nil {
+            UserDefaults.standard.set(name, forKey: "name\(index)")
+            device.name = name
+        } else {
+            index += 1
+            register(withName: name)
+        }
+    }
+    
     func update(isArmed: Bool) {
         UserDefaults.standard.set(isArmed, forKey: "isArmed\(index)")
         device.isArmed = isArmed

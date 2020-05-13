@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct QRScanSuccessfulView: View {
+    @EnvironmentObject var device: Device
     @State var bikeName: String = "New Bike"
     var newBikeID : String
     
@@ -45,7 +46,11 @@ struct QRScanSuccessfulView: View {
                 
                 Spacer(minLength: 300)
             }
-        }.edgesIgnoringSafeArea([.top, .bottom])
+        }
+        .edgesIgnoringSafeArea([.top, .bottom])
+        .onDisappear{
+            self.device.register(withName: self.bikeName)
+        }
     }
 }
 

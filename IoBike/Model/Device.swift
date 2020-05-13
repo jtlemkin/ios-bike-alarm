@@ -60,6 +60,10 @@ class Device: ObservableObject {
         name = storage.name ?? "bike0"
     }
     
+    func register(withName name: String) {
+        storage.register(withName: name)
+    }
+    
     // Sets the values of our characteristics from a list of services
     func configureCharacteristics(forService service: CBService) {
         for characteristic in service.characteristics! {
