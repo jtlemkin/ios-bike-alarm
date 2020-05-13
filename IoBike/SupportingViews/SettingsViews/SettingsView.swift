@@ -42,15 +42,16 @@ struct SettingsView: View {
                         print(error.localizedDescription)
                     }
                 })
-        }.sheet(isPresented: $isScanningQR) {
-            BikeRegistrationView(firstTimeRegistering: false, onComplete: self.device.register)
+            }.sheet(isPresented: $isScanningQR) {
+                BikeRegistrationView(firstTimeRegistering: false, onComplete: self.device.register)
+            }
         }
-    }
-    
-    struct SettingsView_Previews: PreviewProvider {
-        static var previews: some View {
-            SettingsView(changeView: {})
+        
+        struct SettingsView_Previews: PreviewProvider {
+            static var previews: some View {
+                SettingsView(changeView: {})
+            }
         }
+        
     }
-    
 }
