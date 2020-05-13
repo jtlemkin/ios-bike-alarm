@@ -30,7 +30,7 @@ struct ModalView: View {
         .frame(width: 325.0, height: 275.0)
         .clipShape(shape)
         .overlay(
-            shape.stroke(device.isConnected ? bluetoothBlue : Color.black, lineWidth: 2)
+            shape.stroke(device.isConnected ? bluetoothBlue : Color(UIColor.label), lineWidth: 2)
         )
         .background(
             shape.fill(Color(UIColor.systemBackground))
