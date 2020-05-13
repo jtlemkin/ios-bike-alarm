@@ -30,6 +30,7 @@
 		52E2E959246B6A59003D6CA7 /* QRScanSuccessfulView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E2E958246B6A59003D6CA7 /* QRScanSuccessfulView.swift */; };
 		52E2E95E246B989B003D6CA7 /* UserPreferencesBackedDeviceStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E2E95D246B989B003D6CA7 /* UserPreferencesBackedDeviceStorage.swift */; };
 		52E2E964246C4646003D6CA7 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E2E963246C4646003D6CA7 /* MainView.swift */; };
+		52E2E966246C4E28003D6CA7 /* OnBoardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E2E965246C4E28003D6CA7 /* OnBoardingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		52E2E958246B6A59003D6CA7 /* QRScanSuccessfulView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScanSuccessfulView.swift; sourceTree = "<group>"; };
 		52E2E95D246B989B003D6CA7 /* UserPreferencesBackedDeviceStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferencesBackedDeviceStorage.swift; sourceTree = "<group>"; };
 		52E2E963246C4646003D6CA7 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		52E2E965246C4E28003D6CA7 /* OnBoardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingView.swift; sourceTree = "<group>"; };
 		8CB8148D7B41B726D6ABD0BF /* Pods-IoBike.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IoBike.release.xcconfig"; path = "Target Support Files/Pods-IoBike/Pods-IoBike.release.xcconfig"; sourceTree = "<group>"; };
 		C32BC118BBC7A30D08AEC2B2 /* Pods_IoBike.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IoBike.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -127,6 +129,7 @@
 				52AE73D42460C563005DE8AD /* ModalView.swift */,
 				527952DA24170D5800A82F63 /* MapView.swift */,
 				52E2E963246C4646003D6CA7 /* MainView.swift */,
+				52E2E965246C4E28003D6CA7 /* OnBoardingView.swift */,
 			);
 			path = SupportingViews;
 			sourceTree = "<group>";
@@ -313,6 +316,7 @@
 				527952BF2416D3ED00A82F63 /* SceneDelegate.swift in Sources */,
 				529E45EE2466563B00430C08 /* QRCaptureView.swift in Sources */,
 				520484A024635DB700E2E35F /* StateView.swift in Sources */,
+				52E2E966246C4E28003D6CA7 /* OnBoardingView.swift in Sources */,
 				52E2E959246B6A59003D6CA7 /* QRScanSuccessfulView.swift in Sources */,
 				52E2E953246B1E72003D6CA7 /* QRScanView.swift in Sources */,
 				52D1D762245FB4B1003E2E00 /* Utils.swift in Sources */,
