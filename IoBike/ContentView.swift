@@ -18,15 +18,11 @@ struct ContentView: View {
         userHasSeenOnBoarding = true
     }
     
-    func proceedToMainView() {
-        userHasCompletedRegistration = true
-    }
-    
     var body: some View {
         VStack {
             if device.needsRegistration && !userHasCompletedRegistration {
                 if userHasSeenOnBoarding {
-                    BikeRegistrationView(firstTimeRegistering: true, onComplete: proceedToMainView)
+                    BikeRegistrationView(firstTimeRegistering: true, onComplete: device.register)
                 } else {
                     OnBoardingView(transition: proceedToRegistration)
                 }

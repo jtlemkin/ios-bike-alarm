@@ -11,7 +11,7 @@ import SwiftUI
 struct BikeRegistrationView: View {
     @State var newBikeID : String? = nil
     var firstTimeRegistering : Bool
-    var onComplete: () -> Void
+    var onComplete: (String) -> Void
     
     func setBikeID(withID id: String) {
         newBikeID = id
@@ -29,24 +29,10 @@ struct BikeRegistrationView: View {
                     QRScanView(onScan: setBikeID)
                 }
             } else {
-                ZStack {
-                    QRScanSuccessfulView(newBikeID: newBikeID!)
-                    
-                    if firstTimeRegistering {
-                        // The button is in a VStack and the padding is applied to the stack
-                        // because otherwise the button would move, but its clickable area
-                        // would not
-                        VStack {
-                            Button(action: onComplete) {
-                                Text("Continue")
-                                    .foregroundColor(.white)
-                                    .font(.headline)
-                                    .padding()
-                                    .border(Color.white, width: 5)
-                            }
-                        }
-                        .offset(y: 200)
-                    }
+                if firstTimeRegistering {
+                    InitialQRScanSuccessfulView(newBikeID: newBikeID!, onComplete: onComplete)
+                } else {
+                    QRScanSuccessfulView(newBikeID: newBikeID!, onComplete: onComplete)
                 }
             }
         }
@@ -55,6 +41,6 @@ struct BikeRegistrationView: View {
 
 struct BikeRegistrationView_Previews: PreviewProvider {
     static var previews: some View {
-        BikeRegistrationView(firstTimeRegistering: true, onComplete: {})
+        BikeRegistrationView(firstTimeRegistering: true, onComplete: {_ in})
     }
 }

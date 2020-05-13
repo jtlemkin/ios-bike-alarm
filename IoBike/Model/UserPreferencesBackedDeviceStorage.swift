@@ -19,6 +19,8 @@ struct UserPreferencesBackedDeviceStorage {
     var index: Int = UserDefaults.standard.integer(forKey: "currentBikeIndex") {
         didSet {
             UserDefaults.standard.set(index, forKey: "currentBikeIndex")
+            
+            device.update()
         }
     }
     
@@ -37,8 +39,16 @@ struct UserPreferencesBackedDeviceStorage {
         return UserDefaults.standard.string(forKey: "name\(index)")
     }
     
+    var batteryLife: Double {
+        return UserDefaults.standard.double(forKey: "batteryLife\(index)")
+    }
+    
     mutating func register(withName name: String) {
-        guard index < 3 else { return }
+        guard index < 3 else {
+            //Bring index back down to index of last device
+            index -= 1
+            return
+        }
         
         if self.name == nil {
             UserDefaults.standard.set(name, forKey: "name\(index)")

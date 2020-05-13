@@ -31,8 +31,7 @@ struct SettingsView: View {
                 SettingsRow(imageName: "exclamationmark.octagon.fill", text: "Report Stolen Bike", action: {})
             }
         }.sheet(isPresented: $isScanningQR) {
-            // Currently onComplete is only used the first time a device is registered in order to transition to the main view
-            BikeRegistrationView(firstTimeRegistering: false, onComplete: {})
+            BikeRegistrationView(firstTimeRegistering: false, onComplete: self.device.register)
         }
     }
 }

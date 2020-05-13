@@ -1,14 +1,14 @@
 //
-//  QRScanSuccessfulView.swift
+//  InitialQRScanSuccessfulView.swift
 //  IoBike
 //
-//  Created by James Lemkin on 5/12/20.
+//  Created by James Lemkin on 5/13/20.
 //  Copyright © 2020 James Lemkin. All rights reserved.
 //
 
 import SwiftUI
 
-struct QRScanSuccessfulView: View {
+struct InitialQRScanSuccessfulView: View {
     @State var bikeName: String = "New Bike"
     var newBikeID : String
     var onComplete : (String) -> Void
@@ -16,6 +16,7 @@ struct QRScanSuccessfulView: View {
     var body: some View {
         ZStack {
             Color.green
+                .edgesIgnoringSafeArea([.top, .bottom])
             
             VStack {
                 Spacer(minLength: 50)
@@ -35,18 +36,24 @@ struct QRScanSuccessfulView: View {
                 }
                 .padding(.all)
                 
-                Spacer(minLength: 300)
+                Spacer(minLength: 100)
+                
+                Button(action: { self.onComplete(self.bikeName) } ) {
+                    Text("Continue")
+                        .foregroundColor(.white)
+                        .font(.headline)
+                        .padding()
+                        .border(Color.white, width: 5)
+                }
+                
+                Spacer(minLength: 200)
             }
         }
-        .edgesIgnoringSafeArea([.top, .bottom])
-        .onDisappear(perform: {
-            self.onComplete(self.bikeName)
-        })
     }
 }
 
-struct QRScanSuccessfulView_Previews: PreviewProvider {
+struct InitialQRScanSuccessfulView_Previews: PreviewProvider {
     static var previews: some View {
-        QRScanSuccessfulView(newBikeID: "1234", onComplete: {_ in })
+        InitialQRScanSuccessfulView(newBikeID: "1234", onComplete: {_ in })
     }
 }

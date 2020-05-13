@@ -19,6 +19,7 @@ class Device: ObservableObject {
     @Published var isArmed = false
     @Published var lastKnownLocation = CLLocationCoordinate2D(latitude: 0, longitude: 0)
     @Published var name = ""
+    @Published var batteryLife = 0.0
     
     //The BLE Connection Manager is responsible for setting the peripheral variable of the device
     private lazy var bleConnectionManger = BLEConnectionManager(device: self)
@@ -55,9 +56,14 @@ class Device: ObservableObject {
     
     init() {
         bleConnectionManger.checkConnection()
+        update()
+    }
+    
+    func update() {
         isArmed = storage.isArmed
         lastKnownLocation = storage.lastKnownLocation
-        name = storage.name ?? "bike0"
+        name = storage.name ?? "unnamed bike"
+        batteryLife = storage.batteryLife
     }
     
     func register(withName name: String) {
