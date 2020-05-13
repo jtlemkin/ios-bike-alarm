@@ -35,7 +35,8 @@ struct QRScanSuccessfulView: View {
                 Spacer()
                 
                 VStack(alignment: .leading) {
-                    Text("Enter a name for your newly registered bike")
+                    Text("Enter name for bike")
+                        .font(.headline)
                         .foregroundColor(.white)
                     TextField("", text: $bikeName)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
@@ -45,6 +46,7 @@ struct QRScanSuccessfulView: View {
                 Spacer(minLength: 100)
                 
                 Text("Swipe down to return to main page")
+                    .font(.subheadline)
                     .foregroundColor(.white)
                 
                 Image(systemName: "arrow.down")
