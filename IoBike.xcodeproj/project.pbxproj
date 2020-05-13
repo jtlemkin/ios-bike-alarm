@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		33052C573F8893EA5ECDEAE9 /* Pods_IoBike.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C32BC118BBC7A30D08AEC2B2 /* Pods_IoBike.framework */; };
-		41F621B8246BA37700C7AF58 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 41F621B7246BA37700C7AF58 /* GoogleService-Info.plist */; };
+		41F621BA246BAB6000C7AF58 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 41F621B9246BAB6000C7AF58 /* GoogleService-Info.plist */; };
 		520484A024635DB700E2E35F /* StateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5204849F24635DB700E2E35F /* StateView.swift */; };
 		520484A42463836000E2E35F /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520484A32463836000E2E35F /* Device.swift */; };
 		527952BD2416D3ED00A82F63 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527952BC2416D3ED00A82F63 /* AppDelegate.swift */; };
@@ -32,7 +32,7 @@
 
 /* Begin PBXFileReference section */
 		0BF2F9D16771B6DABDCBB4E3 /* Pods-IoBike.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IoBike.debug.xcconfig"; path = "Target Support Files/Pods-IoBike/Pods-IoBike.debug.xcconfig"; sourceTree = "<group>"; };
-		41F621B7246BA37700C7AF58 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		41F621B9246BAB6000C7AF58 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		5204849F24635DB700E2E35F /* StateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateView.swift; sourceTree = "<group>"; };
 		520484A32463836000E2E35F /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		527952B92416D3ED00A82F63 /* IoBike.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IoBike.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -91,7 +91,7 @@
 		527952BB2416D3ED00A82F63 /* IoBike */ = {
 			isa = PBXGroup;
 			children = (
-				41F621B7246BA37700C7AF58 /* GoogleService-Info.plist */,
+				41F621B9246BAB6000C7AF58 /* GoogleService-Info.plist */,
 				527952CA2416D3F700A82F63 /* Info.plist */,
 				527952BC2416D3ED00A82F63 /* AppDelegate.swift */,
 				527952C02416D3ED00A82F63 /* ContentView.swift */,
@@ -242,7 +242,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				527952C92416D3F700A82F63 /* LaunchScreen.storyboard in Resources */,
-				41F621B8246BA37700C7AF58 /* GoogleService-Info.plist in Resources */,
+				41F621BA246BAB6000C7AF58 /* GoogleService-Info.plist in Resources */,
 				527952C62416D3F700A82F63 /* Preview Assets.xcassets in Resources */,
 				527952C32416D3F700A82F63 /* Assets.xcassets in Resources */,
 			);
