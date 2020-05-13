@@ -30,7 +30,7 @@ struct StateView: View {
             }
             
             VStack {
-                Text("Porquet's favorite bike")
+                Text(device.name)
                     .font(.headline)
                 
                 if device.isConnected {

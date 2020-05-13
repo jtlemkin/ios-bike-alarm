@@ -17,7 +17,6 @@ struct ContentView: View {
             MapView()
                 .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
 
-                
             ModalView()
                 .offset(y: 150)
         }.edgesIgnoringSafeArea(.all)

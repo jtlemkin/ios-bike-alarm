@@ -16,23 +16,24 @@ import CoreLocation
  */
 class Device: ObservableObject {
     @Published var isConnected = false
-    @Published var isArmed = UserDefaults.standard.bool(forKey: "isArmed")
-    @Published var lastKnownLocation = CLLocationCoordinate2D(latitude: UserDefaults.standard.double(forKey: "latitude"),
-                                                              longitude: UserDefaults.standard.double(forKey: "longitude"))
+    @Published var isArmed = false
+    @Published var lastKnownLocation = CLLocationCoordinate2D(latitude: 0, longitude: 0)
+    @Published var name = ""
+    
+    //The BLE Connection Manager is responsible for setting the peripheral variable of the device
+    private lazy var bleConnectionManger = BLEConnectionManager(device: self)
+    private lazy var storage = UserPreferencesBackedDeviceStorage(device: self, index: 0)
     
     let serviceCBUUID = CBUUID(string: "19b10000-e8f2-537e-4f6c-d104768a1214")
     let armCharCBUUID = CBUUID(string: "19b10000-e8f2-537e-4f6c-d104768a1214")
     let batteryLifeCharCBUUID = CBUUID(string: "19b10002-e8f2-537e-4f6c-d104768a1214")
-    
-    //The BLE Connection Manager is responsible for setting the peripheral variable of the device
-    private lazy var bleConnectionManger = BLEConnectionManager(device: self)
     
     var peripheral : CBPeripheral? {
         didSet {
             isConnected = peripheral != nil
             
             if !isConnected {
-                self.save(coordinate: CLLocationManager().location!.coordinate)
+                storage.saveCurrentLocation()
             }
         }
     }
@@ -44,12 +45,15 @@ class Device: ObservableObject {
     
     private var batteryLifeCharacteristic : CBCharacteristic? {
         didSet {
-            saveBatteryLife()
+            storage.update(batteryLife: batteryLifeCharacteristic?.value)
         }
     }
     
     init() {
         bleConnectionManger.checkConnection()
+        isArmed = storage.isArmed
+        lastKnownLocation = storage.lastKnownLocation
+        name = storage.name
     }
     
     // Sets the values of our characteristics from a list of services
@@ -65,8 +69,7 @@ class Device: ObservableObject {
     
     // Toggles isArmed in user preferences, the app's state, as well as the device
     func toggleAlarm() {
-        UserDefaults.standard.set(!isArmed, forKey: "isArmed")
-        isArmed = !isArmed
+        storage.update(isArmed: !isArmed)
         
         if isArmedCharacteristic != nil {
             write(isArmed ? 1 : 0, toCharacteristic: self.isArmedCharacteristic!)
@@ -87,23 +90,6 @@ class Device: ObservableObject {
         if characteristic.properties.contains(.write) && peripheral != nil {
             let data = Data([UInt8(val)])
             peripheral?.writeValue(data, for: characteristic, type: .withResponse)
-        }
-    }
-    
-    // Saves coordinate in user preferences and updates the device state to
-    // show most recent location
-    private func save(coordinate: CLLocationCoordinate2D) {
-        UserDefaults.standard.set(coordinate.latitude, forKey: "latitude")
-        UserDefaults.standard.set(coordinate.longitude, forKey: "longitude")
-        
-        lastKnownLocation = CLLocationCoordinate2D(latitude: UserDefaults.standard.double(forKey: "latitude"),
-                                                   longitude: UserDefaults.standard.double(forKey: "longitude"))
-    }
-    
-    // Records current battery life in user preferences
-    private func saveBatteryLife() {
-        if let batteryLifeData = batteryLifeCharacteristic?.value {
-            UserDefaults.standard.set(Int.from(data: batteryLifeData), forKey: "batteryLife")
         }
     }
 }
