@@ -11,6 +11,7 @@ import MapKit
 
 struct ContentView: View {
     @EnvironmentObject var device : Device
+    @State var userCompletedRegistration = false
     @State var userHasSeenOnBoarding = false
     
     func proceedToRegistration() {
@@ -19,9 +20,9 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            if device.needsRegistration {
+            if device.needsRegistration && !userCompletedRegistration {
                 if userHasSeenOnBoarding {
-                    BikeRegistrationView()
+                    BikeRegistrationView(firstTimeRegistering: true)
                 } else {
                     OnBoardingView(transition: proceedToRegistration)
                 }

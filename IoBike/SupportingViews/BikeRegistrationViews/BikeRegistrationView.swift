@@ -9,7 +9,8 @@
 import SwiftUI
 
 struct BikeRegistrationView: View {
-    @State var newBikeID : String?
+    @State var newBikeID : String? = nil
+    var firstTimeRegistering : Bool
     
     func setBikeID(withID id: String) {
         newBikeID = id
@@ -18,9 +19,29 @@ struct BikeRegistrationView: View {
     var body: some View {
         VStack {
             if newBikeID == nil {
-                QRScanView(onScan: setBikeID)
+                ZStack {
+                    if firstTimeRegistering {
+                        Color.blue
+                            .edgesIgnoringSafeArea(.top)
+                    }
+                    
+                    QRScanView(onScan: setBikeID)
+                }
             } else {
-                QRScanSuccessfulView(newBikeID: newBikeID!)
+                ZStack {
+                    QRScanSuccessfulView(newBikeID: newBikeID!)
+                    
+                    if firstTimeRegistering {
+                        Button(action: {}) {
+                            Text("Continue")
+                                .foregroundColor(.white)
+                                .font(.headline)
+                                .padding()
+                                .border(Color.white, width: 5)
+                                .offset(y: 200)
+                        }
+                    }
+                }
             }
         }
     }
@@ -28,6 +49,6 @@ struct BikeRegistrationView: View {
 
 struct BikeRegistrationView_Previews: PreviewProvider {
     static var previews: some View {
-        BikeRegistrationView()
+        BikeRegistrationView(firstTimeRegistering: true)
     }
 }

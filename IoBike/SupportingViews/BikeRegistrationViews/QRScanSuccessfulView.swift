@@ -43,18 +43,7 @@ struct QRScanSuccessfulView: View {
                 }
                 .padding(.all)
                 
-                Spacer(minLength: 100)
-                
-                Text("Swipe down to return to main page")
-                    .font(.subheadline)
-                    .foregroundColor(.white)
-                
-                Image(systemName: "arrow.down")
-                    .resizable()
-                    .frame(width: 25, height: 45)
-                    .foregroundColor(.white)
-                
-                Spacer(minLength: 200)
+                Spacer(minLength: 300)
             }
         }.edgesIgnoringSafeArea([.top, .bottom])
     }
