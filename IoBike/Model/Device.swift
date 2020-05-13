@@ -17,13 +17,13 @@ import CoreLocation
 class Device: ObservableObject {
     @Published var isConnected = false
     @Published var isArmed = false
-    @Published var lastKnownLocation = CLLocationCoordinate2D(latitude: 0, longitude: 0)
+    @Published var lastKnownLocation = CLLocationManager().location!.coordinate
     @Published var name = ""
     @Published var batteryLife = 0.0
     
     //The BLE Connection Manager is responsible for setting the peripheral variable of the device
     private lazy var bleConnectionManger = BLEConnectionManager(device: self)
-    private lazy var storage = UserPreferencesBackedDeviceStorage(device: self)
+    private lazy var storage = UserDefaultsBackedDeviceStorage(device: self)
     
     let serviceCBUUID = CBUUID(string: "19b10000-e8f2-537e-4f6c-d104768a1214")
     let armCharCBUUID = CBUUID(string: "19b10000-e8f2-537e-4f6c-d104768a1214")
