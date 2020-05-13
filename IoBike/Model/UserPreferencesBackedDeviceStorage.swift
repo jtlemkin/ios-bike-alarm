@@ -15,7 +15,12 @@ import CoreLocation
  */
 struct UserPreferencesBackedDeviceStorage {
     unowned let device: Device
-    let index: Int
+    
+    var index: Int = UserDefaults.standard.integer(forKey: "currentBikeIndex") {
+        didSet {
+            UserDefaults.standard.set(index, forKey: "currentBikeIndex")
+        }
+    }
     
     var isArmed: Bool {
         return UserDefaults.standard.bool(forKey: "isArmed\(index)")
