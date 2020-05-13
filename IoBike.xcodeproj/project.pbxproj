@@ -82,14 +82,14 @@
 		527952BB2416D3ED00A82F63 /* IoBike */ = {
 			isa = PBXGroup;
 			children = (
-				527952C02416D3ED00A82F63 /* MainView.swift */,
-				52D1D761245FB4B1003E2E00 /* Utils.swift */,
 				527952CA2416D3F700A82F63 /* Info.plist */,
 				527952BC2416D3ED00A82F63 /* AppDelegate.swift */,
-				527952E0241738E600A82F63 /* Model */,
+				527952C02416D3ED00A82F63 /* MainView.swift */,
 				527952BE2416D3ED00A82F63 /* SceneDelegate.swift */,
+				52D1D761245FB4B1003E2E00 /* Utils.swift */,
 				527952C22416D3F700A82F63 /* Assets.xcassets */,
 				527952C72416D3F700A82F63 /* LaunchScreen.storyboard */,
+				527952E0241738E600A82F63 /* Model */,
 				527952C42416D3F700A82F63 /* Preview Content */,
 				527952D7241705E700A82F63 /* SupportingViews */,
 			);
@@ -107,16 +107,11 @@
 		527952D7241705E700A82F63 /* SupportingViews */ = {
 			isa = PBXGroup;
 			children = (
-				529E45ED2466563B00430C08 /* QRCaptureView.swift */,
-				52E2E952246B1E72003D6CA7 /* QRScanView.swift */,
-				52E2E958246B6A59003D6CA7 /* QRScanSuccessfulView.swift */,
-				52E2E954246B6442003D6CA7 /* BikeRegistrationView.swift */,
+				52E2E95C246B8EB0003D6CA7 /* StateViews */,
+				52E2E95B246B8E79003D6CA7 /* SettingsViews */,
+				52E2E95A246B8E4D003D6CA7 /* BikeRegistrationViews */,
 				52AE73D42460C563005DE8AD /* ModalView.swift */,
-				5204849F24635DB700E2E35F /* StateView.swift */,
-				52D1D763245FB994003E2E00 /* SettingsView.swift */,
 				527952DA24170D5800A82F63 /* MapView.swift */,
-				527952DC241712F100A82F63 /* ToggleAlarmButton.swift */,
-				52D1D765245FC31E003E2E00 /* SettingsRow.swift */,
 			);
 			path = SupportingViews;
 			sourceTree = "<group>";
@@ -128,6 +123,35 @@
 				520484A32463836000E2E35F /* Device.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		52E2E95A246B8E4D003D6CA7 /* BikeRegistrationViews */ = {
+			isa = PBXGroup;
+			children = (
+				529E45ED2466563B00430C08 /* QRCaptureView.swift */,
+				52E2E952246B1E72003D6CA7 /* QRScanView.swift */,
+				52E2E958246B6A59003D6CA7 /* QRScanSuccessfulView.swift */,
+				52E2E954246B6442003D6CA7 /* BikeRegistrationView.swift */,
+			);
+			path = BikeRegistrationViews;
+			sourceTree = "<group>";
+		};
+		52E2E95B246B8E79003D6CA7 /* SettingsViews */ = {
+			isa = PBXGroup;
+			children = (
+				52D1D763245FB994003E2E00 /* SettingsView.swift */,
+				52D1D765245FC31E003E2E00 /* SettingsRow.swift */,
+			);
+			path = SettingsViews;
+			sourceTree = "<group>";
+		};
+		52E2E95C246B8EB0003D6CA7 /* StateViews */ = {
+			isa = PBXGroup;
+			children = (
+				5204849F24635DB700E2E35F /* StateView.swift */,
+				527952DC241712F100A82F63 /* ToggleAlarmButton.swift */,
+			);
+			path = StateViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
