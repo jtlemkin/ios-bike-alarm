@@ -11,7 +11,7 @@
 		520484A42463836000E2E35F /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520484A32463836000E2E35F /* Device.swift */; };
 		527952BD2416D3ED00A82F63 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527952BC2416D3ED00A82F63 /* AppDelegate.swift */; };
 		527952BF2416D3ED00A82F63 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527952BE2416D3ED00A82F63 /* SceneDelegate.swift */; };
-		527952C12416D3ED00A82F63 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527952C02416D3ED00A82F63 /* MainView.swift */; };
+		527952C12416D3ED00A82F63 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527952C02416D3ED00A82F63 /* ContentView.swift */; };
 		527952C32416D3F700A82F63 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 527952C22416D3F700A82F63 /* Assets.xcassets */; };
 		527952C62416D3F700A82F63 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 527952C52416D3F700A82F63 /* Preview Assets.xcassets */; };
 		527952C92416D3F700A82F63 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 527952C72416D3F700A82F63 /* LaunchScreen.storyboard */; };
@@ -34,7 +34,7 @@
 		527952B92416D3ED00A82F63 /* IoBike.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IoBike.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		527952BC2416D3ED00A82F63 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		527952BE2416D3ED00A82F63 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		527952C02416D3ED00A82F63 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		527952C02416D3ED00A82F63 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		527952C22416D3F700A82F63 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		527952C52416D3F700A82F63 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		527952C82416D3F700A82F63 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -84,7 +84,7 @@
 			children = (
 				527952CA2416D3F700A82F63 /* Info.plist */,
 				527952BC2416D3ED00A82F63 /* AppDelegate.swift */,
-				527952C02416D3ED00A82F63 /* MainView.swift */,
+				527952C02416D3ED00A82F63 /* ContentView.swift */,
 				527952BE2416D3ED00A82F63 /* SceneDelegate.swift */,
 				52D1D761245FB4B1003E2E00 /* Utils.swift */,
 				527952C22416D3F700A82F63 /* Assets.xcassets */,
@@ -239,7 +239,7 @@
 				527952D32416FE2D00A82F63 /* BLEConnectionManager.swift in Sources */,
 				52E2E955246B6442003D6CA7 /* BikeRegistrationView.swift in Sources */,
 				527952DD241712F100A82F63 /* ToggleAlarmButton.swift in Sources */,
-				527952C12416D3ED00A82F63 /* MainView.swift in Sources */,
+				527952C12416D3ED00A82F63 /* ContentView.swift in Sources */,
 				52D1D766245FC31E003E2E00 /* SettingsRow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
