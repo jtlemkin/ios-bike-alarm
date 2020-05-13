@@ -32,7 +32,11 @@ struct UserDefaultsBackedDeviceStorage {
         let latitude = UserDefaults.standard.double(forKey: "latitude\(index)")
         let longitude = UserDefaults.standard.double(forKey: "longitude\(index)")
         
-        return CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+        if latitude == 0.0 && longitude == 0.0 {
+            return CLLocationManager().location!.coordinate
+        } else {
+            return CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+        }
     }
     
     var name: String? {

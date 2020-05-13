@@ -17,16 +17,21 @@ import CoreLocation
 class Device: ObservableObject {
     @Published var isConnected = false
     @Published var isArmed = false
-    @Published var lastKnownLocation = CLLocationCoordinate2D(latitude: 0, longitude: 0)
+    @Published var lastKnownLocation = CLLocationManager().location!.coordinate
     @Published var name = ""
+    @Published var batteryLife = 0.0
     
     //The BLE Connection Manager is responsible for setting the peripheral variable of the device
     private lazy var bleConnectionManger = BLEConnectionManager(device: self)
-    private lazy var storage = UserPreferencesBackedDeviceStorage(device: self, index: 0)
+    private lazy var storage = UserDefaultsBackedDeviceStorage(device: self)
     
     let serviceCBUUID = CBUUID(string: "19b10000-e8f2-537e-4f6c-d104768a1214")
     let armCharCBUUID = CBUUID(string: "19b10000-e8f2-537e-4f6c-d104768a1214")
     let batteryLifeCharCBUUID = CBUUID(string: "19b10002-e8f2-537e-4f6c-d104768a1214")
+    
+    var needsRegistration: Bool {
+        return storage.name == nil
+    }
     
     var peripheral : CBPeripheral? {
         didSet {
@@ -51,9 +56,18 @@ class Device: ObservableObject {
     
     init() {
         bleConnectionManger.checkConnection()
+        update()
+    }
+    
+    func update() {
         isArmed = storage.isArmed
         lastKnownLocation = storage.lastKnownLocation
-        name = storage.name ?? "bike0"
+        name = storage.name ?? "unnamed bike"
+        batteryLife = storage.batteryLife
+    }
+    
+    func register(withName name: String) {
+        storage.register(withName: name)
     }
     
     // Sets the values of our characteristics from a list of services

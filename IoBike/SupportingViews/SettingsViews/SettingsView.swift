@@ -42,9 +42,8 @@ struct SettingsView: View {
                         print(error.localizedDescription)
                     }
                 })
-            }.sheet(isPresented: $isScanningQR) {
-                BikeRegistrationView()
-            }
+        }.sheet(isPresented: $isScanningQR) {
+            BikeRegistrationView(firstTimeRegistering: false, onComplete: self.device.register)
         }
     }
     
