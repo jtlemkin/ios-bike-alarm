@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IoBike.ipa</key>
+	<array>
+		<dict>
+			<key>architectures</key>
+			<array>
+				<string>arm64</string>
+			</array>
+			<key>certificate</key>
+			<dict>
+				<key>SHA1</key>
+				<string>1C06C2233FCA9C7833FCF859EBCD1B23645F3EE0</string>
+				<key>dateExpires</key>
+				<string>10/1/20</string>
+				<key>type</key>
+				<string>Apple Development</string>
+			</dict>
+			<key>entitlements</key>
+			<dict>
+				<key>application-identifier</key>
+				<string>895EQWU522.jtlemkin-ucdavis.edu.IoBike</string>
+				<key>com.apple.developer.team-identifier</key>
+				<string>895EQWU522</string>
+				<key>get-task-allow</key>
+				<true/>
+				<key>keychain-access-groups</key>
+				<array>
+					<string>895EQWU522.jtlemkin-ucdavis.edu.IoBike</string>
+				</array>
+			</dict>
+			<key>name</key>
+			<string>IoBike.app</string>
+			<key>profile</key>
+			<dict>
+				<key>UUID</key>
+				<string>b18293ba-1a25-477f-922b-7534e2522b68</string>
+				<key>name</key>
+				<string>iOS Team Provisioning Profile: jtlemkin-ucdavis.edu.IoBike</string>
+			</dict>
+			<key>team</key>
+			<dict>
+				<key>id</key>
+				<string>895EQWU522</string>
+				<key>name</key>
+				<string>James Lemkin</string>
+			</dict>
+		</dict>
+	</array>
+</dict>
+</plist>
