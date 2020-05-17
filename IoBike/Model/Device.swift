@@ -17,7 +17,8 @@ import CoreLocation
 class Device: ObservableObject {
     @Published var isConnected = false
     @Published var isArmed = false
-    @Published var lastKnownLocation = CLLocationManager().location!.coordinate
+    @Published var lastKnownLocation = CLLocationManager().location?.coordinate
+        ?? CLLocationCoordinate2D(latitude: 0, longitude: 0)
     @Published var name = ""
     @Published var batteryLife = 0.0
     

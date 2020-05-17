@@ -20,15 +20,19 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            if device.needsRegistration && !userHasCompletedRegistration {
-                if userHasSeenOnBoarding {
-                    BikeRegistrationView(firstTimeRegistering: true, onComplete: device.register)
-                } else {
-                    OnBoardingView(transition: proceedToRegistration)
-                }
-            } else {
+            #if targetEnvironment(simulator)
                 MainView()
-            }
+            #else
+                if device.needsRegistration && !userHasCompletedRegistration {
+                    if userHasSeenOnBoarding {
+                        BikeRegistrationView(firstTimeRegistering: true, onComplete: device.register)
+                    } else {
+                        OnBoardingView(transition: proceedToRegistration)
+                    }
+                } else {
+                    MainView()
+                }
+            #endif
         }
     }
 }

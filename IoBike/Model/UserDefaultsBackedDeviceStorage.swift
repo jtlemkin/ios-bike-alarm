@@ -33,7 +33,8 @@ struct UserDefaultsBackedDeviceStorage {
         let longitude = UserDefaults.standard.double(forKey: "longitude\(index)")
         
         if latitude == 0.0 && longitude == 0.0 {
-            return CLLocationManager().location!.coordinate
+            return CLLocationManager().location?.coordinate ??
+                CLLocationCoordinate2D(latitude: 0.0, longitude: 0.0)
         } else {
             return CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
         }
