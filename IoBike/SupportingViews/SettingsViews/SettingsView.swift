@@ -36,7 +36,7 @@ struct SettingsView: View {
                     ref.child("UID").observeSingleEvent(of: .value, with: { (snapshot) in
                         // Get user value
                         let value = snapshot.value as? NSDictionary
-                        print(value)
+                        print(value as Any)
                         // ...
                     }) { (error) in
                         print(error.localizedDescription)
@@ -46,12 +46,13 @@ struct SettingsView: View {
                 BikeRegistrationView(firstTimeRegistering: false, onComplete: self.device.register)
             }
         }
-        
-        struct SettingsView_Previews: PreviewProvider {
-            static var previews: some View {
-                SettingsView(changeView: {})
-            }
-        }
-        
     }
+    
+    struct SettingsView_Previews: PreviewProvider {
+        static var previews: some View {
+            SettingsView(changeView: {})
+        }
+    }
+    
 }
+
