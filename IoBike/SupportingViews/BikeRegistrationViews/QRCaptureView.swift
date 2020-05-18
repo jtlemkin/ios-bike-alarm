@@ -15,9 +15,11 @@ struct QRCaptureView: UIViewControllerRepresentable {
     typealias UIViewControllerType = QRScanViewController
     let qrScanner = QRScanViewController()
     let onScan: (String) -> Void
+    let onUnableToAccessCamera: () -> Void
     
-    public init(onScan: @escaping (String) -> Void) {
+    public init(onScan: @escaping (String) -> Void, onUnableToAccessCamera: @escaping () -> Void) {
         self.onScan = onScan
+        self.onUnableToAccessCamera = onUnableToAccessCamera
     }
     
     public func makeCoordinator() -> QRScannerCoordinator {
@@ -39,6 +41,12 @@ struct QRCaptureView: UIViewControllerRepresentable {
         
         init(parent: QRCaptureView) {
             self.parent = parent
+            
+            AVCaptureDevice.requestAccess(for: .video) { success in
+                if !success {
+                    parent.onUnableToAccessCamera()
+                }
+            }
         }
         
         func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
@@ -136,6 +144,6 @@ struct QRCaptureView: UIViewControllerRepresentable {
 
 struct QRScannerView_Previews: PreviewProvider {
     static var previews: some View {
-        QRCaptureView(onScan: { _ in })
+        QRCaptureView(onScan: { _ in }, onUnableToAccessCamera:{})
     }
 }
