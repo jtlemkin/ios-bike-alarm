@@ -33,6 +33,8 @@ struct ContentView: View {
                     MainView()
                 }
             #endif
+        }.alert(isPresented: $device.hasError) {
+            Alert(title: Text("Error"), message: Text(device.errorMessage!), dismissButton: .cancel(Text("Dismiss"), action: device.dismissError))
         }
     }
 }

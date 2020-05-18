@@ -15,12 +15,13 @@ import CoreLocation
  the device state in user preferences.
  */
 class Device: ObservableObject {
-    @Published var isConnected = false
+    @Published var isConnected = true
     @Published var isArmed = false
     @Published var lastKnownLocation = CLLocationManager().location?.coordinate
         ?? CLLocationCoordinate2D(latitude: 0, longitude: 0)
     @Published var name = ""
     @Published var batteryLife = 0.0
+    @Published var hasError = false
     
     //The BLE Connection Manager is responsible for setting the peripheral variable of the device
     private lazy var bleConnectionManger = BLEConnectionManager(device: self)
@@ -30,6 +31,12 @@ class Device: ObservableObject {
     let armCharCBUUID = CBUUID(string: "19b10000-e8f2-537e-4f6c-d104768a1214")
     let batteryLifeCharCBUUID = CBUUID(string: "19b10002-e8f2-537e-4f6c-d104768a1214")
     
+    var errorMessage: String? {
+        didSet {
+            hasError = errorMessage != nil
+        }
+    }
+    
     var needsRegistration: Bool {
         return storage.name == nil
     }
@@ -37,9 +44,11 @@ class Device: ObservableObject {
     var peripheral : CBPeripheral? {
         didSet {
             isConnected = peripheral != nil
-            
+
             if !isConnected {
                 storage.saveCurrentLocation()
+                isArmedCharacteristic = nil
+                batteryLifeCharacteristic = nil
             }
         }
     }
@@ -50,6 +59,10 @@ class Device: ObservableObject {
     private var isArmedCharacteristic : CBCharacteristic?
     
     private var batteryLifeCharacteristic : CBCharacteristic? {
+        willSet {
+            storage.update(batteryLife: batteryLifeCharacteristic?.value)
+        }
+        
         didSet {
             storage.update(batteryLife: batteryLifeCharacteristic?.value)
         }
@@ -57,12 +70,16 @@ class Device: ObservableObject {
     
     init() {
         bleConnectionManger.checkConnection()
-        update()
+        syncStateWithStorage()
     }
     
-    func update() {
+    func syncStateWithStorage() {
         isArmed = storage.isArmed
-        lastKnownLocation = storage.lastKnownLocation
+        
+        if !(storage.lastKnownLocation.latitude == 0 && storage.lastKnownLocation.longitude == 0) {
+            lastKnownLocation = storage.lastKnownLocation
+        }
+        
         name = storage.name ?? "unnamed bike"
         batteryLife = storage.batteryLife
     }
@@ -80,31 +97,43 @@ class Device: ObservableObject {
                 batteryLifeCharacteristic = characteristic
             }
         }
+        
+        errorMessage = "First method of configuring characteristics does not work"
+        
+        if isArmedCharacteristic == nil || batteryLifeCharacteristic == nil {
+            isArmedCharacteristic = service.characteristics![0]
+            batteryLifeCharacteristic = service.characteristics![1]
+        }
     }
     
     // Toggles isArmed in user preferences, the app's state, as well as the device
     func toggleAlarm() {
-        storage.update(isArmed: !isArmed)
-        
-        if isArmedCharacteristic != nil {
-            write(isArmed ? 1 : 0, toCharacteristic: self.isArmedCharacteristic!)
+        if isArmedCharacteristic == nil {
+            errorMessage = "isArmedCharacteristic is nil"
         } else {
-            print("isArmedCharacteristic nil")
+            write(isArmed ? 1 : 0, toCharacteristic: self.isArmedCharacteristic!)
+            storage.update(isArmed: !isArmed)
         }
     }
     
     func updatePassword() {
-        if isArmedCharacteristic != nil {
-            write(2, toCharacteristic: isArmedCharacteristic!)
+        if isArmedCharacteristic == nil {
+            errorMessage = "isArmedCharacteristic is nil"
         } else {
-            print("isArmedCharacteristic nil")
+            write(2, toCharacteristic: isArmedCharacteristic!)
         }
     }
     
     private func write(_ val: Int, toCharacteristic characteristic: CBCharacteristic) {
-        if characteristic.properties.contains(.write) && peripheral != nil {
+        if peripheral == nil {
+            errorMessage = "Peripheral is nil"
+        } else if characteristic.properties.contains(.write) {
             let data = Data([UInt8(val)])
-            peripheral?.writeValue(data, for: characteristic, type: .withResponse)
+            peripheral!.writeValue(data, for: characteristic, type: .withResponse)
         }
+    }
+    
+    func dismissError() {
+        errorMessage = nil
     }
 }

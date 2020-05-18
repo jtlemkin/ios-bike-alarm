@@ -20,7 +20,7 @@ struct UserDefaultsBackedDeviceStorage {
         didSet {
             UserDefaults.standard.set(index, forKey: "currentBikeIndex")
             
-            device.update()
+            device.syncStateWithStorage()
         }
     }
     
