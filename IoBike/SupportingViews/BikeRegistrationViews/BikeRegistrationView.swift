@@ -33,6 +33,8 @@ struct BikeRegistrationView: View {
                         if firstTimeRegistering {
                             Color.blue
                                 .edgesIgnoringSafeArea(.top)
+                            
+                            Text("If you see this, go to settings and disable camera permission. Sorry for the inconvenience")
                         }
                         
                         QRScanView(onScan: setBikeID, onUnableToAccessCamera: updateCameraAccess )
