@@ -9,9 +9,9 @@
 import SwiftUI
 
 struct InitialQRScanSuccessfulView: View {
+    @EnvironmentObject var device: Device
     @State var bikeName: String = "New Bike"
     var newBikeID : String
-    var onComplete : (String) -> Void
     
     var body: some View {
         ZStack {
@@ -38,7 +38,7 @@ struct InitialQRScanSuccessfulView: View {
                 
                 Spacer(minLength: 100)
                 
-                Button(action: { self.onComplete(self.bikeName) } ) {
+                Button(action: { var _ = self.device.register(withName: self.bikeName, withID: self.newBikeID) } ) {
                     Text("Continue")
                         .foregroundColor(.white)
                         .font(.headline)
@@ -54,6 +54,6 @@ struct InitialQRScanSuccessfulView: View {
 
 struct InitialQRScanSuccessfulView_Previews: PreviewProvider {
     static var previews: some View {
-        InitialQRScanSuccessfulView(newBikeID: "1234", onComplete: {_ in })
+        InitialQRScanSuccessfulView(newBikeID: "1234")
     }
 }

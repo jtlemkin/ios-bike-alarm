@@ -9,9 +9,9 @@
 import SwiftUI
 
 struct QRScanSuccessfulView: View {
+    @EnvironmentObject var device: Device
     @State var bikeName: String = "New Bike"
     var newBikeID : String
-    var onComplete : (String) -> Void
     
     var body: some View {
         ZStack {
@@ -40,13 +40,13 @@ struct QRScanSuccessfulView: View {
         }
         .edgesIgnoringSafeArea([.top, .bottom])
         .onDisappear(perform: {
-            self.onComplete(self.bikeName)
+            self.device.register(withName: self.bikeName, withID: self.newBikeID)
         })
     }
 }
 
 struct QRScanSuccessfulView_Previews: PreviewProvider {
     static var previews: some View {
-        QRScanSuccessfulView(newBikeID: "1234", onComplete: {_ in })
+        QRScanSuccessfulView(newBikeID: "1234")
     }
 }

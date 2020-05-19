@@ -25,7 +25,7 @@ struct ContentView: View {
             #else
                 if device.needsRegistration && !userHasCompletedRegistration {
                     if userHasSeenOnBoarding {
-                        BikeRegistrationView(firstTimeRegistering: true, onComplete: device.register)
+                        BikeRegistrationView(firstTimeRegistering: true)
                     } else {
                         OnBoardingView(transition: proceedToRegistration)
                     }

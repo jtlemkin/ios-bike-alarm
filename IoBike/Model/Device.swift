@@ -87,8 +87,18 @@ class Device: ObservableObject {
         batteryLife = storage.batteryLife
     }
     
-    func register(withName name: String) {
-        storage.register(withName: name)
+    //Returns whether registration was successful or not
+    func register(withName name: String, withID id: String) -> Bool {
+        if id.count == 4 && isHexadecimal(number: id) {
+            storage.register(withName: name, withID: id)
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    func swap() {
+        
     }
     
     // Sets the values of our characteristics from a list of services

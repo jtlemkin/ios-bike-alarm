@@ -48,7 +48,7 @@ struct UserDefaultsBackedDeviceStorage {
         return UserDefaults.standard.double(forKey: "batteryLife\(index)")
     }
     
-    mutating func register(withName name: String) {
+    mutating func register(withName name: String, withID id: String) {
         guard index < 3 else {
             //Bring index back down to index of last device
             index -= 1
@@ -57,10 +57,11 @@ struct UserDefaultsBackedDeviceStorage {
         
         if self.name == nil {
             UserDefaults.standard.set(name, forKey: "name\(index)")
+            UserDefaults.standard.set(id, forKey: "id\(index)")
             device.name = name
         } else {
             index += 1
-            register(withName: name)
+            register(withName: name, withID: id)
         }
     }
     
@@ -84,5 +85,17 @@ struct UserDefaultsBackedDeviceStorage {
         UserDefaults.standard.set(currentCoordinates.longitude, forKey: "longitude\(index)")
         
         device.lastKnownLocation = currentCoordinates
+    }
+    
+    static func getAllDeviceIDs() -> [String] {
+        var ids = [String]()
+        
+        for i in 0..<3 {
+            if let id = UserDefaults.standard.string(forKey: "id\(i)") {
+                ids.append(id)
+            }
+        }
+        
+        return ids
     }
 }

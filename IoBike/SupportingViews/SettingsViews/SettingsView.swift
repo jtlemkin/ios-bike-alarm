@@ -32,7 +32,7 @@ struct SettingsView: View {
             
             List {
                 SettingsRow(imageName: "arrow.up.arrow.down.circle.fill", text: "Set password", action: device.updatePassword)
-                SettingsRow(imageName: "arrow.right.circle.fill", text: "Swap bike", action: {})
+                SettingsRow(imageName: "arrow.right.circle.fill", text: "Swap bike", action: device.swap)
                 SettingsRow(imageName: "plus.circle.fill", text: "Register New Device", action: startScan)
                 SettingsRow(imageName: "exclamationmark.octagon.fill", text: "Report Stolen Bike", action: {
                     var ref: DatabaseReference!
@@ -48,7 +48,7 @@ struct SettingsView: View {
                     }
                 })
             }.sheet(isPresented: $isScanningQR) {
-                BikeRegistrationView(firstTimeRegistering: false, onComplete: self.device.register)
+                BikeRegistrationView(firstTimeRegistering: false)
             }
         }
     }
