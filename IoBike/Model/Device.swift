@@ -45,7 +45,10 @@ class Device: ObservableObject {
         didSet {
             isConnected = peripheral != nil
 
-            if !isConnected {
+            if isConnected {
+                storage.update(isArmed: false)
+            } else {
+                storage.update(isArmed: true)
                 storage.saveCurrentLocation()
                 isArmedCharacteristic = nil
                 batteryLifeCharacteristic = nil
