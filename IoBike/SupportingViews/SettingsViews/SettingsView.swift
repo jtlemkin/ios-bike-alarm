@@ -14,6 +14,10 @@ struct SettingsView: View {
     @EnvironmentObject var device : Device
     var changeView : () -> Void
     
+    func startScan() {
+        isScanningQR = true
+    }
+    
     var body: some View {
         VStack(alignment: .leading) {
             Button(action: changeView) {
@@ -28,7 +32,8 @@ struct SettingsView: View {
             
             List {
                 SettingsRow(imageName: "arrow.up.arrow.down.circle.fill", text: "Set password", action: device.updatePassword)
-                SettingsRow(imageName: "plus.circle.fill", text: "Register New Device", action: { self.isScanningQR.toggle() })
+                SettingsRow(imageName: "arrow.right.circle.fill", text: "Swap bike", action: {})
+                SettingsRow(imageName: "plus.circle.fill", text: "Register New Device", action: startScan)
                 SettingsRow(imageName: "exclamationmark.octagon.fill", text: "Report Stolen Bike", action: {
                     var ref: DatabaseReference!
                     ref = Database.database().reference()
