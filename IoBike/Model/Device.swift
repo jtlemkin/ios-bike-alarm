@@ -15,7 +15,7 @@ import CoreLocation
  the device state in user preferences.
  */
 class Device: ObservableObject {
-    @Published var isConnected = true
+    @Published var isConnected = false
     @Published var isArmed = false
     @Published var lastKnownLocation = CLLocationManager().location?.coordinate
         ?? CLLocationCoordinate2D(latitude: 0, longitude: 0)
@@ -111,8 +111,8 @@ class Device: ObservableObject {
         if isArmedCharacteristic == nil {
             errorMessage = "isArmedCharacteristic is nil"
         } else {
-            write(isArmed ? 1 : 0, toCharacteristic: self.isArmedCharacteristic!)
             storage.update(isArmed: !isArmed)
+            write(isArmed ? 1 : 0, toCharacteristic: self.isArmedCharacteristic!)
         }
     }
     
