@@ -100,7 +100,7 @@ class Device: ObservableObject {
     }
     
     func swap() {
-        
+        storage.swap()
     }
     
     // Sets the values of our characteristics from a list of services

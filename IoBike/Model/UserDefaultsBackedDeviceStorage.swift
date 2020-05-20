@@ -87,6 +87,14 @@ struct UserDefaultsBackedDeviceStorage {
         device.lastKnownLocation = currentCoordinates
     }
     
+    mutating func swap() {
+        index += 1
+        
+        if self.name == nil {
+            index = 0
+        }
+    }
+    
     static func getAllDeviceIDs() -> [String] {
         var ids = [String]()
         
