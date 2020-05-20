@@ -14,6 +14,7 @@ struct BikeRegistrationView: View {
     
     @State var ableToAccessCamera: Bool = true
     @State private var code: String = ""
+    @State private var bikeName: String = "New Bike"
     
     func setBikeID(withID id: String) {
         newBikeID = id
@@ -24,7 +25,11 @@ struct BikeRegistrationView: View {
     }
     
     func attemptRegistration() {
-        if device.register(withName: "hello", withID: code) {
+        if bikeName == "" {
+            bikeName = "New Bike"
+        }
+        
+        if Device.shared.register(withName: bikeName, withID: code) {
             newBikeID = code
         }
     }
@@ -37,6 +42,10 @@ struct BikeRegistrationView: View {
                 } else {
                     // Manual registration view
                     VStack {
+                        Text("Please enter a name for the bike")
+                        TextField("", text: $bikeName)
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                            .padding()
                         Text("Please enter 4 digit bike code")
                         TextField("", text: $code)
                             .textFieldStyle(RoundedBorderTextFieldStyle())
