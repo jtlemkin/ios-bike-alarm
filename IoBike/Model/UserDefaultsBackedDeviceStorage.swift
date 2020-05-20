@@ -79,6 +79,7 @@ struct UserDefaultsBackedDeviceStorage {
         if let batteryLife = batteryLife {
             UserDefaults.standard.set(Int.from(data: batteryLife),
                                       forKey: "batteryLife\(index)")
+            device.batteryLife = self.batteryLife
         }
     }
     

@@ -78,8 +78,8 @@ class Device: ObservableObject {
     }
     
     init() {
-        bleConnectionManger.checkConnection()
         syncStateWithStorage()
+        bleConnectionManger.checkConnection()
     }
     
     func syncStateWithStorage() {
@@ -111,6 +111,10 @@ class Device: ObservableObject {
     func configureCharacteristics(forService service: CBService) {
         isArmedCharacteristic = service.characteristics![0]
         batteryLifeCharacteristic = service.characteristics![1]
+        
+        if batteryLifeCharacteristic == nil {
+            errorMessage = "batteryLifeCharacteristic is nil"
+        }
     }
     
     // Toggles isArmed in user preferences, the app's state, as well as the device
