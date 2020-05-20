@@ -27,11 +27,15 @@ class Device: ObservableObject {
     private lazy var bleConnectionManger = BLEConnectionManager(device: self)
     private lazy var storage = UserDefaultsBackedDeviceStorage(device: self)
     
-    let serviceCBUUID = CBUUID(string: "19b10000-e8f2-537e-4f6c-d104768a1214")
-    let armCharCBUUID = CBUUID(string: "19b10000-e8f2-537e-4f6c-d104768a1214")
-    let batteryLifeCharCBUUID = CBUUID(string: "19b10002-e8f2-537e-4f6c-d104768a1214")
-    
     static let shared = Device()
+    
+    var id: String {
+        return storage.id
+    }
+    
+    var cbuuid: CBUUID {
+        return CBUUID(string: "19b10000-\(storage.id)-537e-4f6c-d104768a1214")
+    }
     
     var errorMessage: String? {
         didSet {
@@ -105,20 +109,8 @@ class Device: ObservableObject {
     
     // Sets the values of our characteristics from a list of services
     func configureCharacteristics(forService service: CBService) {
-        for characteristic in service.characteristics! {
-            if characteristic.uuid == armCharCBUUID {
-                isArmedCharacteristic = characteristic
-            } else if characteristic.uuid == batteryLifeCharCBUUID {
-                batteryLifeCharacteristic = characteristic
-            }
-        }
-        
-        errorMessage = "First method of configuring characteristics does not work"
-        
-        if isArmedCharacteristic == nil || batteryLifeCharacteristic == nil {
-            isArmedCharacteristic = service.characteristics![0]
-            batteryLifeCharacteristic = service.characteristics![1]
-        }
+        isArmedCharacteristic = service.characteristics![0]
+        batteryLifeCharacteristic = service.characteristics![1]
     }
     
     // Toggles isArmed in user preferences, the app's state, as well as the device

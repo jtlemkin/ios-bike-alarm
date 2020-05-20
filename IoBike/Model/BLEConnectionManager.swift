@@ -34,7 +34,7 @@ extension BLEConnectionManager: CBCentralManagerDelegate {
         if central.state == .poweredOn {
             print("Scanning for bluetooth devices")
             
-            centralManager.scanForPeripherals(withServices: [self.targetDevice.serviceCBUUID])
+            centralManager.scanForPeripherals(withServices: [self.targetDevice.cbuuid])
         }
     }
     
@@ -48,13 +48,13 @@ extension BLEConnectionManager: CBCentralManagerDelegate {
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
         print("Connected with target device")
         
-        peripheral.discoverServices([self.targetDevice.serviceCBUUID])
+        peripheral.discoverServices([self.targetDevice.cbuuid])
     }
     
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
         self.targetDevice.peripheral = nil
         
-        centralManager.scanForPeripherals(withServices: [self.targetDevice.serviceCBUUID])
+        centralManager.scanForPeripherals(withServices: [self.targetDevice.cbuuid])
     }
 }
 
@@ -62,7 +62,7 @@ extension BLEConnectionManager: CBPeripheralDelegate {
     func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
         if let services = peripheral.services {
             for service in services {
-                if service.uuid == self.targetDevice.serviceCBUUID {
+                if service.uuid == self.targetDevice.cbuuid {
                     peripheral.discoverCharacteristics(nil, for: service)
                 }
             }
