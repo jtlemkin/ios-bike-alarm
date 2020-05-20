@@ -48,7 +48,7 @@ struct SettingsView: View {
                     }
                 })
             }.sheet(isPresented: $isScanningQR) {
-                BikeRegistrationView(firstTimeRegistering: false)
+                BikeRegistrationView()
             }
         }
     }

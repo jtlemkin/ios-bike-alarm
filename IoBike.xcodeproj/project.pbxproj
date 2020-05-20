@@ -29,8 +29,6 @@
 		52E2E95E246B989B003D6CA7 /* UserDefaultsBackedDeviceStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E2E95D246B989B003D6CA7 /* UserDefaultsBackedDeviceStorage.swift */; };
 		52E2E964246C4646003D6CA7 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E2E963246C4646003D6CA7 /* MainView.swift */; };
 		52E2E966246C4E28003D6CA7 /* OnBoardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E2E965246C4E28003D6CA7 /* OnBoardingView.swift */; };
-		52E2E968246C79BF003D6CA7 /* InitialQRScanSuccessfulView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E2E967246C79BF003D6CA7 /* InitialQRScanSuccessfulView.swift */; };
-		52E2E96A246C7A02003D6CA7 /* SuccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E2E969246C7A02003D6CA7 /* SuccessView.swift */; };
 		BB13E47BF659D8AB35664C6D /* Pods_IoBike.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51882929A058DD6B71FDE2CF /* Pods_IoBike.framework */; };
 /* End PBXBuildFile section */
 
@@ -61,8 +59,6 @@
 		52E2E95D246B989B003D6CA7 /* UserDefaultsBackedDeviceStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsBackedDeviceStorage.swift; sourceTree = "<group>"; };
 		52E2E963246C4646003D6CA7 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		52E2E965246C4E28003D6CA7 /* OnBoardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingView.swift; sourceTree = "<group>"; };
-		52E2E967246C79BF003D6CA7 /* InitialQRScanSuccessfulView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialQRScanSuccessfulView.swift; sourceTree = "<group>"; };
-		52E2E969246C7A02003D6CA7 /* SuccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessView.swift; sourceTree = "<group>"; };
 		74C6A4127147C282A8FA5763 /* Pods-IoBike.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IoBike.release.xcconfig"; path = "Target Support Files/Pods-IoBike/Pods-IoBike.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -149,11 +145,9 @@
 		52E2E95A246B8E4D003D6CA7 /* BikeRegistrationViews */ = {
 			isa = PBXGroup;
 			children = (
-				529E45ED2466563B00430C08 /* QRScanView.swift */,
 				52E2E958246B6A59003D6CA7 /* QRScanSuccessfulView.swift */,
-				52E2E967246C79BF003D6CA7 /* InitialQRScanSuccessfulView.swift */,
+				529E45ED2466563B00430C08 /* QRScanView.swift */,
 				52E2E954246B6442003D6CA7 /* BikeRegistrationView.swift */,
-				52E2E969246C7A02003D6CA7 /* SuccessView.swift */,
 			);
 			path = BikeRegistrationViews;
 			sourceTree = "<group>";
@@ -320,9 +314,7 @@
 				529E45EE2466563B00430C08 /* QRScanView.swift in Sources */,
 				520484A024635DB700E2E35F /* StateView.swift in Sources */,
 				52E2E966246C4E28003D6CA7 /* OnBoardingView.swift in Sources */,
-				52E2E968246C79BF003D6CA7 /* InitialQRScanSuccessfulView.swift in Sources */,
 				52E2E959246B6A59003D6CA7 /* QRScanSuccessfulView.swift in Sources */,
-				52E2E96A246C7A02003D6CA7 /* SuccessView.swift in Sources */,
 				52D1D762245FB4B1003E2E00 /* Utils.swift in Sources */,
 				527952D32416FE2D00A82F63 /* BLEConnectionManager.swift in Sources */,
 				52E2E955246B6442003D6CA7 /* BikeRegistrationView.swift in Sources */,

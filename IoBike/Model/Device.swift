@@ -31,6 +31,8 @@ class Device: ObservableObject {
     let armCharCBUUID = CBUUID(string: "19b10000-e8f2-537e-4f6c-d104768a1214")
     let batteryLifeCharCBUUID = CBUUID(string: "19b10002-e8f2-537e-4f6c-d104768a1214")
     
+    static let shared = Device()
+    
     var errorMessage: String? {
         didSet {
             hasError = errorMessage != nil

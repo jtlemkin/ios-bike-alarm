@@ -14,6 +14,7 @@ import SwiftUI
 struct QRScanView: View {
     var onScan : (String) -> Void
     var onUnableToAccessCamera : () -> Void
+    @State var badQRCodeFound = false
     
     var body: some View {
          ZStack {
@@ -25,12 +26,22 @@ struct QRScanView: View {
                Text("Scan Bike Code")
                    .font(.title)
                    .foregroundColor(Color.white)
-                   .padding(.vertical)
+                   .padding(.top)
                    .frame(minWidth: 0, maxWidth: .infinity)
                    .background(/*@START_MENU_TOKEN@*/Color.blue/*@END_MENU_TOKEN@*/)
                
                QRCaptureView(parent: self)
            }
+            
+            VStack {
+                if badQRCodeFound {
+                    Spacer()
+                    
+                    Text("Invalid QR code found")
+                        .foregroundColor(.red)
+                        .font(.title)
+                }
+            }
        }
     }
     
@@ -87,7 +98,11 @@ struct QRScanView: View {
                     parent.qrScanner.qrCodeFrameView?.frame = qrCodeObject!.bounds
                     
                     if let deviceID = metadataObj.stringValue {
-                        parent.parent.onScan(deviceID)
+                        if deviceID.count == 4 && isHexadecimal(number: deviceID) {
+                            parent.parent.onScan(deviceID)
+                        } else {
+                            parent.parent.badQRCodeFound = true
+                        }
                     }
                 }
             }
