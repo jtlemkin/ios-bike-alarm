@@ -38,14 +38,8 @@ struct SettingsView: View {
                     var ref: DatabaseReference!
                     ref = Database.database().reference()
                     
-                    ref.child("UID").observeSingleEvent(of: .value, with: { (snapshot) in
-                        // Get user value
-                        let value = snapshot.value as? NSDictionary
-                        print(value as Any)
-                        // ...
-                    }) { (error) in
-                        print(error.localizedDescription)
-                    }
+                    ref.child("Stolen Bike UUIDs").setValue(["Device ID": self.device.id])
+
                 })
             }.sheet(isPresented: $isScanningQR) {
                 BikeRegistrationView()
