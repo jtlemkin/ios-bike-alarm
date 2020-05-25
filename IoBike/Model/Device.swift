@@ -29,12 +29,16 @@ class Device: ObservableObject {
     
     static let shared = Device()
     
-    var id: String {
+    var id: String? {
         return storage.id
     }
     
-    var cbuuid: CBUUID {
-        return CBUUID(string: "19b10000-\(storage.id)-537e-4f6c-d104768a1214")
+    var cbuuid: CBUUID? {
+        if let id = storage.id {
+            return CBUUID(string: "19b10000-\(id)-537e-4f6c-d104768a1214")
+        } else {
+            return nil
+        }
     }
     
     var errorMessage: String? {
@@ -77,7 +81,7 @@ class Device: ObservableObject {
     
     init() {
         syncStateWithStorage()
-        bleConnectionManger.checkConnection()
+        bleConnectionManger.scanForDevice()
     }
     
     func syncStateWithStorage() {
@@ -94,7 +98,14 @@ class Device: ObservableObject {
     //Returns whether registration was successful or not
     func register(withName name: String, withID id: String) -> Bool {
         if id.count == 4 && isHexadecimal(number: id) {
+            let shouldScanForDevice = needsRegistration
+            
             storage.register(withName: name, withID: id)
+            
+            if shouldScanForDevice {
+                bleConnectionManger.scanForDevice()
+            }
+            
             return true
         } else {
             return false
@@ -103,6 +114,8 @@ class Device: ObservableObject {
     
     func swap() {
         storage.swap()
+        
+        bleConnectionManger.scanForDevice()
     }
     
     // Sets the values of our characteristics from a list of services

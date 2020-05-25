@@ -23,8 +23,14 @@ class BLEConnectionManager: NSObject, ObservableObject {
         super.init()
     }
     
-    func checkConnection() {
-        print(centralManager.isScanning)
+    func scanForDevice() {
+        if centralManager.state == .poweredOn {
+            print("Scanning for bluetooth devices")
+
+            if let uuid = self.targetDevice.cbuuid {
+                centralManager.scanForPeripherals(withServices: [uuid])
+            }
+        }
     }
     
 }
@@ -33,8 +39,10 @@ extension BLEConnectionManager: CBCentralManagerDelegate {
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
         if central.state == .poweredOn {
             print("Scanning for bluetooth devices")
-            
-            centralManager.scanForPeripherals(withServices: [self.targetDevice.cbuuid])
+
+            if let uuid = self.targetDevice.cbuuid {
+                centralManager.scanForPeripherals(withServices: [uuid])
+            }
         }
     }
     
@@ -47,14 +55,18 @@ extension BLEConnectionManager: CBCentralManagerDelegate {
     
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
         print("Connected with target device")
-        
-        peripheral.discoverServices([self.targetDevice.cbuuid])
+  
+        if let uuid = self.targetDevice.cbuuid {
+            peripheral.discoverServices([uuid])
+        }
     }
     
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
         self.targetDevice.peripheral = nil
         
-        centralManager.scanForPeripherals(withServices: [self.targetDevice.cbuuid])
+        if let uuid = self.targetDevice.cbuuid {
+            centralManager.scanForPeripherals(withServices: [uuid])
+        }
     }
 }
 
