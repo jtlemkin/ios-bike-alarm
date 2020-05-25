@@ -45,7 +45,7 @@ struct UserDefaultsBackedDeviceStorage {
     }
     
     var id: String {
-        return UserDefaults.standard.string(forKey: "id\(index)")!
+        return UserDefaults.standard.string(forKey: "id\(index)") ?? "No id"
     }
     
     var batteryLife: Double {
