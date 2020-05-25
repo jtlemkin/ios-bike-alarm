@@ -68,12 +68,10 @@ class Device: ObservableObject {
     private var isArmedCharacteristic : CBCharacteristic?
     
     private var batteryLifeCharacteristic : CBCharacteristic? {
-        willSet {
-            storage.update(batteryLife: batteryLifeCharacteristic?.value)
-        }
-        
         didSet {
-            storage.update(batteryLife: batteryLifeCharacteristic?.value)
+            if let characteristic = batteryLifeCharacteristic {
+                storage.update(batteryLife: read(fromCharacteristic: characteristic))
+            }
         }
     }
     
@@ -111,16 +109,12 @@ class Device: ObservableObject {
     func configureCharacteristics(forService service: CBService) {
         isArmedCharacteristic = service.characteristics![0]
         batteryLifeCharacteristic = service.characteristics![1]
-        
-        if batteryLifeCharacteristic == nil {
-            errorMessage = "batteryLifeCharacteristic is nil"
-        }
     }
     
     // Toggles isArmed in user preferences, the app's state, as well as the device
     func toggleAlarm() {
         if isArmedCharacteristic == nil {
-            errorMessage = "isArmedCharacteristic is nil"
+            errorMessage = "Device not connected"
         } else {
             storage.update(isArmed: !isArmed)
             write(isArmed ? 1 : 0, toCharacteristic: self.isArmedCharacteristic!)
@@ -129,7 +123,7 @@ class Device: ObservableObject {
     
     func updatePassword() {
         if isArmedCharacteristic == nil {
-            errorMessage = "isArmedCharacteristic is nil"
+            errorMessage = "Device not connected"
         } else {
             write(2, toCharacteristic: isArmedCharacteristic!)
         }
@@ -137,10 +131,20 @@ class Device: ObservableObject {
     
     private func write(_ val: Int, toCharacteristic characteristic: CBCharacteristic) {
         if peripheral == nil {
-            errorMessage = "Peripheral is nil"
+            errorMessage = "Device not connected"
         } else if characteristic.properties.contains(.write) {
             let data = Data([UInt8(val)])
             peripheral!.writeValue(data, for: characteristic, type: .withResponse)
+        }
+    }
+    
+    private func read(fromCharacteristic characteristic: CBCharacteristic) -> Int {
+        if let peripheral = peripheral {
+            peripheral.readValue(for: characteristic)
+            return Int.from(data: characteristic.value!)
+        } else {
+            errorMessage = "Device not connected"
+            return -1
         }
     }
     

@@ -72,4 +72,10 @@ extension BLEConnectionManager: CBPeripheralDelegate {
     func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
         self.targetDevice.configureCharacteristics(forService: service)
     }
+    
+    func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
+        if let error = error {
+            print(error.localizedDescription)
+        }
+    }
 }

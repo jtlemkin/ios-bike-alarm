@@ -75,12 +75,9 @@ struct UserDefaultsBackedDeviceStorage {
     }
     
     // Records current battery life in user preferences
-    func update(batteryLife: Data?) {
-        if let batteryLife = batteryLife {
-            UserDefaults.standard.set(Int.from(data: batteryLife),
-                                      forKey: "batteryLife\(index)")
-            device.batteryLife = self.batteryLife
-        }
+    func update(batteryLife: Int) {
+        UserDefaults.standard.set(batteryLife, forKey: "batteryLife\(index)")
+        device.batteryLife = self.batteryLife
     }
     
     func saveCurrentLocation() {
