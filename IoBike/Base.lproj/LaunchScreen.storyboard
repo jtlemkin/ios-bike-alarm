@@ -15,18 +15,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Loading IoBike..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tCT-WF-flD">
-                                <rect key="frame" x="79" y="428" width="257" height="41"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tCT-WF-flD">
+                                <rect key="frame" x="126" y="427" width="182" height="42"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="tCT-WF-flD" secondAttribute="height" multiplier="13:3" id="SeN-7K-qyG"/>
+                                    <constraint firstAttribute="width" constant="182" id="dO6-XI-xQ5"/>
+                                </constraints>
+                                <attributedString key="attributedText">
+                                    <fragment content="BikeBuddy">
+                                        <attributes>
+                                            <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <font key="NSFont" size="36" name="Futura-CondensedExtraBold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
                                 <nil key="highlightedColor"/>
                                 <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="0.1974225044" green="0.40552532670000002" blue="0.53335207699999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="tCT-WF-flD" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="GZd-zH-hnf"/>
-                            <constraint firstItem="tCT-WF-flD" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="sBM-f4-4ye"/>
+                            <constraint firstItem="tCT-WF-flD" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" constant="10" id="GZd-zH-hnf"/>
+                            <constraint firstItem="tCT-WF-flD" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" constant="-5" id="sBM-f4-4ye"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
