@@ -15,23 +15,25 @@ struct QRScanView: View {
     var onScan : (String) -> Void
     var onUnableToAccessCamera : () -> Void
     @State var badQRCodeFound = false
+    @State var errorMessage = ""
     
     var body: some View {
          ZStack {
-           Color.blue.edgesIgnoringSafeArea(.top)
-               
-           Text("Sorry we're having trouble accessing the camera. Please go to the settings app and disable camera permission to continue.")
+            Color.blue.edgesIgnoringSafeArea(.top)
+        
+            Text(errorMessage)
+            Text("Sorry we're having trouble accessing the camera. Please go to the settings app and disable camera permission to continue.")
            
-           VStack {
-               Text("Scan Bike Code")
-                   .font(.title)
-                   .foregroundColor(Color.white)
-                   .padding(.top)
-                   .frame(minWidth: 0, maxWidth: .infinity)
-                   .background(/*@START_MENU_TOKEN@*/Color.blue/*@END_MENU_TOKEN@*/)
+            VStack {
+                Text("Scan Bike Code")
+                    .font(.title)
+                    .foregroundColor(Color.white)
+                    .padding(.top)
+                    .frame(minWidth: 0, maxWidth: .infinity)
+                    .background(/*@START_MENU_TOKEN@*/Color.blue/*@END_MENU_TOKEN@*/)
                
-               QRCaptureView(parent: self)
-           }
+                QRCaptureView(parent: self)
+            }
             
             VStack {
                 if badQRCodeFound {
@@ -64,7 +66,7 @@ struct QRScanView: View {
         }
         
         func updateUIViewController(_ uiViewController: QRScanViewController, context: Context) {
-            print("updatingQRScanner")
+            
         }
         
         public class QRScannerCoordinator: NSObject, AVCaptureMetadataOutputObjectsDelegate {
@@ -77,6 +79,7 @@ struct QRScanView: View {
                 AVCaptureDevice.requestAccess(for: .video) { success in
                     if !success {
                         parent.parent.onUnableToAccessCamera()
+                        parent.parent.errorMessage = "Error: Unable to access video"
                     }
                 }
             }
