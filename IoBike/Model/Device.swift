@@ -33,12 +33,9 @@ class Device: ObservableObject {
         return storage.id
     }
     
-    var cbuuid: CBUUID? {
-        if let id = storage.id {
-            return CBUUID(string: "19b10000-\(id)-537e-4f6c-d104768a1214")
-        } else {
-            return nil
-        }
+    var cbuuid: CBUUID {
+        let id = storage.id ?? "0000"
+        return CBUUID(string: "19b10000-\(id)-537e-4f6c-d104768a1214")
     }
     
     var errorMessage: String? {

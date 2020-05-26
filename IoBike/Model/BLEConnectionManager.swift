@@ -17,9 +17,11 @@ import CoreLocation
 class BLEConnectionManager: NSObject, ObservableObject {
     private lazy var centralManager = CBCentralManager(delegate: self, queue: nil)
     private unowned let targetDevice: Device
+    let uuid : CBUUID
     
     init(device: Device) {
         self.targetDevice = device
+        self.uuid = device.cbuuid
         super.init()
     }
     
@@ -27,9 +29,7 @@ class BLEConnectionManager: NSObject, ObservableObject {
         if centralManager.state == .poweredOn {
             print("Scanning for bluetooth devices")
 
-            if let uuid = self.targetDevice.cbuuid {
-                centralManager.scanForPeripherals(withServices: [uuid])
-            }
+            centralManager.scanForPeripherals(withServices: [uuid])
         }
     }
     
@@ -40,9 +40,7 @@ extension BLEConnectionManager: CBCentralManagerDelegate {
         if central.state == .poweredOn {
             print("Scanning for bluetooth devices")
 
-            if let uuid = self.targetDevice.cbuuid {
-                centralManager.scanForPeripherals(withServices: [uuid])
-            }
+            centralManager.scanForPeripherals(withServices: [uuid])
         }
     }
     
@@ -56,17 +54,13 @@ extension BLEConnectionManager: CBCentralManagerDelegate {
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
         print("Connected with target device")
   
-        if let uuid = self.targetDevice.cbuuid {
-            peripheral.discoverServices([uuid])
-        }
+        peripheral.discoverServices([uuid])
     }
     
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
         self.targetDevice.peripheral = nil
         
-        if let uuid = self.targetDevice.cbuuid {
-            centralManager.scanForPeripherals(withServices: [uuid])
-        }
+        centralManager.scanForPeripherals(withServices: [uuid])
     }
 }
 
@@ -74,9 +68,7 @@ extension BLEConnectionManager: CBPeripheralDelegate {
     func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
         if let services = peripheral.services {
             for service in services {
-                if service.uuid == self.targetDevice.cbuuid {
                     peripheral.discoverCharacteristics(nil, for: service)
-                }
             }
         }
     }
