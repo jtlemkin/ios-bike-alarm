@@ -20,12 +20,12 @@ class Device: ObservableObject {
     @Published var lastKnownLocation = CLLocationManager().location?.coordinate
         ?? CLLocationCoordinate2D(latitude: 0, longitude: 0)
     @Published var name = ""
-    @Published var batteryLife = 0.0
+    @Published var batteryLife = 0
     @Published var hasError = false
     
     //The BLE Connection Manager is responsible for setting the peripheral variable of the device
     private lazy var bleConnectionManger = BLEConnectionManager(device: self)
-    private lazy var storage = UserDefaultsBackedDeviceStorage(device: self)
+    lazy var storage = UserDefaultsBackedDeviceStorage(device: self)
     
     static let shared = Device()
     
@@ -66,12 +66,12 @@ class Device: ObservableObject {
     // Contains state of whether device is armed or not
     // In addition writing a 2 to this characteristic causes the device to
     // accept a new password
-    private var isArmedCharacteristic : CBCharacteristic?
+    var isArmedCharacteristic : CBCharacteristic?
     
-    private var batteryLifeCharacteristic : CBCharacteristic? {
+    var batteryLifeCharacteristic : CBCharacteristic? {
         didSet {
             if let characteristic = batteryLifeCharacteristic {
-                storage.update(batteryLife: read(fromCharacteristic: characteristic))
+                read(fromCharacteristic: characteristic)
             }
         }
     }
@@ -152,19 +152,11 @@ class Device: ObservableObject {
         }
     }
     
-    private func read(fromCharacteristic characteristic: CBCharacteristic) -> Int {
+    private func read(fromCharacteristic characteristic: CBCharacteristic) {
         if let peripheral = peripheral {
             peripheral.readValue(for: characteristic)
-            
-            if let readValue = characteristic.value {
-                return Int.from(data: readValue)
-            } else {
-                errorMessage = "Unable to read device value"
-                return -1
-            }
         } else {
             errorMessage = "Device not connected"
-            return -1
         }
     }
     

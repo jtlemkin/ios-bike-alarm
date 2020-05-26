@@ -48,8 +48,8 @@ struct UserDefaultsBackedDeviceStorage {
         return UserDefaults.standard.string(forKey: "id\(index)")
     }
     
-    var batteryLife: Double {
-        return UserDefaults.standard.double(forKey: "batteryLife\(index)")
+    var batteryLife: Int {
+        return UserDefaults.standard.integer(forKey: "batteryLife\(index)")
     }
     
     mutating func register(withName name: String, withID id: String) {

@@ -81,5 +81,13 @@ extension BLEConnectionManager: CBPeripheralDelegate {
         if let error = error {
             print(error.localizedDescription)
         }
+        
+        if characteristic.uuid == targetDevice.batteryLifeCharacteristic?.uuid {
+            if let data = characteristic.value {
+                targetDevice.storage.update(batteryLife: Int.from(data: data))
+            } else {
+                targetDevice.errorMessage = "Unable to read battery life"
+            }
+        }
     }
 }
