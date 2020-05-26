@@ -81,12 +81,14 @@ struct UserDefaultsBackedDeviceStorage {
     }
     
     func saveCurrentLocation() {
-        let currentCoordinates = CLLocationManager().location!.coordinate
-        
-        UserDefaults.standard.set(currentCoordinates.latitude, forKey: "latitude\(index)")
-        UserDefaults.standard.set(currentCoordinates.longitude, forKey: "longitude\(index)")
-        
-        device.lastKnownLocation = currentCoordinates
+        if let currentLocation = CLLocationManager().location {
+            let coordinate = currentLocation.coordinate
+            
+            UserDefaults.standard.set(coordinate.latitude, forKey: "latitude\(index)")
+            UserDefaults.standard.set(coordinate.longitude, forKey: "longitude\(index)")
+            
+            device.lastKnownLocation = coordinate
+        }
     }
     
     mutating func swap() {

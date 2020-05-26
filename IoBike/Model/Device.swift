@@ -117,41 +117,51 @@ class Device: ObservableObject {
     
     // Sets the values of our characteristics from a list of services
     func configureCharacteristics(forService service: CBService) {
-        isArmedCharacteristic = service.characteristics![0]
-        batteryLifeCharacteristic = service.characteristics![1]
+        if let characteristics = service.characteristics {
+            isArmedCharacteristic = characteristics[0]
+            batteryLifeCharacteristic = characteristics[1]
+        } else {
+            errorMessage = "Service has no characteristics"
+        }
     }
     
     // Toggles isArmed in user preferences, the app's state, as well as the device
     func toggleAlarm() {
-        if isArmedCharacteristic == nil {
-            errorMessage = "Device not connected"
-        } else {
+        if let isArmedCharacteristic = isArmedCharacteristic {
             storage.update(isArmed: !isArmed)
-            write(isArmed ? 1 : 0, toCharacteristic: self.isArmedCharacteristic!)
+            write(isArmed ? 1 : 0, toCharacteristic: isArmedCharacteristic)
+        } else {
+            errorMessage = "Device not connected"
         }
     }
     
     func updatePassword() {
-        if isArmedCharacteristic == nil {
-            errorMessage = "Device not connected"
+        if let isArmedCharacteristic = isArmedCharacteristic {
+            write(2, toCharacteristic: isArmedCharacteristic)
         } else {
-            write(2, toCharacteristic: isArmedCharacteristic!)
+            errorMessage = "Device not connected"
         }
     }
     
     private func write(_ val: Int, toCharacteristic characteristic: CBCharacteristic) {
-        if peripheral == nil {
-            errorMessage = "Device not connected"
-        } else if characteristic.properties.contains(.write) {
+        if let peripheral = peripheral, characteristic.properties.contains(.write) {
             let data = Data([UInt8(val)])
-            peripheral!.writeValue(data, for: characteristic, type: .withResponse)
+            peripheral.writeValue(data, for: characteristic, type: .withResponse)
+        } else {
+            errorMessage = "Device not connected"
         }
     }
     
     private func read(fromCharacteristic characteristic: CBCharacteristic) -> Int {
         if let peripheral = peripheral {
             peripheral.readValue(for: characteristic)
-            return Int.from(data: characteristic.value!)
+            
+            if let readValue = characteristic.value {
+                return Int.from(data: readValue)
+            } else {
+                errorMessage = "Unable to read device value"
+                return -1
+            }
         } else {
             errorMessage = "Device not connected"
             return -1
