@@ -17,66 +17,65 @@ struct ReportingView: View {
     @State var reported = false
     
     var body: some View {
-        VStack() {
-            Text("Report theft")
+        VStack(alignment: .leading) {
+            Text("Report Theft")
                 .font(.largeTitle)
                 .fontWeight(.bold)
                 .multilineTextAlignment(.leading)
                 .padding([.all])
+                .padding([.bottom], 64)
+
+            Text("Choose stolen bike")
+                .fontWeight(.semibold)
+                .padding([.all])
             
-            VStack(alignment: .leading) {
-                Text("Choose stolen bike")
-                    .fontWeight(.semibold)
-                    .padding([.all])
-                
-                ForEach(deviceNames, id: \.self) { name in
-                    Button(action: {
-                        self.deviceNameToReport = name
-                    }) {
-                        Text(name)
-                            .frame(maxWidth: .infinity)
-                            .foregroundColor(.white)
-                            .padding([.all])
-                            .background(Color.gray)
-                            .border(self.deviceNameToReport == name ? Color(UIColor.label) : Color(UIColor.systemBackground), width: 2)
-                            .padding(.horizontal)
-                    }
-                }
-                
-                Text("Description of bike")
-                    .fontWeight(.semibold)
-                    .padding([.all])
-                
-                TextField("Optional", text: $deviceDescription)
-                    .padding([.all])
-                    .border(Color(UIColor.label))
-                    .padding([.horizontal])
-                
-                Spacer()
-                
-                Text(reported ? "Report complete" : "")
-                    .padding([.horizontal])
-                
+            ForEach(deviceNames, id: \.self) { name in
                 Button(action: {
-                    if let name = self.deviceNameToReport {
-                        self.reported = true
-                        
-                        var ref: DatabaseReference!
-                        ref = Database.database().reference()
-                        let uuid = UserDefaultsBackedDeviceStorage.getUUIDForDevice(withName: name)
-                        
-                        ref.child("Stolen Bike UUIDs").setValue([uuid: self.deviceDescription])
-                    }
+                    self.deviceNameToReport = name
                 }) {
-                    Text("Report")
+                    Text(name)
                         .frame(maxWidth: .infinity)
                         .foregroundColor(.white)
                         .padding([.all])
-                        .background(Color.red)
-                        .border(Color(UIColor.label))
-                        .padding()
+                        .background(Color.gray)
+                        .border(self.deviceNameToReport == name ? Color(UIColor.label) : Color(UIColor.systemBackground), width: 2)
+                        .padding(.horizontal)
                 }
             }
+            
+            Text("Description of bike")
+                .fontWeight(.semibold)
+                .padding([.all])
+            
+            TextField("Optional", text: $deviceDescription)
+                .padding([.all])
+                .border(Color(UIColor.label))
+                .padding([.horizontal])
+            
+            Text(reported ? "Report complete" : "")
+                .padding([.horizontal])
+            
+            Spacer()
+            
+            Button(action: {
+                if let name = self.deviceNameToReport {
+                    var ref: DatabaseReference!
+                    ref = Database.database().reference()
+                    
+                    if let uuid = UserDefaultsBackedDeviceStorage.getUUIDForDevice(withName: name) {
+                        ref.child("Stolen Bike UUIDs").child(uuid).setValue(self.deviceDescription)
+                        self.reported = true
+                    }
+                }
+            }) {
+                Text("Report")
+                    .frame(maxWidth: .infinity)
+                    .foregroundColor(.white)
+                    .padding([.all])
+                    .background(Color.red)
+                    .border(Color(UIColor.label))
+                    .padding()
+                }
         }
     }
 }
