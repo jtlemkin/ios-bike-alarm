@@ -52,10 +52,10 @@ struct ReportingView: View {
                 .border(Color(UIColor.label))
                 .padding([.horizontal])
             
+            Spacer()
+            
             Text(reported ? "Report complete" : "")
                 .padding([.horizontal])
-            
-            Spacer()
             
             Button(action: {
                 if let name = self.deviceNameToReport {
@@ -63,7 +63,7 @@ struct ReportingView: View {
                     ref = Database.database().reference()
                     
                     if let uuid = UserDefaultsBackedDeviceStorage.getUUIDForDevice(withName: name) {
-                        ref.child("Stolen Bike UUIDs").child(uuid).setValue(self.deviceDescription)
+                        ref.child("Stolen Bike UUIDs/\(uuid)").setValue(self.deviceDescription)
                         self.reported = true
                     }
                 }
