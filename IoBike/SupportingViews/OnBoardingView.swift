@@ -15,7 +15,7 @@ struct OnBoardingView: View {
         VStack {
             Spacer()
             
-            Text("Welcome to BikeBuddy!")
+            Text("Welcome to BikeWatch!")
                 .font(.title)
                 .padding(.all)
             

@@ -39,7 +39,7 @@
 		5204849F24635DB700E2E35F /* StateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateView.swift; sourceTree = "<group>"; };
 		520484A32463836000E2E35F /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		526A1E18247E251800381AEE /* ReportingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportingView.swift; sourceTree = "<group>"; };
-		527952B92416D3ED00A82F63 /* IoBike.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IoBike.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		527952B92416D3ED00A82F63 /* BikeWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BikeWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		527952BC2416D3ED00A82F63 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		527952BE2416D3ED00A82F63 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		527952C02416D3ED00A82F63 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -89,7 +89,7 @@
 		527952BA2416D3ED00A82F63 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				527952B92416D3ED00A82F63 /* IoBike.app */,
+				527952B92416D3ED00A82F63 /* BikeWatch.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -193,9 +193,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		527952B82416D3ED00A82F63 /* IoBike */ = {
+		527952B82416D3ED00A82F63 /* BikeWatch */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 527952CD2416D3F700A82F63 /* Build configuration list for PBXNativeTarget "IoBike" */;
+			buildConfigurationList = 527952CD2416D3F700A82F63 /* Build configuration list for PBXNativeTarget "BikeWatch" */;
 			buildPhases = (
 				7DA755D93A57938ECC5D7FCB /* [CP] Check Pods Manifest.lock */,
 				527952B52416D3ED00A82F63 /* Sources */,
@@ -207,9 +207,9 @@
 			);
 			dependencies = (
 			);
-			name = IoBike;
+			name = BikeWatch;
 			productName = IoBike;
-			productReference = 527952B92416D3ED00A82F63 /* IoBike.app */;
+			productReference = 527952B92416D3ED00A82F63 /* BikeWatch.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -227,7 +227,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 527952B42416D3ED00A82F63 /* Build configuration list for PBXProject "IoBike" */;
+			buildConfigurationList = 527952B42416D3ED00A82F63 /* Build configuration list for PBXProject "BikeWatch" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -240,7 +240,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				527952B82416D3ED00A82F63 /* IoBike */,
+				527952B82416D3ED00A82F63 /* BikeWatch */,
 			);
 		};
 /* End PBXProject section */
@@ -470,9 +470,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.11;
+				MARKETING_VERSION = 1.13;
 				PRODUCT_BUNDLE_IDENTIFIER = "jtlemkin-ucdavis.edu.IoBike";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = BikeWatch;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -492,9 +492,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.11;
+				MARKETING_VERSION = 1.13;
 				PRODUCT_BUNDLE_IDENTIFIER = "jtlemkin-ucdavis.edu.IoBike";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = BikeWatch;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -503,7 +503,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		527952B42416D3ED00A82F63 /* Build configuration list for PBXProject "IoBike" */ = {
+		527952B42416D3ED00A82F63 /* Build configuration list for PBXProject "BikeWatch" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				527952CB2416D3F700A82F63 /* Debug */,
@@ -512,7 +512,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		527952CD2416D3F700A82F63 /* Build configuration list for PBXNativeTarget "IoBike" */ = {
+		527952CD2416D3F700A82F63 /* Build configuration list for PBXNativeTarget "BikeWatch" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				527952CE2416D3F700A82F63 /* Debug */,

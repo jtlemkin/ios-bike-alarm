@@ -22,7 +22,7 @@
                                     <constraint firstAttribute="width" constant="182" id="dO6-XI-xQ5"/>
                                 </constraints>
                                 <attributedString key="attributedText">
-                                    <fragment content="BikeBuddy">
+                                    <fragment content="BikeWatch">
                                         <attributes>
                                             <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <font key="NSFont" size="36" name="Futura-CondensedExtraBold"/>
