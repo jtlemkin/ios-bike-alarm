@@ -110,4 +110,28 @@ struct UserDefaultsBackedDeviceStorage {
         
         return ids
     }
+    
+    static func getAllDeviceNames() -> [String] {
+        var names = [String]()
+        
+        for i in 0..<3 {
+            if let id = UserDefaults.standard.string(forKey: "name\(i)") {
+                names.append(id)
+            }
+        }
+        
+        return names
+    }
+    
+    static func getUUIDForDevice(withName name: String) -> String? {
+        for i in 0..<3 {
+            if let storedName = UserDefaults.standard.string(forKey: "name\(i)") {
+                if storedName == name, let id = UserDefaults.standard.string(forKey: "id\(i)") {
+                    return "19b10000-\(id)-537e-4f6c-d104768a1214"
+                }
+            }
+        }
+        
+        return nil
+    }
 }

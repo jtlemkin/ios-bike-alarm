@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		520484A024635DB700E2E35F /* StateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5204849F24635DB700E2E35F /* StateView.swift */; };
 		520484A42463836000E2E35F /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520484A32463836000E2E35F /* Device.swift */; };
+		526A1E19247E251800381AEE /* ReportingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526A1E18247E251800381AEE /* ReportingView.swift */; };
 		527952BD2416D3ED00A82F63 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527952BC2416D3ED00A82F63 /* AppDelegate.swift */; };
 		527952BF2416D3ED00A82F63 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527952BE2416D3ED00A82F63 /* SceneDelegate.swift */; };
 		527952C12416D3ED00A82F63 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527952C02416D3ED00A82F63 /* ContentView.swift */; };
@@ -37,6 +38,7 @@
 		51882929A058DD6B71FDE2CF /* Pods_IoBike.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IoBike.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5204849F24635DB700E2E35F /* StateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateView.swift; sourceTree = "<group>"; };
 		520484A32463836000E2E35F /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
+		526A1E18247E251800381AEE /* ReportingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportingView.swift; sourceTree = "<group>"; };
 		527952B92416D3ED00A82F63 /* IoBike.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IoBike.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		527952BC2416D3ED00A82F63 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		527952BE2416D3ED00A82F63 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				52D1D763245FB994003E2E00 /* SettingsView.swift */,
+				526A1E18247E251800381AEE /* ReportingView.swift */,
 				52D1D765245FC31E003E2E00 /* SettingsRow.swift */,
 			);
 			path = SettingsViews;
@@ -315,6 +318,7 @@
 				520484A024635DB700E2E35F /* StateView.swift in Sources */,
 				52E2E966246C4E28003D6CA7 /* OnBoardingView.swift in Sources */,
 				52E2E959246B6A59003D6CA7 /* QRScanSuccessfulView.swift in Sources */,
+				526A1E19247E251800381AEE /* ReportingView.swift in Sources */,
 				52D1D762245FB4B1003E2E00 /* Utils.swift in Sources */,
 				527952D32416FE2D00A82F63 /* BLEConnectionManager.swift in Sources */,
 				52E2E955246B6442003D6CA7 /* BikeRegistrationView.swift in Sources */,

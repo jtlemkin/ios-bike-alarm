@@ -7,10 +7,10 @@
 //
 
 import SwiftUI
-import FirebaseDatabase
 
 struct SettingsView: View {
     @State private var isScanningQR = false
+    @State private var isReporting = false
     @EnvironmentObject var device : Device
     var changeView : () -> Void
     
@@ -34,15 +34,15 @@ struct SettingsView: View {
                 SettingsRow(imageName: "arrow.up.arrow.down.circle.fill", text: "Set password", action: device.updatePassword)
                 SettingsRow(imageName: "arrow.right.circle.fill", text: "Swap bike", action: device.swap)
                 SettingsRow(imageName: "plus.circle.fill", text: "Register New Device", action: startScan)
+                .sheet(isPresented: $isScanningQR) {
+                    BikeRegistrationView()
+                }
                 SettingsRow(imageName: "exclamationmark.octagon.fill", text: "Report Stolen Bike", action: {
-                    var ref: DatabaseReference!
-                    ref = Database.database().reference()
-                    
-                    ref.child("Stolen Bike UUIDs").setValue(["Device ID": self.device.id])
-
+                    self.isReporting = true
                 })
-            }.sheet(isPresented: $isScanningQR) {
-                BikeRegistrationView()
+                .sheet(isPresented: $isReporting) {
+                    ReportingView()
+                }
             }
         }
     }
