@@ -37,7 +37,7 @@ struct ReportingView: View {
                             .frame(maxWidth: .infinity)
                             .foregroundColor(.white)
                             .padding([.all])
-                            .background(Color.blue)
+                            .background(Color.gray)
                             .border(self.deviceNameToReport == name ? Color(UIColor.label) : Color(UIColor.systemBackground), width: 2)
                             .padding(.horizontal)
                     }
