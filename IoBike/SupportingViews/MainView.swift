@@ -22,6 +22,7 @@ struct MainView: View {
                     .padding(.top, 50)
                     .background(Color.appThemeBlue)
                     .foregroundColor(.white)
+                    .lineLimit(1)
                 
                 MapView()
             }
