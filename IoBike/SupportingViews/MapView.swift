@@ -43,7 +43,7 @@ struct MapView: UIViewRepresentable {
         Coordinator(self)
     }
     
-    class Coordinator: NSObject, MKMapViewDelegate {
+    class Coordinator: NSObject, MKMapViewDelegate, CLLocationManagerDelegate {
         var parent: MapView
         let locationManager = CLLocationManager()
         
@@ -51,10 +51,21 @@ struct MapView: UIViewRepresentable {
             self.parent = parent
             super.init()
             
+            locationManager.delegate = self
+            
             parent.view.showsUserLocation = true
             
             locationManager.requestAlwaysAuthorization()
             locationManager.requestWhenInUseAuthorization()
+        }
+        
+        func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+            switch status {
+            case .authorizedAlways, .authorizedWhenInUse:
+                parent.device.syncStateWithStorage()
+            default:
+                break
+            }
         }
     }
     
