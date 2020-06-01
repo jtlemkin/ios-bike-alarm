@@ -23,7 +23,7 @@ struct ReportingView: View {
                 .fontWeight(.bold)
                 .multilineTextAlignment(.leading)
                 .padding([.all])
-                .padding([.bottom], 64)
+                .padding(.top, 32)
 
             Text("Choose stolen bike")
                 .fontWeight(.semibold)
@@ -31,6 +31,7 @@ struct ReportingView: View {
             
             ForEach(deviceNames, id: \.self) { name in
                 Button(action: {
+                    self.reported = false
                     self.deviceNameToReport = name
                 }) {
                     Text(name)
@@ -54,8 +55,9 @@ struct ReportingView: View {
             
             Spacer()
             
-            Text(reported ? "Report complete" : "")
+            Text(reported ? (deviceNameToReport != nil ? "Report complete" : "Please select a bike") : "")
                 .padding([.horizontal])
+                .foregroundColor(deviceNameToReport != nil ? Color(UIColor.label) : Color.red)
             
             Button(action: {
                 if let name = self.deviceNameToReport {
@@ -64,9 +66,10 @@ struct ReportingView: View {
                     
                     if let uuid = UserDefaultsBackedDeviceStorage.getUUIDForDevice(withName: name) {
                         ref.child("Stolen Bike UUIDs/\(uuid)").setValue(self.deviceDescription)
-                        self.reported = true
                     }
                 }
+                
+                self.reported = true
             }) {
                 Text("Report")
                     .frame(maxWidth: .infinity)

@@ -11,13 +11,12 @@ import SwiftUI
 struct StateView: View {
     @EnvironmentObject var device : Device
     var changeView : () -> Void
-    let batteryLife = UserDefaults.standard.integer(forKey: "batteryLife")
     
     var body: some View {
         ZStack {
             VStack {
                 HStack {
-                    Text("Device life: \(batteryLife == 0 ? 100 : batteryLife)%")
+                    Text("Device life: \(device.batteryLife)%")
                     
                     Spacer()
                     
@@ -31,8 +30,6 @@ struct StateView: View {
             }
             
             VStack {
-                Text(device.name)
-                    .font(.headline)
                 
                 if device.isConnected {
                     ToggleAlarmButton()

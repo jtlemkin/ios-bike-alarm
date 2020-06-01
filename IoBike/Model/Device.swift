@@ -17,10 +17,9 @@ import CoreLocation
 class Device: ObservableObject {
     @Published var isConnected = false
     @Published var isArmed = false
-    @Published var lastKnownLocation = CLLocationManager().location?.coordinate
-        ?? CLLocationCoordinate2D(latitude: 0, longitude: 0)
+    @Published var lastKnownLocation : CLLocationCoordinate2D?
     @Published var name = ""
-    @Published var batteryLife = 0
+    @Published var batteryLife = 100
     @Published var hasError = false
     
     //The BLE Connection Manager is responsible for setting the peripheral variable of the device
@@ -79,6 +78,7 @@ class Device: ObservableObject {
     init() {
         syncStateWithStorage()
         bleConnectionManger.scanForDevice()
+        storage.saveCurrentLocation()
     }
     
     func syncStateWithStorage() {

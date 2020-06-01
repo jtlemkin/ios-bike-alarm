@@ -21,18 +21,20 @@ struct MapView: UIViewRepresentable {
     }
     
     func updateUIView(_ view: MKMapView, context: Context) {
-        let targetLocation = device.lastKnownLocation
-        let lat = targetLocation.latitude
-        let long = targetLocation.longitude
-        let shiftedBikeLocation = CLLocationCoordinate2D(latitude: lat - 0.009 / 4, longitude: long)
+        let locationToDisplay = device.lastKnownLocation ?? CLLocationManager().location?.coordinate ?? CLLocationCoordinate2D(latitude: 0, longitude: 0)
+        let lat = locationToDisplay.latitude
+        let long = locationToDisplay.longitude
+
+        let shiftedBikeLocation = CLLocationCoordinate2D(latitude: lat - 0.009 / 3, longitude: long)
         
         let span = MKCoordinateSpan(latitudeDelta: 0.009, longitudeDelta: 0.009)
         let region = MKCoordinateRegion(center: shiftedBikeLocation, span: span)
         
         view.setRegion(region, animated: true)
         
-        let bike = BikeAnnotation(coordinate: targetLocation)
-        view.addAnnotation(bike)
+        if let bikeLocation = device.lastKnownLocation {
+            view.addAnnotation(BikeAnnotation(coordinate: bikeLocation))
+        }
         
         view.register(BikeMarkerView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
     }

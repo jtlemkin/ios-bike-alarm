@@ -19,7 +19,7 @@ struct QRScanView: View {
     
     var body: some View {
          ZStack {
-            Color.blue.edgesIgnoringSafeArea(.top)
+            Color.appThemeBlue.edgesIgnoringSafeArea(.top)
         
             Text(errorMessage)
             Text("Sorry we're having trouble accessing the camera. Please go to the settings app and disable camera permission to continue.")
@@ -30,7 +30,7 @@ struct QRScanView: View {
                     .foregroundColor(Color.white)
                     .padding(.top)
                     .frame(minWidth: 0, maxWidth: .infinity)
-                    .background(/*@START_MENU_TOKEN@*/Color.blue/*@END_MENU_TOKEN@*/)
+                    .background(Color.appThemeBlue)
                
                 QRCaptureView(parent: self)
             }

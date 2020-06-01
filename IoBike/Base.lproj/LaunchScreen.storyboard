@@ -34,7 +34,7 @@
                                 <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.1974225044" green="0.40552532670000002" blue="0.53335207699999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" red="0.19607843137254902" green="0.40392156862745099" blue="0.53333333333333333" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="tCT-WF-flD" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" constant="10" id="GZd-zH-hnf"/>
                             <constraint firstItem="tCT-WF-flD" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" constant="-5" id="sBM-f4-4ye"/>
