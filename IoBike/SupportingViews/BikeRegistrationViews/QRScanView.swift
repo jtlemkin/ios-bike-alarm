@@ -100,7 +100,7 @@ struct QRCaptureView: UIViewControllerRepresentable {
                 qrCaptureView.qrScanViewController.qrCodeFrameView?.frame = qrCodeObject!.bounds
                 
                 if let deviceID = metadataObj.stringValue {
-                    if deviceID.count == 4 && isHexadecimal(number: deviceID) {
+                    if deviceID.count == 4 && isHexadecimal(number: deviceID) && !UserDefaultsBackedDeviceStorage.getAllDeviceIDs().contains(deviceID) {
                         qrCaptureView.qrScanView.onScan(deviceID)
                     } else {
                         qrCaptureView.qrScanView.badQRCodeFound = true
