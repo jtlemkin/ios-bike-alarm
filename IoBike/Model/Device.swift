@@ -94,7 +94,7 @@ class Device: ObservableObject {
     
     //Returns whether registration was successful or not
     func register(withName name: String, withID id: String) -> Bool {
-        if id.count == 4 && isHexadecimal(number: id) {
+        if id.count == 4 && isHexadecimal(number: id) && !UserDefaultsBackedDeviceStorage.getAllDeviceIDs().contains(id) && !UserDefaultsBackedDeviceStorage.getAllDeviceNames().contains(name) {
             let shouldScanForDevice = needsRegistration
             
             storage.register(withName: name, withID: id)

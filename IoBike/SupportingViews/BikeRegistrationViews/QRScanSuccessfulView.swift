@@ -49,8 +49,9 @@ struct QRScanSuccessfulView: View {
                 // is set to false and the content view directs the user to main page
                 Button(action: {
                     if !self.success {
-                        var _ = Device.shared.register(withName: self.bikeName, withID: self.newBikeID)
-                        self.success = true
+                        if Device.shared.register(withName: self.bikeName, withID: self.newBikeID) {
+                            self.success = true
+                        }
                     }
                 } ) {
                     Text("Register")
