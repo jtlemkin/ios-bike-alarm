@@ -12,16 +12,15 @@ import UIKit
 import SwiftUI
 
 struct QRScanView: View {
+    @EnvironmentObject var device: Device
     var onScan : (String) -> Void
     var onUnableToAccessCamera : () -> Void
     @State var badQRCodeFound = false
-    @State var errorMessage = ""
     
     var body: some View {
          ZStack {
             Color.appThemeBlue.edgesIgnoringSafeArea(.top)
         
-            Text(errorMessage)
             Text("Sorry we're having trouble accessing the camera. Please go to the settings app and disable camera permission to continue.")
            
             VStack {
@@ -82,15 +81,6 @@ struct QRCaptureView: UIViewControllerRepresentable {
         
         init(parent: QRCaptureView) {
             self.qrCaptureView = parent
-            
-            parent.qrScanView.errorMessage = "Coordinator initialized"
-            
-            AVCaptureDevice.requestAccess(for: .video) { success in
-                if !success {
-                    parent.qrScanView.onUnableToAccessCamera()
-                    parent.qrScanView.errorMessage = "Error: Unable to access video"
-                }
-            }
         }
         
         func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
@@ -120,7 +110,7 @@ struct QRCaptureView: UIViewControllerRepresentable {
         }
         
         func setError(withMessage message: String) {
-            qrCaptureView.qrScanView.errorMessage = message
+            qrCaptureView.qrScanView.device.errorMessage = message
         }
     }
     
@@ -131,6 +121,13 @@ struct QRCaptureView: UIViewControllerRepresentable {
         var delegate: QRScannerCoordinator?
         
         override func viewDidLoad() {
+            AVCaptureDevice.requestAccess(for: .video) { success in
+                if !success {
+                    self.delegate?.qrCaptureView.qrScanView.onUnableToAccessCamera()
+                    self.delegate?.setError(withMessage: "Error: Unable to access video")
+                }
+            }
+            
             captureSession = AVCaptureSession()
             
             let deviceDiscoverySession =
