@@ -83,6 +83,8 @@ struct QRCaptureView: UIViewControllerRepresentable {
         init(parent: QRCaptureView) {
             self.qrCaptureView = parent
             
+            parent.qrScanView.errorMessage = "Coordinator initialized"
+            
             AVCaptureDevice.requestAccess(for: .video) { success in
                 if !success {
                     parent.qrScanView.onUnableToAccessCamera()
